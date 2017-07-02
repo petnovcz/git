@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1ac4b27a82114e1d9abf0424130c6ee3" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AspNetRoles" Width="1.5" PointX="5.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="8" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_Category" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_ExcersiseCategory" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_Excersises" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_Hall" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_SeasonPart" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_Seasons" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_Signings" Width="1.5" PointX="10.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_TrainingExcersises" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ft_Trainings" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_ft_Signings_ToAspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ft_Trainings_ToCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ft_Excersises_ToExcersiseCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ft_Excersises_ToSeasonPart" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ft_TrainingExcersises_ToExcersises" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ft_Trainings_ToHall" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ft_Trainings_ToSeasonPart" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ft_Trainings_ToSeason" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ft_TrainingExcersises_ToTraining" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

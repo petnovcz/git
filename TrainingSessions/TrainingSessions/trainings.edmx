@@ -1,0 +1,763 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_ExcersiseCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ExcersiseCategoryName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_Excersises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ExcersiseName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SeasonPart" Type="int" Nullable="false" />
+          <Property Name="ExcersiseCategory" Type="int" Nullable="false" />
+          <Property Name="GroupByCategory" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_Hall">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="HallName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Inner" Type="bit" Nullable="false" />
+          <Property Name="Outter" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_SeasonPart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SeasonPartName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_Seasons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SeasonName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_Signings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Signing" Type="bit" Nullable="false" />
+          <Property Name="Timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_TrainingExcersises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Training" Type="int" Nullable="false" />
+          <Property Name="Excersise" Type="int" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ft_Trainings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="SignLimit" Type="datetime" Nullable="false" />
+          <Property Name="Hall" Type="int" Nullable="false" />
+          <Property Name="Season" Type="int" Nullable="false" />
+          <Property Name="SeasonPart" Type="int" Nullable="false" />
+          <Property Name="Category" Type="int" Nullable="false" />
+          <Property Name="MeetTime" Type="datetime" Nullable="false" />
+          <Property Name="ShowExcersises" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Excersises_ToExcersiseCategory">
+          <End Role="ft_ExcersiseCategory" Type="Self.ft_ExcersiseCategory" Multiplicity="1" />
+          <End Role="ft_Excersises" Type="Self.ft_Excersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_ExcersiseCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Excersises">
+              <PropertyRef Name="ExcersiseCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Excersises_ToSeasonPart">
+          <End Role="ft_SeasonPart" Type="Self.ft_SeasonPart" Multiplicity="1" />
+          <End Role="ft_Excersises" Type="Self.ft_Excersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_SeasonPart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Excersises">
+              <PropertyRef Name="SeasonPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Signings_ToAspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ft_Signings" Type="Self.ft_Signings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Signings">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_TrainingExcersises_ToExcersises">
+          <End Role="ft_Excersises" Type="Self.ft_Excersises" Multiplicity="1" />
+          <End Role="ft_TrainingExcersises" Type="Self.ft_TrainingExcersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Excersises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_TrainingExcersises">
+              <PropertyRef Name="Excersise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_TrainingExcersises_ToTraining">
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="1" />
+          <End Role="ft_TrainingExcersises" Type="Self.ft_TrainingExcersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Trainings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_TrainingExcersises">
+              <PropertyRef Name="Training" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Trainings_ToCategory">
+          <End Role="ft_Category" Type="Self.ft_Category" Multiplicity="1" />
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Trainings">
+              <PropertyRef Name="Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Trainings_ToHall">
+          <End Role="ft_Hall" Type="Self.ft_Hall" Multiplicity="1" />
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Hall">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Trainings">
+              <PropertyRef Name="Hall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Trainings_ToSeason">
+          <End Role="ft_Seasons" Type="Self.ft_Seasons" Multiplicity="1" />
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Seasons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Trainings">
+              <PropertyRef Name="Season" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Trainings_ToSeasonPart">
+          <End Role="ft_SeasonPart" Type="Self.ft_SeasonPart" Multiplicity="1" />
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_SeasonPart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Trainings">
+              <PropertyRef Name="SeasonPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_Category" EntityType="Self.ft_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_ExcersiseCategory" EntityType="Self.ft_ExcersiseCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_Excersises" EntityType="Self.ft_Excersises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_Hall" EntityType="Self.ft_Hall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_SeasonPart" EntityType="Self.ft_SeasonPart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_Seasons" EntityType="Self.ft_Seasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_Signings" EntityType="Self.ft_Signings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_TrainingExcersises" EntityType="Self.ft_TrainingExcersises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ft_Trainings" EntityType="Self.ft_Trainings" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Excersises_ToExcersiseCategory" Association="Self.FK_ft_Excersises_ToExcersiseCategory">
+            <End Role="ft_ExcersiseCategory" EntitySet="ft_ExcersiseCategory" />
+            <End Role="ft_Excersises" EntitySet="ft_Excersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Excersises_ToSeasonPart" Association="Self.FK_ft_Excersises_ToSeasonPart">
+            <End Role="ft_SeasonPart" EntitySet="ft_SeasonPart" />
+            <End Role="ft_Excersises" EntitySet="ft_Excersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Signings_ToAspNetUsers" Association="Self.FK_ft_Signings_ToAspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ft_Signings" EntitySet="ft_Signings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_TrainingExcersises_ToExcersises" Association="Self.FK_ft_TrainingExcersises_ToExcersises">
+            <End Role="ft_Excersises" EntitySet="ft_Excersises" />
+            <End Role="ft_TrainingExcersises" EntitySet="ft_TrainingExcersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_TrainingExcersises_ToTraining" Association="Self.FK_ft_TrainingExcersises_ToTraining">
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+            <End Role="ft_TrainingExcersises" EntitySet="ft_TrainingExcersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Trainings_ToCategory" Association="Self.FK_ft_Trainings_ToCategory">
+            <End Role="ft_Category" EntitySet="ft_Category" />
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Trainings_ToHall" Association="Self.FK_ft_Trainings_ToHall">
+            <End Role="ft_Hall" EntitySet="ft_Hall" />
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Trainings_ToSeason" Association="Self.FK_ft_Trainings_ToSeason">
+            <End Role="ft_Seasons" EntitySet="ft_Seasons" />
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Trainings_ToSeasonPart" Association="Self.FK_ft_Trainings_ToSeasonPart">
+            <End Role="ft_SeasonPart" EntitySet="ft_SeasonPart" />
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ft_Signings" Relationship="Self.FK_ft_Signings_ToAspNetUsers" FromRole="AspNetUsers" ToRole="ft_Signings" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="ft_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ft_Trainings" Relationship="Self.FK_ft_Trainings_ToCategory" FromRole="ft_Category" ToRole="ft_Trainings" />
+        </EntityType>
+        <EntityType Name="ft_ExcersiseCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ExcersiseCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ft_Excersises" Relationship="Self.FK_ft_Excersises_ToExcersiseCategory" FromRole="ft_ExcersiseCategory" ToRole="ft_Excersises" />
+        </EntityType>
+        <EntityType Name="ft_Excersises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ExcersiseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeasonPart" Type="Int32" Nullable="false" />
+          <Property Name="ExcersiseCategory" Type="Int32" Nullable="false" />
+          <Property Name="GroupByCategory" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ft_ExcersiseCategory" Relationship="Self.FK_ft_Excersises_ToExcersiseCategory" FromRole="ft_Excersises" ToRole="ft_ExcersiseCategory" />
+          <NavigationProperty Name="ft_SeasonPart" Relationship="Self.FK_ft_Excersises_ToSeasonPart" FromRole="ft_Excersises" ToRole="ft_SeasonPart" />
+          <NavigationProperty Name="ft_TrainingExcersises" Relationship="Self.FK_ft_TrainingExcersises_ToExcersises" FromRole="ft_Excersises" ToRole="ft_TrainingExcersises" />
+        </EntityType>
+        <EntityType Name="ft_Hall">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="HallName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Inner" Type="Boolean" Nullable="false" />
+          <Property Name="Outter" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ft_Trainings" Relationship="Self.FK_ft_Trainings_ToHall" FromRole="ft_Hall" ToRole="ft_Trainings" />
+        </EntityType>
+        <EntityType Name="ft_SeasonPart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SeasonPartName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ft_Excersises" Relationship="Self.FK_ft_Excersises_ToSeasonPart" FromRole="ft_SeasonPart" ToRole="ft_Excersises" />
+          <NavigationProperty Name="ft_Trainings" Relationship="Self.FK_ft_Trainings_ToSeasonPart" FromRole="ft_SeasonPart" ToRole="ft_Trainings" />
+        </EntityType>
+        <EntityType Name="ft_Seasons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SeasonName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ft_Trainings" Relationship="Self.FK_ft_Trainings_ToSeason" FromRole="ft_Seasons" ToRole="ft_Trainings" />
+        </EntityType>
+        <EntityType Name="ft_Signings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Signing" Type="Boolean" Nullable="false" />
+          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_ft_Signings_ToAspNetUsers" FromRole="ft_Signings" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="ft_TrainingExcersises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Training" Type="Int32" Nullable="false" />
+          <Property Name="Excersise" Type="Int32" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ft_Excersises" Relationship="Self.FK_ft_TrainingExcersises_ToExcersises" FromRole="ft_TrainingExcersises" ToRole="ft_Excersises" />
+          <NavigationProperty Name="ft_Trainings" Relationship="Self.FK_ft_TrainingExcersises_ToTraining" FromRole="ft_TrainingExcersises" ToRole="ft_Trainings" />
+        </EntityType>
+        <EntityType Name="ft_Trainings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SignLimit" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hall" Type="Int32" Nullable="false" />
+          <Property Name="Season" Type="Int32" Nullable="false" />
+          <Property Name="SeasonPart" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="Int32" Nullable="false" />
+          <Property Name="MeetTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShowExcersises" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ft_Category" Relationship="Self.FK_ft_Trainings_ToCategory" FromRole="ft_Trainings" ToRole="ft_Category" />
+          <NavigationProperty Name="ft_Hall" Relationship="Self.FK_ft_Trainings_ToHall" FromRole="ft_Trainings" ToRole="ft_Hall" />
+          <NavigationProperty Name="ft_SeasonPart" Relationship="Self.FK_ft_Trainings_ToSeasonPart" FromRole="ft_Trainings" ToRole="ft_SeasonPart" />
+          <NavigationProperty Name="ft_Seasons" Relationship="Self.FK_ft_Trainings_ToSeason" FromRole="ft_Trainings" ToRole="ft_Seasons" />
+          <NavigationProperty Name="ft_TrainingExcersises" Relationship="Self.FK_ft_TrainingExcersises_ToTraining" FromRole="ft_Trainings" ToRole="ft_TrainingExcersises" />
+        </EntityType>
+        <Association Name="FK_ft_Signings_ToAspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ft_Signings" Type="Self.ft_Signings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Signings">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Trainings_ToCategory">
+          <End Role="ft_Category" Type="Self.ft_Category" Multiplicity="1" />
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Trainings">
+              <PropertyRef Name="Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Excersises_ToExcersiseCategory">
+          <End Role="ft_ExcersiseCategory" Type="Self.ft_ExcersiseCategory" Multiplicity="1" />
+          <End Role="ft_Excersises" Type="Self.ft_Excersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_ExcersiseCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Excersises">
+              <PropertyRef Name="ExcersiseCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Excersises_ToSeasonPart">
+          <End Role="ft_SeasonPart" Type="Self.ft_SeasonPart" Multiplicity="1" />
+          <End Role="ft_Excersises" Type="Self.ft_Excersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_SeasonPart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Excersises">
+              <PropertyRef Name="SeasonPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_TrainingExcersises_ToExcersises">
+          <End Role="ft_Excersises" Type="Self.ft_Excersises" Multiplicity="1" />
+          <End Role="ft_TrainingExcersises" Type="Self.ft_TrainingExcersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Excersises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_TrainingExcersises">
+              <PropertyRef Name="Excersise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Trainings_ToHall">
+          <End Role="ft_Hall" Type="Self.ft_Hall" Multiplicity="1" />
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Hall">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Trainings">
+              <PropertyRef Name="Hall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Trainings_ToSeasonPart">
+          <End Role="ft_SeasonPart" Type="Self.ft_SeasonPart" Multiplicity="1" />
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_SeasonPart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Trainings">
+              <PropertyRef Name="SeasonPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_Trainings_ToSeason">
+          <End Role="ft_Seasons" Type="Self.ft_Seasons" Multiplicity="1" />
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Seasons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_Trainings">
+              <PropertyRef Name="Season" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ft_TrainingExcersises_ToTraining">
+          <End Role="ft_Trainings" Type="Self.ft_Trainings" Multiplicity="1" />
+          <End Role="ft_TrainingExcersises" Type="Self.ft_TrainingExcersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ft_Trainings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ft_TrainingExcersises">
+              <PropertyRef Name="Training" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="ft_Category" EntityType="Self.ft_Category" />
+          <EntitySet Name="ft_ExcersiseCategory" EntityType="Self.ft_ExcersiseCategory" />
+          <EntitySet Name="ft_Excersises" EntityType="Self.ft_Excersises" />
+          <EntitySet Name="ft_Hall" EntityType="Self.ft_Hall" />
+          <EntitySet Name="ft_SeasonPart" EntityType="Self.ft_SeasonPart" />
+          <EntitySet Name="ft_Seasons" EntityType="Self.ft_Seasons" />
+          <EntitySet Name="ft_Signings" EntityType="Self.ft_Signings" />
+          <EntitySet Name="ft_TrainingExcersises" EntityType="Self.ft_TrainingExcersises" />
+          <EntitySet Name="ft_Trainings" EntityType="Self.ft_Trainings" />
+          <AssociationSet Name="FK_ft_Signings_ToAspNetUsers" Association="Self.FK_ft_Signings_ToAspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ft_Signings" EntitySet="ft_Signings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Trainings_ToCategory" Association="Self.FK_ft_Trainings_ToCategory">
+            <End Role="ft_Category" EntitySet="ft_Category" />
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Excersises_ToExcersiseCategory" Association="Self.FK_ft_Excersises_ToExcersiseCategory">
+            <End Role="ft_ExcersiseCategory" EntitySet="ft_ExcersiseCategory" />
+            <End Role="ft_Excersises" EntitySet="ft_Excersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Excersises_ToSeasonPart" Association="Self.FK_ft_Excersises_ToSeasonPart">
+            <End Role="ft_SeasonPart" EntitySet="ft_SeasonPart" />
+            <End Role="ft_Excersises" EntitySet="ft_Excersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_TrainingExcersises_ToExcersises" Association="Self.FK_ft_TrainingExcersises_ToExcersises">
+            <End Role="ft_Excersises" EntitySet="ft_Excersises" />
+            <End Role="ft_TrainingExcersises" EntitySet="ft_TrainingExcersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Trainings_ToHall" Association="Self.FK_ft_Trainings_ToHall">
+            <End Role="ft_Hall" EntitySet="ft_Hall" />
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Trainings_ToSeasonPart" Association="Self.FK_ft_Trainings_ToSeasonPart">
+            <End Role="ft_SeasonPart" EntitySet="ft_SeasonPart" />
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_Trainings_ToSeason" Association="Self.FK_ft_Trainings_ToSeason">
+            <End Role="ft_Seasons" EntitySet="ft_Seasons" />
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ft_TrainingExcersises_ToTraining" Association="Self.FK_ft_TrainingExcersises_ToTraining">
+            <End Role="ft_Trainings" EntitySet="ft_Trainings" />
+            <End Role="ft_TrainingExcersises" EntitySet="ft_TrainingExcersises" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_Category">
+            <EntityTypeMapping TypeName="Model.ft_Category">
+              <MappingFragment StoreEntitySet="ft_Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_ExcersiseCategory">
+            <EntityTypeMapping TypeName="Model.ft_ExcersiseCategory">
+              <MappingFragment StoreEntitySet="ft_ExcersiseCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExcersiseCategoryName" ColumnName="ExcersiseCategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_Excersises">
+            <EntityTypeMapping TypeName="Model.ft_Excersises">
+              <MappingFragment StoreEntitySet="ft_Excersises">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExcersiseName" ColumnName="ExcersiseName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SeasonPart" ColumnName="SeasonPart" />
+                <ScalarProperty Name="ExcersiseCategory" ColumnName="ExcersiseCategory" />
+                <ScalarProperty Name="GroupByCategory" ColumnName="GroupByCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_Hall">
+            <EntityTypeMapping TypeName="Model.ft_Hall">
+              <MappingFragment StoreEntitySet="ft_Hall">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HallName" ColumnName="HallName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Inner" ColumnName="Inner" />
+                <ScalarProperty Name="Outter" ColumnName="Outter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_SeasonPart">
+            <EntityTypeMapping TypeName="Model.ft_SeasonPart">
+              <MappingFragment StoreEntitySet="ft_SeasonPart">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SeasonPartName" ColumnName="SeasonPartName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_Seasons">
+            <EntityTypeMapping TypeName="Model.ft_Seasons">
+              <MappingFragment StoreEntitySet="ft_Seasons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_Signings">
+            <EntityTypeMapping TypeName="Model.ft_Signings">
+              <MappingFragment StoreEntitySet="ft_Signings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Signing" ColumnName="Signing" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_TrainingExcersises">
+            <EntityTypeMapping TypeName="Model.ft_TrainingExcersises">
+              <MappingFragment StoreEntitySet="ft_TrainingExcersises">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Training" ColumnName="Training" />
+                <ScalarProperty Name="Excersise" ColumnName="Excersise" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ft_Trainings">
+            <EntityTypeMapping TypeName="Model.ft_Trainings">
+              <MappingFragment StoreEntitySet="ft_Trainings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="SignLimit" ColumnName="SignLimit" />
+                <ScalarProperty Name="Hall" ColumnName="Hall" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="SeasonPart" ColumnName="SeasonPart" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="MeetTime" ColumnName="MeetTime" />
+                <ScalarProperty Name="ShowExcersises" ColumnName="ShowExcersises" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

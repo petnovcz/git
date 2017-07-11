@@ -4,589 +4,589 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="ModelStoreContainer">
-    <EntitySet Name="AspNetUsers" EntityType="Model.Store.AspNetUsers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ExcersiseBelongsToCategory" EntityType="Model.Store.ExcersiseBelongsToCategory" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ExcersiseBelongsToSeasonParts" EntityType="Model.Store.ExcersiseBelongsToSeasonParts" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ExcersiseCategories" EntityType="Model.Store.ExcersiseCategories" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Excersises" EntityType="Model.Store.Excersises" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PlayerFunctions" EntityType="Model.Store.PlayerFunctions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Players" EntityType="Model.Store.Players" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PlayerSigningToTrainings" EntityType="Model.Store.PlayerSigningToTrainings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SeasonParts" EntityType="Model.Store.SeasonParts" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Seasons" EntityType="Model.Store.Seasons" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TeamPlayers" EntityType="Model.Store.TeamPlayers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Teams" EntityType="Model.Store.Teams" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TrainingExcersises" EntityType="Model.Store.TrainingExcersises" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TrainingFocuses" EntityType="Model.Store.TrainingFocuses" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TrainingLocations" EntityType="Model.Store.TrainingLocations" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Trainings" EntityType="Model.Store.Trainings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TrainingSchemeModels" EntityType="Model.Store.TrainingSchemeModels" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TrainingSchemePartModels" EntityType="Model.Store.TrainingSchemePartModels" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Players_ToUsers" Association="Model.Store.FK_Players_ToUsers">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="Players" EntitySet="Players" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ExcersiseBelongsToCategory_ToExcersiseCategories" Association="Model.Store.FK_ExcersiseBelongsToCategory_ToExcersiseCategories">
-      <End Role="ExcersiseCategories" EntitySet="ExcersiseCategories" />
-      <End Role="ExcersiseBelongsToCategory" EntitySet="ExcersiseBelongsToCategory" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ExcersiseBelongsToCategory_ToExcersises" Association="Model.Store.FK_ExcersiseBelongsToCategory_ToExcersises">
-      <End Role="Excersises" EntitySet="Excersises" />
-      <End Role="ExcersiseBelongsToCategory" EntitySet="ExcersiseBelongsToCategory" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ExcersiseBelongsToSeasonParts_ToExcersises" Association="Model.Store.FK_ExcersiseBelongsToSeasonParts_ToExcersises">
-      <End Role="Excersises" EntitySet="Excersises" />
-      <End Role="ExcersiseBelongsToSeasonParts" EntitySet="ExcersiseBelongsToSeasonParts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ExcersiseBelongsToSeasonParts_ToSeasonParts" Association="Model.Store.FK_ExcersiseBelongsToSeasonParts_ToSeasonParts">
-      <End Role="SeasonParts" EntitySet="SeasonParts" />
-      <End Role="ExcersiseBelongsToSeasonParts" EntitySet="ExcersiseBelongsToSeasonParts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TrainingSchemePartModels_ToExcersiseCategories" Association="Model.Store.FK_TrainingSchemePartModels_ToExcersiseCategories">
-      <End Role="ExcersiseCategories" EntitySet="ExcersiseCategories" />
-      <End Role="TrainingSchemePartModels" EntitySet="TrainingSchemePartModels" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TrainingExcersises_ToExcersises" Association="Model.Store.FK_TrainingExcersises_ToExcersises">
-      <End Role="Excersises" EntitySet="Excersises" />
-      <End Role="TrainingExcersises" EntitySet="TrainingExcersises" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeamPlayers_ToPlayerFunctions" Association="Model.Store.FK_TeamPlayers_ToPlayerFunctions">
-      <End Role="PlayerFunctions" EntitySet="PlayerFunctions" />
-      <End Role="TeamPlayers" EntitySet="TeamPlayers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PlayerSigningToTrainings_ToPlayers" Association="Model.Store.FK_PlayerSigningToTrainings_ToPlayers">
-      <End Role="Players" EntitySet="Players" />
-      <End Role="PlayerSigningToTrainings" EntitySet="PlayerSigningToTrainings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeamPlayers_ToPlayers" Association="Model.Store.FK_TeamPlayers_ToPlayers">
-      <End Role="Players" EntitySet="Players" />
-      <End Role="TeamPlayers" EntitySet="TeamPlayers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PlayerSigningToTrainings_ToTrainings" Association="Model.Store.FK_PlayerSigningToTrainings_ToTrainings">
-      <End Role="Trainings" EntitySet="Trainings" />
-      <End Role="PlayerSigningToTrainings" EntitySet="PlayerSigningToTrainings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TrainingFocuses_ToSeasonParts" Association="Model.Store.FK_TrainingFocuses_ToSeasonParts">
-      <End Role="SeasonParts" EntitySet="SeasonParts" />
-      <End Role="TrainingFocuses" EntitySet="TrainingFocuses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Trainings_ToSeasonParts" Association="Model.Store.FK_Trainings_ToSeasonParts">
-      <End Role="SeasonParts" EntitySet="SeasonParts" />
-      <End Role="Trainings" EntitySet="Trainings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TrainingSchemeModels_ToSeasonParts" Association="Model.Store.FK_TrainingSchemeModels_ToSeasonParts">
-      <End Role="SeasonParts" EntitySet="SeasonParts" />
-      <End Role="TrainingSchemeModels" EntitySet="TrainingSchemeModels" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeamPlayers_ToSeason" Association="Model.Store.FK_TeamPlayers_ToSeason">
-      <End Role="Seasons" EntitySet="Seasons" />
-      <End Role="TeamPlayers" EntitySet="TeamPlayers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Trainings_ToSeasons" Association="Model.Store.FK_Trainings_ToSeasons">
-      <End Role="Seasons" EntitySet="Seasons" />
-      <End Role="Trainings" EntitySet="Trainings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeamPlayers_ToTeams" Association="Model.Store.FK_TeamPlayers_ToTeams">
-      <End Role="Teams" EntitySet="Teams" />
-      <End Role="TeamPlayers" EntitySet="TeamPlayers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Trainings_ToTeams" Association="Model.Store.FK_Trainings_ToTeams">
-      <End Role="Teams" EntitySet="Teams" />
-      <End Role="Trainings" EntitySet="Trainings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TrainingExcersises_ToTrainings" Association="Model.Store.FK_TrainingExcersises_ToTrainings">
-      <End Role="Trainings" EntitySet="Trainings" />
-      <End Role="TrainingExcersises" EntitySet="TrainingExcersises" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TrainingExcersises_ToTrainingSchemePartModels" Association="Model.Store.FK_TrainingExcersises_ToTrainingSchemePartModels">
-      <End Role="TrainingSchemePartModels" EntitySet="TrainingSchemePartModels" />
-      <End Role="TrainingExcersises" EntitySet="TrainingExcersises" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Trainings_ToTraningFocuses" Association="Model.Store.FK_Trainings_ToTraningFocuses">
-      <End Role="TrainingFocuses" EntitySet="TrainingFocuses" />
-      <End Role="Trainings" EntitySet="Trainings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Trainings_ToTrainingLocations" Association="Model.Store.FK_Trainings_ToTrainingLocations">
-      <End Role="TrainingLocations" EntitySet="TrainingLocations" />
-      <End Role="Trainings" EntitySet="Trainings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Trainings_ToTrainingSchemeModels" Association="Model.Store.FK_Trainings_ToTrainingSchemeModels">
-      <End Role="TrainingSchemeModels" EntitySet="TrainingSchemeModels" />
-      <End Role="Trainings" EntitySet="Trainings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TrainingSchemePartModels_ToTrainingScheme" Association="Model.Store.FK_TrainingSchemePartModels_ToTrainingScheme">
-      <End Role="TrainingSchemeModels" EntitySet="TrainingSchemeModels" />
-      <End Role="TrainingSchemePartModels" EntitySet="TrainingSchemePartModels" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="AspNetUsers">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="256" />
-    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
-    <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="SecurityStamp" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
-    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
-    <Property Name="LockoutEndDateUtc" Type="datetime" Nullable="true" />
-    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
-    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
-  </EntityType>
-  <EntityType Name="ExcersiseBelongsToCategory">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Excersise" Type="int" Nullable="false" />
-    <Property Name="ExcersiseCategory" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ExcersiseBelongsToSeasonParts">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Excersise" Type="int" Nullable="false" />
-    <Property Name="SeasonPart" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ExcersiseCategories">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="ExcersiseCategoryName" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Excersises">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="ExcersiseName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Image" Type="varbinary(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="PlayerFunctions">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="PlayerFunctionName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="IsPlayer" Type="bit" Nullable="false" />
-    <Property Name="IsGoalie" Type="bit" Nullable="false" />
-    <Property Name="IsTrainer" Type="bit" Nullable="false" />
-    <Property Name="IsManager" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Players">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="User" Type="nvarchar" Nullable="false" MaxLength="128" />
-  </EntityType>
-  <EntityType Name="PlayerSigningToTrainings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Training" Type="int" Nullable="false" />
-    <Property Name="Player" Type="int" Nullable="false" />
-    <Property Name="Status" Type="bit" Nullable="false" />
-    <Property Name="PlayerSignedDate" Type="binary" StoreGeneratedPattern="Computed" Nullable="false" MaxLength="8" />
-  </EntityType>
-  <EntityType Name="SeasonParts">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="SeasonPartName" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Seasons">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="SeasonName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="IsActiveSeason" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TeamPlayers">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Team" Type="int" Nullable="false" />
-    <Property Name="Player" Type="int" Nullable="false" />
-    <Property Name="PlayerFunction" Type="int" Nullable="false" />
-    <Property Name="Season" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Teams">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="TeamName" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="TrainingExcersises">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Training" Type="int" Nullable="false" />
-    <Property Name="Excersise" Type="int" Nullable="false" />
-    <Property Name="TrainingSchemePartModel" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="TrainingFocuses">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="TrainingFocusName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="SeasonPart" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TrainingLocations">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="TrainingLocationName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="PricePerHour" Type="float" Nullable="false" />
-    <Property Name="Description" Type="varchar(max)" Nullable="true" />
-    <Property Name="Inner" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Trainings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="TrainingDate" Type="datetime" Nullable="false" />
-    <Property Name="MeetDate" Type="datetime" Nullable="false" />
-    <Property Name="SigningLimitDate" Type="datetime" Nullable="false" />
-    <Property Name="TrainingLocation" Type="int" Nullable="false" />
-    <Property Name="Team" Type="int" Nullable="false" />
-    <Property Name="Season" Type="int" Nullable="false" />
-    <Property Name="SeasonPart" Type="int" Nullable="false" />
-    <Property Name="TrainingFocus" Type="int" Nullable="false" />
-    <Property Name="TrainingSchemeModel" Type="int" Nullable="true" />
-    <Property Name="TrainingLength" Type="float" Nullable="false" />
-    <Property Name="PublishTraining" Type="bit" Nullable="false" />
-    <Property Name="PublishExcersises" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TrainingSchemeModels">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="TrainingSchemeName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="SeasonPart" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TrainingSchemePartModels">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="TrainingSchemeModel" Type="int" Nullable="false" />
-    <Property Name="ExcersiseCategory" Type="int" Nullable="false" />
-    <Property Name="PartLength" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="NumberOfExcersises" Type="int" Nullable="true" />
-    <Property Name="Series" Type="int" Nullable="true" />
-    <Property Name="SeriesLength" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="RestBetweenSeries" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="RestBetweenExcersises" Type="varchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <Association Name="FK_Players_ToUsers">
-    <End Role="AspNetUsers" Type="Model.Store.AspNetUsers" Multiplicity="1" />
-    <End Role="Players" Type="Model.Store.Players" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Players">
-        <PropertyRef Name="User" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ExcersiseBelongsToCategory_ToExcersiseCategories">
-    <End Role="ExcersiseCategories" Type="Model.Store.ExcersiseCategories" Multiplicity="1" />
-    <End Role="ExcersiseBelongsToCategory" Type="Model.Store.ExcersiseBelongsToCategory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ExcersiseCategories">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ExcersiseBelongsToCategory">
-        <PropertyRef Name="ExcersiseCategory" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ExcersiseBelongsToCategory_ToExcersises">
-    <End Role="Excersises" Type="Model.Store.Excersises" Multiplicity="1" />
-    <End Role="ExcersiseBelongsToCategory" Type="Model.Store.ExcersiseBelongsToCategory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Excersises">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ExcersiseBelongsToCategory">
-        <PropertyRef Name="Excersise" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ExcersiseBelongsToSeasonParts_ToExcersises">
-    <End Role="Excersises" Type="Model.Store.Excersises" Multiplicity="1" />
-    <End Role="ExcersiseBelongsToSeasonParts" Type="Model.Store.ExcersiseBelongsToSeasonParts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Excersises">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ExcersiseBelongsToSeasonParts">
-        <PropertyRef Name="Excersise" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ExcersiseBelongsToSeasonParts_ToSeasonParts">
-    <End Role="SeasonParts" Type="Model.Store.SeasonParts" Multiplicity="1" />
-    <End Role="ExcersiseBelongsToSeasonParts" Type="Model.Store.ExcersiseBelongsToSeasonParts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SeasonParts">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ExcersiseBelongsToSeasonParts">
-        <PropertyRef Name="SeasonPart" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TrainingSchemePartModels_ToExcersiseCategories">
-    <End Role="ExcersiseCategories" Type="Model.Store.ExcersiseCategories" Multiplicity="1" />
-    <End Role="TrainingSchemePartModels" Type="Model.Store.TrainingSchemePartModels" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ExcersiseCategories">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TrainingSchemePartModels">
-        <PropertyRef Name="ExcersiseCategory" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TrainingExcersises_ToExcersises">
-    <End Role="Excersises" Type="Model.Store.Excersises" Multiplicity="1" />
-    <End Role="TrainingExcersises" Type="Model.Store.TrainingExcersises" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Excersises">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TrainingExcersises">
-        <PropertyRef Name="Excersise" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeamPlayers_ToPlayerFunctions">
-    <End Role="PlayerFunctions" Type="Model.Store.PlayerFunctions" Multiplicity="1" />
-    <End Role="TeamPlayers" Type="Model.Store.TeamPlayers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PlayerFunctions">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TeamPlayers">
-        <PropertyRef Name="PlayerFunction" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PlayerSigningToTrainings_ToPlayers">
-    <End Role="Players" Type="Model.Store.Players" Multiplicity="1" />
-    <End Role="PlayerSigningToTrainings" Type="Model.Store.PlayerSigningToTrainings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Players">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PlayerSigningToTrainings">
-        <PropertyRef Name="Player" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeamPlayers_ToPlayers">
-    <End Role="Players" Type="Model.Store.Players" Multiplicity="1" />
-    <End Role="TeamPlayers" Type="Model.Store.TeamPlayers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Players">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TeamPlayers">
-        <PropertyRef Name="Player" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PlayerSigningToTrainings_ToTrainings">
-    <End Role="Trainings" Type="Model.Store.Trainings" Multiplicity="1" />
-    <End Role="PlayerSigningToTrainings" Type="Model.Store.PlayerSigningToTrainings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Trainings">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PlayerSigningToTrainings">
-        <PropertyRef Name="Training" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TrainingFocuses_ToSeasonParts">
-    <End Role="SeasonParts" Type="Model.Store.SeasonParts" Multiplicity="1" />
-    <End Role="TrainingFocuses" Type="Model.Store.TrainingFocuses" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SeasonParts">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TrainingFocuses">
-        <PropertyRef Name="SeasonPart" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Trainings_ToSeasonParts">
-    <End Role="SeasonParts" Type="Model.Store.SeasonParts" Multiplicity="1" />
-    <End Role="Trainings" Type="Model.Store.Trainings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SeasonParts">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Trainings">
-        <PropertyRef Name="SeasonPart" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TrainingSchemeModels_ToSeasonParts">
-    <End Role="SeasonParts" Type="Model.Store.SeasonParts" Multiplicity="1" />
-    <End Role="TrainingSchemeModels" Type="Model.Store.TrainingSchemeModels" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SeasonParts">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TrainingSchemeModels">
-        <PropertyRef Name="SeasonPart" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeamPlayers_ToSeason">
-    <End Role="Seasons" Type="Model.Store.Seasons" Multiplicity="1" />
-    <End Role="TeamPlayers" Type="Model.Store.TeamPlayers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Seasons">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TeamPlayers">
-        <PropertyRef Name="Season" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Trainings_ToSeasons">
-    <End Role="Seasons" Type="Model.Store.Seasons" Multiplicity="1" />
-    <End Role="Trainings" Type="Model.Store.Trainings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Seasons">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Trainings">
-        <PropertyRef Name="Season" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeamPlayers_ToTeams">
-    <End Role="Teams" Type="Model.Store.Teams" Multiplicity="1" />
-    <End Role="TeamPlayers" Type="Model.Store.TeamPlayers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teams">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TeamPlayers">
-        <PropertyRef Name="Team" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Trainings_ToTeams">
-    <End Role="Teams" Type="Model.Store.Teams" Multiplicity="1" />
-    <End Role="Trainings" Type="Model.Store.Trainings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teams">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Trainings">
-        <PropertyRef Name="Team" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TrainingExcersises_ToTrainings">
-    <End Role="Trainings" Type="Model.Store.Trainings" Multiplicity="1" />
-    <End Role="TrainingExcersises" Type="Model.Store.TrainingExcersises" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Trainings">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TrainingExcersises">
-        <PropertyRef Name="Training" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TrainingExcersises_ToTrainingSchemePartModels">
-    <End Role="TrainingSchemePartModels" Type="Model.Store.TrainingSchemePartModels" Multiplicity="0..1" />
-    <End Role="TrainingExcersises" Type="Model.Store.TrainingExcersises" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TrainingSchemePartModels">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TrainingExcersises">
-        <PropertyRef Name="TrainingSchemePartModel" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Trainings_ToTraningFocuses">
-    <End Role="TrainingFocuses" Type="Model.Store.TrainingFocuses" Multiplicity="1" />
-    <End Role="Trainings" Type="Model.Store.Trainings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TrainingFocuses">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Trainings">
-        <PropertyRef Name="TrainingFocus" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Trainings_ToTrainingLocations">
-    <End Role="TrainingLocations" Type="Model.Store.TrainingLocations" Multiplicity="1" />
-    <End Role="Trainings" Type="Model.Store.Trainings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TrainingLocations">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Trainings">
-        <PropertyRef Name="TrainingLocation" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Trainings_ToTrainingSchemeModels">
-    <End Role="TrainingSchemeModels" Type="Model.Store.TrainingSchemeModels" Multiplicity="0..1" />
-    <End Role="Trainings" Type="Model.Store.Trainings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TrainingSchemeModels">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Trainings">
-        <PropertyRef Name="TrainingSchemeModel" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TrainingSchemePartModels_ToTrainingScheme">
-    <End Role="TrainingSchemeModels" Type="Model.Store.TrainingSchemeModels" Multiplicity="1" />
-    <End Role="TrainingSchemePartModels" Type="Model.Store.TrainingSchemePartModels" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TrainingSchemeModels">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TrainingSchemePartModels">
-        <PropertyRef Name="TrainingSchemeModel" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExcersiseBelongsToCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Excersise" Type="int" Nullable="false" />
+          <Property Name="ExcersiseCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExcersiseBelongsToSeasonParts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Excersise" Type="int" Nullable="false" />
+          <Property Name="SeasonPart" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExcersiseCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExcersiseCategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Excersises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExcersiseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="PlayerFunctions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlayerFunctionName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsPlayer" Type="bit" Nullable="false" />
+          <Property Name="IsGoalie" Type="bit" Nullable="false" />
+          <Property Name="IsTrainer" Type="bit" Nullable="false" />
+          <Property Name="IsManager" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlayerSigningToTrainings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Training" Type="int" Nullable="false" />
+          <Property Name="Player" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="PlayerSignedDate" Type="binary" MaxLength="8" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="SeasonParts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeasonPartName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seasons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeasonName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActiveSeason" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamPlayers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Team" Type="int" Nullable="false" />
+          <Property Name="Player" Type="int" Nullable="false" />
+          <Property Name="PlayerFunction" Type="int" Nullable="false" />
+          <Property Name="Season" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingExcersises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Training" Type="int" Nullable="false" />
+          <Property Name="Excersise" Type="int" Nullable="false" />
+          <Property Name="TrainingSchemePartModel" Type="int" />
+        </EntityType>
+        <EntityType Name="TrainingFocuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainingFocusName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SeasonPart" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingLocations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainingLocationName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PricePerHour" Type="float" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Inner" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trainings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainingDate" Type="datetime" Nullable="false" />
+          <Property Name="MeetDate" Type="datetime" Nullable="false" />
+          <Property Name="SigningLimitDate" Type="datetime" Nullable="false" />
+          <Property Name="TrainingLocation" Type="int" Nullable="false" />
+          <Property Name="Team" Type="int" Nullable="false" />
+          <Property Name="Season" Type="int" Nullable="false" />
+          <Property Name="SeasonPart" Type="int" Nullable="false" />
+          <Property Name="TrainingFocus" Type="int" Nullable="false" />
+          <Property Name="TrainingSchemeModel" Type="int" />
+          <Property Name="TrainingLength" Type="float" Nullable="false" />
+          <Property Name="PublishTraining" Type="bit" Nullable="false" />
+          <Property Name="PublishExcersises" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingSchemeModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainingSchemeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SeasonPart" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingSchemePartModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainingSchemeModel" Type="int" Nullable="false" />
+          <Property Name="ExcersiseCategory" Type="int" Nullable="false" />
+          <Property Name="PartLength" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberOfExcersises" Type="int" />
+          <Property Name="Series" Type="int" />
+          <Property Name="SeriesLength" Type="varchar" MaxLength="50" />
+          <Property Name="RestBetweenSeries" Type="varchar" MaxLength="50" />
+          <Property Name="RestBetweenExcersises" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ExcersiseBelongsToCategory_ToExcersiseCategories">
+          <End Role="ExcersiseCategories" Type="Self.ExcersiseCategories" Multiplicity="1" />
+          <End Role="ExcersiseBelongsToCategory" Type="Self.ExcersiseBelongsToCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExcersiseCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExcersiseBelongsToCategory">
+              <PropertyRef Name="ExcersiseCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExcersiseBelongsToCategory_ToExcersises">
+          <End Role="Excersises" Type="Self.Excersises" Multiplicity="1" />
+          <End Role="ExcersiseBelongsToCategory" Type="Self.ExcersiseBelongsToCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Excersises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExcersiseBelongsToCategory">
+              <PropertyRef Name="Excersise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExcersiseBelongsToSeasonParts_ToExcersises">
+          <End Role="Excersises" Type="Self.Excersises" Multiplicity="1" />
+          <End Role="ExcersiseBelongsToSeasonParts" Type="Self.ExcersiseBelongsToSeasonParts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Excersises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExcersiseBelongsToSeasonParts">
+              <PropertyRef Name="Excersise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExcersiseBelongsToSeasonParts_ToSeasonParts">
+          <End Role="SeasonParts" Type="Self.SeasonParts" Multiplicity="1" />
+          <End Role="ExcersiseBelongsToSeasonParts" Type="Self.ExcersiseBelongsToSeasonParts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeasonParts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExcersiseBelongsToSeasonParts">
+              <PropertyRef Name="SeasonPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_ToUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerSigningToTrainings_ToPlayers">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="PlayerSigningToTrainings" Type="Self.PlayerSigningToTrainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerSigningToTrainings">
+              <PropertyRef Name="Player" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerSigningToTrainings_ToTrainings">
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="1" />
+          <End Role="PlayerSigningToTrainings" Type="Self.PlayerSigningToTrainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerSigningToTrainings">
+              <PropertyRef Name="Training" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPlayers_ToPlayerFunctions">
+          <End Role="PlayerFunctions" Type="Self.PlayerFunctions" Multiplicity="1" />
+          <End Role="TeamPlayers" Type="Self.TeamPlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerFunctions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeamPlayers">
+              <PropertyRef Name="PlayerFunction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPlayers_ToPlayers">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="TeamPlayers" Type="Self.TeamPlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeamPlayers">
+              <PropertyRef Name="Player" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPlayers_ToSeason">
+          <End Role="Seasons" Type="Self.Seasons" Multiplicity="1" />
+          <End Role="TeamPlayers" Type="Self.TeamPlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seasons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeamPlayers">
+              <PropertyRef Name="Season" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPlayers_ToTeams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="TeamPlayers" Type="Self.TeamPlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeamPlayers">
+              <PropertyRef Name="Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingExcersises_ToExcersises">
+          <End Role="Excersises" Type="Self.Excersises" Multiplicity="1" />
+          <End Role="TrainingExcersises" Type="Self.TrainingExcersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Excersises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingExcersises">
+              <PropertyRef Name="Excersise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingExcersises_ToTrainings">
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="1" />
+          <End Role="TrainingExcersises" Type="Self.TrainingExcersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingExcersises">
+              <PropertyRef Name="Training" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingExcersises_ToTrainingSchemePartModels">
+          <End Role="TrainingSchemePartModels" Type="Self.TrainingSchemePartModels" Multiplicity="0..1" />
+          <End Role="TrainingExcersises" Type="Self.TrainingExcersises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingSchemePartModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingExcersises">
+              <PropertyRef Name="TrainingSchemePartModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingFocuses_ToSeasonParts">
+          <End Role="SeasonParts" Type="Self.SeasonParts" Multiplicity="1" />
+          <End Role="TrainingFocuses" Type="Self.TrainingFocuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeasonParts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingFocuses">
+              <PropertyRef Name="SeasonPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainings_ToSeasonParts">
+          <End Role="SeasonParts" Type="Self.SeasonParts" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeasonParts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="SeasonPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainings_ToSeasons">
+          <End Role="Seasons" Type="Self.Seasons" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seasons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="Season" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainings_ToTeams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainings_ToTrainingLocations">
+          <End Role="TrainingLocations" Type="Self.TrainingLocations" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingLocations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="TrainingLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainings_ToTrainingSchemeModels">
+          <End Role="TrainingSchemeModels" Type="Self.TrainingSchemeModels" Multiplicity="0..1" />
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingSchemeModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="TrainingSchemeModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainings_ToTraningFocuses">
+          <End Role="TrainingFocuses" Type="Self.TrainingFocuses" Multiplicity="1" />
+          <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingFocuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trainings">
+              <PropertyRef Name="TrainingFocus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingSchemeModels_ToSeasonParts">
+          <End Role="SeasonParts" Type="Self.SeasonParts" Multiplicity="1" />
+          <End Role="TrainingSchemeModels" Type="Self.TrainingSchemeModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeasonParts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingSchemeModels">
+              <PropertyRef Name="SeasonPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingSchemePartModels_ToExcersiseCategories">
+          <End Role="ExcersiseCategories" Type="Self.ExcersiseCategories" Multiplicity="1" />
+          <End Role="TrainingSchemePartModels" Type="Self.TrainingSchemePartModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExcersiseCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingSchemePartModels">
+              <PropertyRef Name="ExcersiseCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingSchemePartModels_ToTrainingScheme">
+          <End Role="TrainingSchemeModels" Type="Self.TrainingSchemeModels" Multiplicity="1" />
+          <End Role="TrainingSchemePartModels" Type="Self.TrainingSchemePartModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingSchemeModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingSchemePartModels">
+              <PropertyRef Name="TrainingSchemeModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExcersiseBelongsToCategory" EntityType="Self.ExcersiseBelongsToCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExcersiseBelongsToSeasonParts" EntityType="Self.ExcersiseBelongsToSeasonParts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExcersiseCategories" EntityType="Self.ExcersiseCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Excersises" EntityType="Self.Excersises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlayerFunctions" EntityType="Self.PlayerFunctions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlayerSigningToTrainings" EntityType="Self.PlayerSigningToTrainings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeasonParts" EntityType="Self.SeasonParts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seasons" EntityType="Self.Seasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamPlayers" EntityType="Self.TeamPlayers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingExcersises" EntityType="Self.TrainingExcersises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingFocuses" EntityType="Self.TrainingFocuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingLocations" EntityType="Self.TrainingLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainings" EntityType="Self.Trainings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingSchemeModels" EntityType="Self.TrainingSchemeModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingSchemePartModels" EntityType="Self.TrainingSchemePartModels" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ExcersiseBelongsToCategory_ToExcersiseCategories" Association="Self.FK_ExcersiseBelongsToCategory_ToExcersiseCategories">
+            <End Role="ExcersiseCategories" EntitySet="ExcersiseCategories" />
+            <End Role="ExcersiseBelongsToCategory" EntitySet="ExcersiseBelongsToCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExcersiseBelongsToCategory_ToExcersises" Association="Self.FK_ExcersiseBelongsToCategory_ToExcersises">
+            <End Role="Excersises" EntitySet="Excersises" />
+            <End Role="ExcersiseBelongsToCategory" EntitySet="ExcersiseBelongsToCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExcersiseBelongsToSeasonParts_ToExcersises" Association="Self.FK_ExcersiseBelongsToSeasonParts_ToExcersises">
+            <End Role="Excersises" EntitySet="Excersises" />
+            <End Role="ExcersiseBelongsToSeasonParts" EntitySet="ExcersiseBelongsToSeasonParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExcersiseBelongsToSeasonParts_ToSeasonParts" Association="Self.FK_ExcersiseBelongsToSeasonParts_ToSeasonParts">
+            <End Role="SeasonParts" EntitySet="SeasonParts" />
+            <End Role="ExcersiseBelongsToSeasonParts" EntitySet="ExcersiseBelongsToSeasonParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_ToUsers" Association="Self.FK_Players_ToUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerSigningToTrainings_ToPlayers" Association="Self.FK_PlayerSigningToTrainings_ToPlayers">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="PlayerSigningToTrainings" EntitySet="PlayerSigningToTrainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerSigningToTrainings_ToTrainings" Association="Self.FK_PlayerSigningToTrainings_ToTrainings">
+            <End Role="Trainings" EntitySet="Trainings" />
+            <End Role="PlayerSigningToTrainings" EntitySet="PlayerSigningToTrainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayers_ToPlayerFunctions" Association="Self.FK_TeamPlayers_ToPlayerFunctions">
+            <End Role="PlayerFunctions" EntitySet="PlayerFunctions" />
+            <End Role="TeamPlayers" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayers_ToPlayers" Association="Self.FK_TeamPlayers_ToPlayers">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="TeamPlayers" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayers_ToSeason" Association="Self.FK_TeamPlayers_ToSeason">
+            <End Role="Seasons" EntitySet="Seasons" />
+            <End Role="TeamPlayers" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayers_ToTeams" Association="Self.FK_TeamPlayers_ToTeams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="TeamPlayers" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingExcersises_ToExcersises" Association="Self.FK_TrainingExcersises_ToExcersises">
+            <End Role="Excersises" EntitySet="Excersises" />
+            <End Role="TrainingExcersises" EntitySet="TrainingExcersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingExcersises_ToTrainings" Association="Self.FK_TrainingExcersises_ToTrainings">
+            <End Role="Trainings" EntitySet="Trainings" />
+            <End Role="TrainingExcersises" EntitySet="TrainingExcersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingExcersises_ToTrainingSchemePartModels" Association="Self.FK_TrainingExcersises_ToTrainingSchemePartModels">
+            <End Role="TrainingSchemePartModels" EntitySet="TrainingSchemePartModels" />
+            <End Role="TrainingExcersises" EntitySet="TrainingExcersises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingFocuses_ToSeasonParts" Association="Self.FK_TrainingFocuses_ToSeasonParts">
+            <End Role="SeasonParts" EntitySet="SeasonParts" />
+            <End Role="TrainingFocuses" EntitySet="TrainingFocuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainings_ToSeasonParts" Association="Self.FK_Trainings_ToSeasonParts">
+            <End Role="SeasonParts" EntitySet="SeasonParts" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainings_ToSeasons" Association="Self.FK_Trainings_ToSeasons">
+            <End Role="Seasons" EntitySet="Seasons" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainings_ToTeams" Association="Self.FK_Trainings_ToTeams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainings_ToTrainingLocations" Association="Self.FK_Trainings_ToTrainingLocations">
+            <End Role="TrainingLocations" EntitySet="TrainingLocations" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainings_ToTrainingSchemeModels" Association="Self.FK_Trainings_ToTrainingSchemeModels">
+            <End Role="TrainingSchemeModels" EntitySet="TrainingSchemeModels" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainings_ToTraningFocuses" Association="Self.FK_Trainings_ToTraningFocuses">
+            <End Role="TrainingFocuses" EntitySet="TrainingFocuses" />
+            <End Role="Trainings" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingSchemeModels_ToSeasonParts" Association="Self.FK_TrainingSchemeModels_ToSeasonParts">
+            <End Role="SeasonParts" EntitySet="SeasonParts" />
+            <End Role="TrainingSchemeModels" EntitySet="TrainingSchemeModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingSchemePartModels_ToExcersiseCategories" Association="Self.FK_TrainingSchemePartModels_ToExcersiseCategories">
+            <End Role="ExcersiseCategories" EntitySet="ExcersiseCategories" />
+            <End Role="TrainingSchemePartModels" EntitySet="TrainingSchemePartModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingSchemePartModels_ToTrainingScheme" Association="Self.FK_TrainingSchemePartModels_ToTrainingScheme">
+            <End Role="TrainingSchemeModels" EntitySet="TrainingSchemeModels" />
+            <End Role="TrainingSchemePartModels" EntitySet="TrainingSchemePartModels" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

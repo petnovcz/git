@@ -14,9 +14,17 @@ namespace FloorballTrainingSessions
         private Entities db = new Entities();
 
         // GET: Trainings
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
+        //    return View(trainings.ToList());
+        //}
+
+        // GET: Trainings
+        public ActionResult Index(int? season, int? team)
         {
             var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
+            trainings.Where(t => (t.Season == season && t.Team == team));
             return View(trainings.ToList());
         }
 

@@ -45,6 +45,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -181,17 +183,86 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="AspNetUsers.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="ExcersiseBelongsToCategory.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExcersiseBelongsToSeasonParts.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExcersiseCategories.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Excersises.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FloorballTrainingSessions.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FloorballTrainingSessions.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FloorballTrainingSessions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FloorballTrainingSessions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FloorballTrainingSessions.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="PlayerFunctions.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Players.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerSigningToTrainings.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeasonParts.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Seasons.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TeamPlayers.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teams.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingExcersises.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingFocuses.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingLocations.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trainings.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingSchemeModels.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingSchemePartModels.cs">
+      <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\FloorbalTrainingSessions.mdf" />
@@ -201,6 +272,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="FloorballTrainingSessions.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FloorballTrainingSessions.edmx</DependentUpon>
+      <LastGenOutput>FloorballTrainingSessions.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FloorballTrainingSessions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FloorballTrainingSessions.edmx</DependentUpon>
+      <LastGenOutput>FloorballTrainingSessions.cs</LastGenOutput>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -208,6 +289,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="FloorballTrainingSessions.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FloorballTrainingSessions.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="FloorballTrainingSessions.edmx.diagram">
+      <DependentUpon>FloorballTrainingSessions.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -255,7 +343,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

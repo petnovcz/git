@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a4c6a03b9064084825b7c12a7364136" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ExcersiseBelongsToCategory" Width="1.5" PointX="8.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ExcersiseBelongsToSeasonParts" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ExcersiseCategories" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Excersises" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlayerFunctions" Width="1.5" PointX="8.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Players" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlayerSigningToTrainings" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SeasonParts" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Seasons" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TeamPlayers" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Teams" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TrainingExcersises" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TrainingFocuses" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TrainingLocations" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Trainings" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TrainingSchemeModels" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TrainingSchemePartModels" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Players_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ExcersiseBelongsToCategory_ToExcersiseCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ExcersiseBelongsToCategory_ToExcersises" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ExcersiseBelongsToSeasonParts_ToExcersises" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ExcersiseBelongsToSeasonParts_ToSeasonParts" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TrainingSchemePartModels_ToExcersiseCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TrainingExcersises_ToExcersises" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TeamPlayers_ToPlayerFunctions" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PlayerSigningToTrainings_ToPlayers" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TeamPlayers_ToPlayers" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PlayerSigningToTrainings_ToTrainings" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TrainingFocuses_ToSeasonParts" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trainings_ToSeasonParts" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TrainingSchemeModels_ToSeasonParts" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TeamPlayers_ToSeason" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trainings_ToSeasons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TeamPlayers_ToTeams" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trainings_ToTeams" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TrainingExcersises_ToTrainings" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TrainingExcersises_ToTrainingSchemePartModels" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trainings_ToTraningFocuses" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trainings_ToTrainingLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trainings_ToTrainingSchemeModels" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TrainingSchemePartModels_ToTrainingScheme" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

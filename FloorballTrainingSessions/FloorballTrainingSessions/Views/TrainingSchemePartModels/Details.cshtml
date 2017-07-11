@@ -1,0 +1,82 @@
+﻿@model FloorballTrainingSessions.TrainingSchemePartModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TrainingSchemePartModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PartLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfExcersises)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfExcersises)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Series)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Series)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeriesLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeriesLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestBetweenSeries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestBetweenSeries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestBetweenExcersises)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestBetweenExcersises)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExcersiseCategories.ExcersiseCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExcersiseCategories.ExcersiseCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingSchemeModels.TrainingSchemeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingSchemeModels.TrainingSchemeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

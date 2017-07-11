@@ -1,0 +1,88 @@
+﻿@model FloorballTrainingSessions.TrainingSchemePartModels
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TrainingSchemePartModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PartLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfExcersises)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfExcersises)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Series)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Series)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeriesLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeriesLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestBetweenSeries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestBetweenSeries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestBetweenExcersises)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestBetweenExcersises)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExcersiseCategories.ExcersiseCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExcersiseCategories.ExcersiseCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingSchemeModels.TrainingSchemeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingSchemeModels.TrainingSchemeName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,58 @@
+﻿@model FloorballTrainingSessions.PlayerFunctions
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlayerFunctions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerFunctionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerFunctionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPlayer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPlayer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsGoalie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsGoalie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsTrainer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsTrainer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsManager)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

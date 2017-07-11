@@ -1,0 +1,114 @@
+﻿@model FloorballTrainingSessions.Trainings
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trainings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeetDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeetDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SigningLimitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SigningLimitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishTraining)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishTraining)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishExcersises)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishExcersises)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeasonParts.SeasonPartName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeasonParts.SeasonPartName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seasons.SeasonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seasons.SeasonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teams.TeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teams.TeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingFocuses.TrainingFocusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingFocuses.TrainingFocusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingLocations.TrainingLocationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingSchemeModels.TrainingSchemeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingSchemeModels.TrainingSchemeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

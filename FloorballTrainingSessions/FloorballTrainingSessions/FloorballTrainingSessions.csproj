@@ -186,26 +186,26 @@
     <Compile Include="AspNetUsers.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUsersController.cs" />
+    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="ExcersiseBelongsToCategoriesController.cs" />
+    <Compile Include="Controllers\ExcersiseBelongsToCategoriesController.cs" />
     <Compile Include="ExcersiseBelongsToCategory.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
     <Compile Include="ExcersiseBelongsToSeasonParts.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="ExcersiseBelongsToSeasonPartsController.cs" />
+    <Compile Include="Controllers\ExcersiseBelongsToSeasonPartsController.cs" />
     <Compile Include="ExcersiseCategories.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="ExcersiseCategoriesController.cs" />
+    <Compile Include="Controllers\ExcersiseCategoriesController.cs" />
     <Compile Include="Excersises.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="ExcersisesController.cs" />
+    <Compile Include="Controllers\ExcersisesController.cs" />
     <Compile Include="FloorballTrainingSessions.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -230,56 +230,56 @@
     <Compile Include="PlayerFunctions.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="PlayerFunctionsController.cs" />
+    <Compile Include="Controllers\PlayerFunctionsController.cs" />
     <Compile Include="Players.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="PlayersController.cs" />
+    <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="PlayerSigningToTrainings.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="PlayerSigningToTrainingsController.cs" />
+    <Compile Include="Controllers\PlayerSigningToTrainingsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeasonParts.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="SeasonPartsController.cs" />
+    <Compile Include="Controllers\SeasonPartsController.cs" />
     <Compile Include="Seasons.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="SeasonsController.cs" />
+    <Compile Include="Controllers\SeasonsController.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="TeamPlayers.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="TeamPlayersController.cs" />
+    <Compile Include="Controllers\TeamPlayersController.cs" />
     <Compile Include="Teams.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="TeamsController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="TrainingExcersises.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingExcersisesController.cs" />
+    <Compile Include="Controllers\TrainingExcersisesController.cs" />
     <Compile Include="TrainingFocuses.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingFocusesController.cs" />
+    <Compile Include="Controllers\TrainingFocusesController.cs" />
     <Compile Include="TrainingLocations.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingLocationsController.cs" />
+    <Compile Include="Controllers\TrainingLocationsController.cs" />
     <Compile Include="Trainings.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
     <Compile Include="TrainingSchemeModels.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingSchemeModelsController.cs" />
+    <Compile Include="Controllers\TrainingSchemeModelsController.cs" />
     <Compile Include="TrainingSchemePartModels.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingsController.cs" />
+    <Compile Include="Controllers\TrainingsController.cs" />
     <Compile Include="Views\TrainingSchemePartModelsController.cs" />
   </ItemGroup>
   <ItemGroup>

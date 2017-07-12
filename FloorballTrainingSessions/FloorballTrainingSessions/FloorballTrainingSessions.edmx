@@ -52,7 +52,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExcersiseName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="ShortDescript" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="PlayerFunctions">
           <Key>
@@ -77,11 +77,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Training" Type="int" Nullable="false" />
           <Property Name="Player" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
-          <Property Name="PlayerSignedDate" Type="binary" MaxLength="8" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="PlayerSignedDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="SeasonParts">
           <Key>
@@ -644,10 +644,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="ExcersiseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="ExcersiseBelongsToCategory" Relationship="Self.FK_ExcersiseBelongsToCategory_ToExcersises" FromRole="Excersises" ToRole="ExcersiseBelongsToCategory" />
           <NavigationProperty Name="ExcersiseBelongsToSeasonParts" Relationship="Self.FK_ExcersiseBelongsToSeasonParts_ToExcersises" FromRole="Excersises" ToRole="ExcersiseBelongsToSeasonParts" />
           <NavigationProperty Name="TrainingExcersises" Relationship="Self.FK_TrainingExcersises_ToExcersises" FromRole="Excersises" ToRole="TrainingExcersises" />
+          <Property Name="ShortDescript" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PlayerFunctions">
           <Key>
@@ -1272,10 +1272,10 @@
     <EntitySetMapping Name="Excersises">
       <EntityTypeMapping TypeName="IsTypeOf(Model.Excersises)">
         <MappingFragment StoreEntitySet="Excersises">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShortDescript" ColumnName="ShortDescript" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ExcersiseName" ColumnName="ExcersiseName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

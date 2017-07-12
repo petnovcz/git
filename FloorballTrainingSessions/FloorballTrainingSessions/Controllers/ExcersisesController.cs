@@ -47,7 +47,7 @@ namespace FloorballTrainingSessions
         // Další informace viz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ExcersiseName,Description,Image")] Excersises excersises)
+        public ActionResult Create([Bind(Include = "Id,ExcersiseName,Description,ShortDescript")] Excersises excersises)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace FloorballTrainingSessions
         // Další informace viz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ExcersiseName,Description,Image")] Excersises excersises)
+        public ActionResult Edit([Bind(Include = "Id,ExcersiseName,Description,ShortDescript")] Excersises excersises)
         {
             if (ModelState.IsValid)
             {

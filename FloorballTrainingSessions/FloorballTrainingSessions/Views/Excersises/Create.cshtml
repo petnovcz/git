@@ -55,4 +55,36 @@
     
 
    
+  @section scripts{
+ 
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/summernote.css" rel="stylesheet" /> 
+<script src="~/Scripts/summernote/summernote.js"></script>
+<script>
+    (function ($) {
+        function HomeIndex() {
+            var $this = this;
+
+            function initialize() {
+                $('#Description').summernote({
+                    focus: true,
+                    height: 150,
+                    codemirror: {
+                        theme: 'united'
+                    } 
+                 
+                });
+            }
+
+            $this.init = function () {
+                initialize();
+            }
+        }
+        $(function () {
+            var self = new HomeIndex();
+            self.init();
+        })
+    }(jQuery))  
   
+      </script>
+      }

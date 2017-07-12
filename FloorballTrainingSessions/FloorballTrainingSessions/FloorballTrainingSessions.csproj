@@ -335,7 +335,7 @@
     <Content Include="Scripts\summernote\plugin\summernote-ext-hello.js" />
     <Content Include="Scripts\summernote\plugin\summernote-ext-hint.js" />
     <Content Include="Scripts\summernote\plugin\summernote-ext-video.js" />
-    <Content Include="Scripts\summernote\summernote.css" />
+    <Content Include="Content\summernote.css" />
     <Content Include="Scripts\summernote\summernote.js" />
     <Content Include="Scripts\summernote\summernote.min.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />

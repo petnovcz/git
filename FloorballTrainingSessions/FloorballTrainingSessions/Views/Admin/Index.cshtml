@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Administrace";
+}
+
+<h2>Floorball Training Sessions Administration</h2>
+
+<div class="adminmenu">
+    <h3>Basic Setup</h3>
+    <div>   
+            @Html.ActionLink("SeasonParts", "Index", "SeasonParts", null, new { @class = "btn btn-success btn-lg" })
+            @Html.ActionLink("PlayerFunctions", "Index", "PlayerFunctions", null, new { @class = "btn btn-success btn-lg" })
+            @Html.ActionLink("Teams", "Index", "Teams", null, new { @class = "btn btn-success btn-lg" })
+            @Html.ActionLink("Users", "Index", "AspNetUsers", null, new { @class = "btn btn-success btn-lg" })
+            @Html.ActionLink("Players", "Index", "Players", null, new { @class = "btn btn-success btn-lg" })
+            @Html.ActionLink("ExcersiseCategories", "Index", "ExcersiseCategories", null, new { @class = "btn btn-success btn-lg" })
+    </div>
+    <h3>PreSeason Setup</h3>
+    <div>
+        @Html.ActionLink("Generate Trainings", "Index", "Seasons", null, new { @class = "btn btn-success btn-lg" })
+        @Html.ActionLink("TeamPlayers", "Index", "TeamPlayers", null, new { @class = "btn btn-success btn-lg" })
+        
+    </div>
+    <h3>InSeason Setup</h3>
+        @Html.ActionLink("TeamPlayers", "Index", "TeamPlayers", null, new { @class = "btn btn-success btn-lg" })
+    <div>
+        
+    </div>
+    <h3>Excersises</h3>
+    <div>
+        @Html.ActionLink("Excersises", "Index", "Excersises", null, new { @class = "btn btn-success btn-lg" })
+    </div>
+</div>

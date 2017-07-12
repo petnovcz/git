@@ -12,6 +12,8 @@ namespace FloorballTrainingSessions
     public class ExcersisesController : Controller
     {
         private Entities db = new Entities();
+        [AllowHtml]
+        public string HtmlContent { get; set; }
 
         // GET: Excersises
         public ActionResult Index()

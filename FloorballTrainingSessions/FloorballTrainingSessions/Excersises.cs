@@ -11,7 +11,8 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class Excersises
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,6 +25,7 @@ namespace FloorballTrainingSessions
     
         public int Id { get; set; }
         public string ExcersiseName { get; set; }
+        [AllowHtml]
         public string Description { get; set; }
         public byte[] Image { get; set; }
     

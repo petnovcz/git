@@ -39,7 +39,10 @@ namespace FloorballTrainingSessions
         // GET: Players/Create
         public ActionResult Create()
         {
-            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email");
+            var items = db.AspNetUsers.ToList();
+            items.Insert(0, new AspNetUsers { Id = "", Email = "" });
+
+            ViewBag.User = new SelectList(items, "Id", "Email");
             return View();
         }
 

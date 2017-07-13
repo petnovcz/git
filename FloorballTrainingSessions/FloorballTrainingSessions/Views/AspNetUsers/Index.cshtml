@@ -4,10 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <h1>Přehled zaregistrovaných uživatelů</h1>
+    <p class="lead">Zobrazení uživateů, kteří provedli registraci na webu.</p>
+</div>
 
-
+<div class="well well-lg">
+<div class="table-responsive">
 <table class="table">
+    <colgroup>
+        <col class="col-md-4">
+        <col class="col-md-4">
+        <col class="col-md-4">
+    </colgroup>
+<thead>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -25,7 +35,8 @@
         
         
     </tr>
-
+</thead>
+<tbody>
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -42,5 +53,7 @@
         
     </tr>
 }
-
+</tbody>
 </table>
+</div>
+</div>

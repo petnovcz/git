@@ -1,0 +1,45 @@
+﻿@model FloorballTrainingSessions.MyTrainingsModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <colgroup>
+        <col class="col-md-6">
+        <col class="col-md-1">
+        <col class="col-md-1">
+        <col class="col-md-1">
+        <col class="col-md-1">
+        <col class="col-md-2">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentUser)
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.CurrentUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentPlayer)
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.CurrentPlayer)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Trainings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

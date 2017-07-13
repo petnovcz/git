@@ -1,32 +1,47 @@
 ﻿@model IEnumerable<FloorballTrainingSessions.SeasonParts>
 
 @{
-    ViewBag.Title = "Tréninkové bloky";
+    ViewBag.Title = "Rozdělení sezóny";
 }
 
-<h2>Tréninkové bloky</h2>
+<div class="jumbotron">
+    <h1>Rozdělení sezóny</h1>
+    <p class="lead">Rozdělení sezóny definuje jednotlivé části tréninkového procesu</p>
+</div>
 
 <p>
-    @Html.ActionLink("Nový", "Create")
+    @Html.ActionLink("Nový", "Create", "SeasonParts", null, new { @class = "btn btn-success btn-md" })
+    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SeasonPartName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeasonPartName)
-        </td>
-        <td>
-            @Html.ActionLink("Edituj", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Smaž", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="well well-lg">
+    <div class="table-responsive">
+        <table class="table">
+            <colgroup>
+                <col class="col-md-10">
+                <col class="col-md-2">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SeasonPartName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SeasonPartName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edituj", "Edit", "SeasonParts", new { id = item.Id }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Smaž", "Delete", "SeasonParts", new { id = item.Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

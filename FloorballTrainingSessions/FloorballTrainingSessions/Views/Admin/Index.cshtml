@@ -3,31 +3,38 @@
     ViewBag.Title = "Administrace";
 }
 
-<h2>Floorball Training Sessions Administration</h2>
+<div class="jumbotron">
+    <h1>Administrace</h1>
+    <p class="lead">Nastavení jednotlivých prvků aplikace správy tréninků</p>
+
+</div>
+
 
 <div class="adminmenu">
-    <h3>Basic Setup</h3>
-    <div>   
-            @Html.ActionLink("SeasonParts", "Index", "SeasonParts", null, new { @class = "btn btn-success btn-lg" })
-            @Html.ActionLink("PlayerFunctions", "Index", "PlayerFunctions", null, new { @class = "btn btn-success btn-lg" })
-            @Html.ActionLink("Teams", "Index", "Teams", null, new { @class = "btn btn-success btn-lg" })
-            @Html.ActionLink("Users", "Index", "AspNetUsers", null, new { @class = "btn btn-success btn-lg" })
-            @Html.ActionLink("Players", "Index", "Players", null, new { @class = "btn btn-success btn-lg" })
-            @Html.ActionLink("ExcersiseCategories", "Index", "ExcersiseCategories", null, new { @class = "btn btn-success btn-lg" })
+    <h3>Základní nastavení aplikace</h3>
+    <div class="well well-lg">   
+            @Html.ActionLink("Nastavení rozdělení částí sezóny", "Index", "SeasonParts", null, new { @class = "btn btn-block btn-md btn-primary" })
+            @Html.ActionLink("Nastavení funkcí členů týmu", "Index", "PlayerFunctions", null, new { @class = "btn btn-block btn-md btn-primary" })
+            @Html.ActionLink("Nastavení týmů", "Index", "Teams", null, new { @class = "btn btn-block btn-md btn-primary" })
+            @Html.ActionLink("Přehled registrovaných uživatelů", "Index", "AspNetUsers", null, new { @class = "btn btn-block btn-md btn-primary" })
+            @Html.ActionLink("Nastavení členů a jejich uživatelských účtů", "Index", "Players", null, new { @class = "btn btn-block btn-md btn-primary" })
+            @Html.ActionLink("Nastavení kategorií cvičení", "Index", "ExcersiseCategories", null, new { @class = "btn btn-block btn-md btn-primary" })
     </div>
-    <h3>PreSeason Setup</h3>
-    <div>
-        @Html.ActionLink("Generate Trainings", "Index", "Seasons", null, new { @class = "btn btn-success btn-lg" })
-        @Html.ActionLink("TeamPlayers", "Index", "TeamPlayers", null, new { @class = "btn btn-success btn-lg" })
+    <h3>Předsezóní nastavení</h3>
+    <div class="well well-lg">
+        @Html.ActionLink("Sezóny", "Index", "Seasons", null, new { @class = "btn btn-block btn-md btn-primary" })
+        @Html.ActionLink("Generate Trainings", "Index", "Seasons", null, new { @class = "btn btn-block btn-md btn-primary" })
+        @Html.ActionLink("TeamPlayers", "Index", "TeamPlayers", null, new { @class = "btn btn-block btn-md btn-primary" })
         
     </div>
-    <h3>InSeason Setup</h3>
-        @Html.ActionLink("TeamPlayers", "Index", "TeamPlayers", null, new { @class = "btn btn-success btn-lg" })
-    <div>
-        
+    <h3>Průběžná data</h3>
+    <div class="well well-lg">
+        @Html.ActionLink("TeamPlayers", "Index", "TeamPlayers", null, new { @class = "btn btn-block btn-md btn-primary" })
+
+
     </div>
     <h3>Excersises</h3>
-    <div>
-        @Html.ActionLink("Excersises", "Index", "Excersises", null, new { @class = "btn btn-success btn-lg" })
+    <div class="well well-lg">
+        @Html.ActionLink("Excersises", "Index", "Excersises", null, new { @class = "btn btn-block btn-md btn-primary" })
     </div>
 </div>

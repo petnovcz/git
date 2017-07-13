@@ -1,13 +1,18 @@
 ﻿@model IEnumerable<FloorballTrainingSessions.Seasons>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Nastavení sezón";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <h1>Nastavení sezón</h1>
+    <p class="lead">Seznam vytvořených sezón v databázi. Nastavení aktivní sezóny určuje standardní náhledy na data.</p>
+
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nová sezóna", "Create","Seasons", null, new { @class = "btn btn-success btn-lg" })
+    @Html.ActionLink("Administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-lg" })
 </p>
 <table class="table">
     <tr>
@@ -29,9 +34,8 @@
             @Html.DisplayFor(modelItem => item.IsActiveSeason)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edituj", "Edit", new { id=item.Id }, new { @class = "btn btn-warning " }) |
+            @Html.ActionLink("Smaž", "Delete", new { id=item.Id }, new { @class = "btn btn-danger " })
         </td>
     </tr>
 }

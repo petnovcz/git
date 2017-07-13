@@ -3,12 +3,18 @@
 @{
     ViewBag.Title = "Delete";
 }
+<div class="jumbotron">
+    <h1>Rozdělení sezóny</h1>
+    <p class="lead">Formulář pro smazání části sezóny.</p>
+</div>
 
-<h2>Delete</h2>
+<div class="alert alert-danger">
+    <span class="glyphicon glyphicon-exclamation-sign"></span> Opravdu chcete smazat tento záznam?<span class="glyphicon glyphicon-exclamation-sign"></span>
+</div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>SeasonParts</h4>
+
+<div class="well well-lg">
+    <h4>Smazání části sezóny</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -25,8 +31,9 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Smaž" class="btn btn-danger btn-md" /> 
+            @Html.ActionLink("Zpět na seznam", "Index", "SeasonParts", null, new { @class = "btn btn-primary btn-md" })
+            @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
         </div>
     }
 </div>

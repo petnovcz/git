@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "TeamPlayers", new { SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn"})
 </p>
 <table class="table">
     <tr>

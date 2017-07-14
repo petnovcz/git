@@ -11,7 +11,6 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Seasons
     {
@@ -21,11 +20,9 @@ namespace FloorballTrainingSessions
             this.TeamPlayers = new HashSet<TeamPlayers>();
             this.Trainings = new HashSet<Trainings>();
         }
-        [Display(Name = "Id")]
+    
         public int Id { get; set; }
-        [Display(Name = "Sezóna")]
         public string SeasonName { get; set; }
-        [Display(Name = "Aktivní?")]
         public bool IsActiveSeason { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -11,9 +11,7 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.Mvc;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Excersises
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,14 +21,10 @@ namespace FloorballTrainingSessions
             this.ExcersiseBelongsToSeasonParts = new HashSet<ExcersiseBelongsToSeasonParts>();
             this.TrainingExcersises = new HashSet<TrainingExcersises>();
         }
-        [Display(Name="Id")]
+    
         public int Id { get; set; }
-        [Display(Name = "Název")]
         public string ExcersiseName { get; set; }
-        [AllowHtml]
-        [Display(Name = "Popis cvièení")]
         public string Description { get; set; }
-        [Display(Name = "Krátky popis cvièení")]
         public string ShortDescript { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

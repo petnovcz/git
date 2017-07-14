@@ -60,7 +60,10 @@ namespace FloorballTrainingSessions
                 return RedirectToAction("Index");
             }
 
-            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", players.User);
+            var items = db.AspNetUsers.ToList();
+            items.Insert(0, new AspNetUsers { Id = "", Email = "" });
+
+            ViewBag.User = new SelectList(items, "Id", "Email");
             return View(players);
         }
 

@@ -11,8 +11,7 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Teams
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +20,8 @@ namespace FloorballTrainingSessions
             this.TeamPlayers = new HashSet<TeamPlayers>();
             this.Trainings = new HashSet<Trainings>();
         }
-        [Display(Name = "Id")]
+    
         public int Id { get; set; }
-        [Display(Name = "Název týmu")]
         public string TeamName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

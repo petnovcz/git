@@ -71,7 +71,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="User" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="PlayerSigningToTrainings">
           <Key>
@@ -231,7 +231,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Players_ToUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="Players" Type="Self.Players" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -667,7 +667,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="User" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="true" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Players_ToUsers" FromRole="Players" ToRole="AspNetUsers" />
           <NavigationProperty Name="PlayerSigningToTrainings" Relationship="Self.FK_PlayerSigningToTrainings_ToPlayers" FromRole="Players" ToRole="PlayerSigningToTrainings" />
           <NavigationProperty Name="TeamPlayers" Relationship="Self.FK_TeamPlayers_ToPlayers" FromRole="Players" ToRole="TeamPlayers" />
@@ -816,7 +816,7 @@
           <NavigationProperty Name="TrainingSchemeModels" Relationship="Self.FK_TrainingSchemePartModels_ToTrainingScheme" FromRole="TrainingSchemePartModels" ToRole="TrainingSchemeModels" />
         </EntityType>
         <Association Name="FK_Players_ToUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="Players" Type="Self.Players" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">

@@ -1,17 +1,30 @@
-﻿
+﻿@model FloorballTrainingSessions.AdminModel
 @{
     ViewBag.Title = "Administrace";
 }
 
 <div class="jumbotron">
     <h1>Administrace</h1>
-    <p class="lead">Nastavení jednotlivých prvků aplikace správy tréninků</p>
-
+    <p class="lead">Nastavení jednotlivých prvků aplikace správy tréninků.</p>
+    
+   
 </div>
+@foreach (var item in Model.Seasons)
+{
+        if (Model.ActiveSeason == item.Id)
+        {
+            @Html.ActionLink(item.SeasonName, "Index", "Admin", new { SeasonId = item.Id }, new { @class = "btn btn-md btn-success" });
+    }
+    if (Model.ActiveSeason != item.Id)
+    {
+        @Html.ActionLink(item.SeasonName, "Index", "Admin", new { SeasonId = item.Id }, new { @class = "btn btn-md btn-default" });
+    }
 
 
+
+}
 <div class="adminmenu">
-    <h3>Základní nastavení aplikace</h3>
+    <h3>Základní nastavení aplikace</h3> 
     <div class="well well-lg">   
             @Html.ActionLink("Nastavení rozdělení částí sezóny", "Index", "SeasonParts", null, new { @class = "btn btn-block btn-md btn-primary" })
             @Html.ActionLink("Nastavení funkcí členů týmu", "Index", "PlayerFunctions", null, new { @class = "btn btn-block btn-md btn-primary" })

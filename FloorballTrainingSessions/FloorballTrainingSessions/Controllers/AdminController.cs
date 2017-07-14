@@ -42,6 +42,7 @@ namespace FloorballTrainingSessions
             admins.ActiveSeason = GetActiveSeason();
             if (SeasonId != null) { admins.ActiveSeason = SeasonId.GetValueOrDefault(); };
             admins.ActiveSeasonName = GetSeasonName(admins.ActiveSeason);
+            admins.Teamplayers = db.TeamPlayers.Where(t => (t.Season == admins.ActiveSeason && t.Player == admins.CurrentPlayer)).ToList();
             return View(admins);
         }
     }

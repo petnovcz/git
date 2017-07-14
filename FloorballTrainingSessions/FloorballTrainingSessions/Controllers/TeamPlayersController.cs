@@ -17,6 +17,16 @@ namespace FloorballTrainingSessions
         public ActionResult Index()
         {
             var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams);
+            
+
+            return View(teamPlayers.ToList());
+        }
+        public ActionResult List(int SeasonId, int TeamId)
+        {
+            var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams).Where(t => (t.Season == SeasonId && t.Team == TeamId));
+            ViewBag.SelectedTeam = TeamId;
+            ViewBag.SelectedSeason = SeasonId;
+
             return View(teamPlayers.ToList());
         }
 
@@ -56,7 +66,7 @@ namespace FloorballTrainingSessions
             {
                 db.TeamPlayers.Add(teamPlayers);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List", new { SeasonId = teamPlayers.Season, TeamId = teamPlayers.Team});
             }
 
             ViewBag.PlayerFunction = new SelectList(db.PlayerFunctions, "Id", "PlayerFunctionName", teamPlayers.PlayerFunction);

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FloorballTrainingSessions
+namespace FloorballTrainingSessions 
 {
     using System;
     using System.Collections.Generic;

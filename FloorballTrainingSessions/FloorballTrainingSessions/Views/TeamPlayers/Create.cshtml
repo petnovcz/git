@@ -18,8 +18,8 @@
         
 
         
-                @Html.HiddenFor(model => model.Team, new { Value = ViewBag.SelectedTeam })
-                @Html.HiddenFor(model => model.Season, new { Value = ViewBag.SelectedSeason })
+                @Html.HiddenFor(model => model.Team, new { @Value = ViewBag.Team })
+                @Html.HiddenFor(model => model.Season, new { @Value = ViewBag.Season })
            
 
         <div class="form-group">

@@ -46,12 +46,12 @@ namespace FloorballTrainingSessions
         }
 
         // GET: TeamPlayers/Create
-        public ActionResult Create()
+        public ActionResult Create(int SelectedTeam, int SelectedSeason)
         {
             ViewBag.PlayerFunction = new SelectList(db.PlayerFunctions, "Id", "PlayerFunctionName");
             ViewBag.Player = new SelectList(db.Players, "Id", "Name");
-            ViewBag.Season = new SelectList(db.Seasons, "Id", "SeasonName");
-            ViewBag.Team = new SelectList(db.Teams, "Id", "TeamName");
+            ViewBag.Season = SelectedSeason;
+            ViewBag.Team = SelectedTeam;
             return View();
         }
 
@@ -64,9 +64,11 @@ namespace FloorballTrainingSessions
         {
             if (ModelState.IsValid)
             {
+                int SeasonId = teamPlayers.Season;
+                int TeamId = teamPlayers.Team;
                 db.TeamPlayers.Add(teamPlayers);
                 db.SaveChanges();
-                return RedirectToAction("List", new { SeasonId = teamPlayers.Season, TeamId = teamPlayers.Team});
+                return RedirectToAction("List", new { SeasonId = SeasonId, TeamId = TeamId });
             }
 
             ViewBag.PlayerFunction = new SelectList(db.PlayerFunctions, "Id", "PlayerFunctionName", teamPlayers.PlayerFunction);

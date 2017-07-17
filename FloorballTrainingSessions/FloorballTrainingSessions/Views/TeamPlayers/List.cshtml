@@ -16,69 +16,80 @@
     @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
 </p>
 
-<div style="overflow:hidden;">
-    <div class="col-md-4  col-sm-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">Golmani</div>
-            <div class="panel-body">
-                @foreach (var item in Model)
+<div class="row" style="overflow:hidden">
+    <div class="col-md-6  col-sm-12 col-sm-push-12">
+        <div class="col-md-12  col-sm-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">Golmani</div>
+                <div class="panel-body">
+                    @foreach (var item in Model)
             {
                 if (item.PlayerFunctions.IsGoalie == true)
                 {
-                        <div class="col-md-6 col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
-                        <div class="col-md-6 col-sm-4" style="display:inline-block; margin-bottom: 5px;">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm" })
-                        </div>
+                            <div class="col-md-8 col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
+                                <div class="col-md-4 col-sm-4" style="display:inline-block; margin-bottom: 5px;">
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" })
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash" })
+                                </div>
 
+                        }
                     }
-                }
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4  col-sm-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">Hráči v poli</div>
-            <div class="panel-body">
-                @foreach (var item in Model)
-            {
-                if (item.PlayerFunctions.IsPlayer == true)
-                {
-                        <div class="col-md-6  col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
-                        <div class="col-md-6  col-sm-4" style="display:inline-block; margin-bottom: 5px;">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm" })
-                        </div>
-
-                    }
-
-                }
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4  col-sm-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">Trenéři & Vedoucí</div>
-            <div class="panel-body">
-                @foreach (var item in Model)
+        <div class="col-md-12  col-sm-12 col-sm-pull-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">Trenéři & Vedoucí</div>
+                <div class="panel-body">
+                    @foreach (var item in Model)
             {
                 if (item.PlayerFunctions.IsTrainer == true || item.PlayerFunctions.IsManager == true)
                 {
-                        <div class="col-md-6 col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
-                        <div class="col-md-6 col-sm-4" style="display:inline-block; margin-bottom: 5px;">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm" })
-                        </div>
+                            <div class="col-md-8 col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
+                                <div class="col-md-4 col-sm-4" style="display:inline-block; margin-bottom: 5px;">
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" })
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash" })
+                                </div>
 
+                        }
                     }
-                }
+                </div>
             </div>
         </div>
+
+
+
     </div>
-</div>
+    <div class="col-md-6  col-sm-12">
+        <div class="col-md-12  col-sm-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">Hráči v poli</div>
+                <div class="panel-body">
+                    @foreach (var item in Model)
+            {
+                if (item.PlayerFunctions.IsPlayer == true)
+                {
+                            <div class="col-md-8  col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
+                                <div class="col-md-4  col-sm-4" style="display:inline-block; margin-bottom: 5px;">
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" })
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash" })
+                                </div>
 
+                        }
 
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+        
+            
+            
+
+            
+        </div>
+    
 
 
 

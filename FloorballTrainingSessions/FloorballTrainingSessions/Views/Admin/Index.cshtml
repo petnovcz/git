@@ -21,57 +21,68 @@
    
 </div>
 
-<div class="adminmenu">
-    
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary visible-xs-block visible-sm-block dropdown-toggle" data-toggle="dropdown">
-            Základní nastavení aplikace <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li>@Html.ActionLink("Nastavení částí sezóny", "Index", "SeasonParts", null, null)</li>
-            <li>@Html.ActionLink("Nastavení funkcí členů týmu", "Index", "PlayerFunctions", null,null)</li>
-            <li>@Html.ActionLink("Nastavení kategorií cvičení", "Index", "ExcersiseCategories", null, null)</li>
-        </ul>
+<div style="overflow:hidden">
+    <div class="col-md-4  col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Obecná nastavení</div>
+            <div class="panel-body">
+                @Html.ActionLink("Nastavení částí sezóny", "Index", "SeasonParts", null, new { @class = "btn btn-primary btn-block" })
+                @Html.ActionLink("Nastavení funkcí členů týmu", "Index", "PlayerFunctions", null, new { @class = "btn btn-primary btn-block" })
+                @Html.ActionLink("Nastavení kategorií cvičení", "Index", "ExcersiseCategories", null, new { @class = "btn btn-primary btn-block" })
+            </div>
+        </div>
     </div>
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            Datová nastavení aplikace <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li>@Html.ActionLink("Nastavení týmů", "Index", "Teams", null, null)</li>
-            <li>@Html.ActionLink("Nastavení sezón", "Index", "Seasons", null, null)</li>
-           
-        </ul>
+    <div class="col-md-5  col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Nastavení uživatelů</div>
+            <div class="panel-body">
+                @Html.ActionLink("Přehled registrovaných uživatelů", "Index", "AspNetUsers", null, new { @class = "btn btn-primary btn-block" })
+                @Html.ActionLink("Nastavení členů a jejich uživatelských účtů", "Index", "Players", null, new { @class = "btn btn-primary btn-block" })
+            </div>
+        </div>
     </div>
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            Uživatelské a členské účy <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li>@Html.ActionLink("Přehled registrovaných uživatelů", "Index", "AspNetUsers", null, null)</li>
-            <li>@Html.ActionLink("Nastavení členů a jejich uživatelských účtů", "Index", "Players", null, null)</li>
+    <div class="col-md-3  col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Přesezóní nastavení</div>
+            <div class="panel-body">
+                @Html.ActionLink("Nastavení týmů", "Index", "Teams", null, new { @class = "btn btn-primary btn-block" })
+                @Html.ActionLink("Nastavení sezón", "Index", "Seasons", null, new { @class = "btn btn-primary btn-block" })
+            </div>
+        </div>
+    </div>
+
+</div>
+<div style="overflow:hidden">
+
+    <div class="col-md-4  col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Nastavení členů týmů</div>
+            <div class="panel-body">
+                @foreach (var item in Model.Teamplayers)
+                {
+                    @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
+                }
+                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", null, new { @class = "btn btn-primary btn-block" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4  col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Sezóní nastavení</div>
             
-        </ul>
-    </div>
-        
-        
-
-        <h3>Nastavení členů týmů</h3>
-        <div class="well well-lg">
-
-            @foreach (var item in Model.Teamplayers)
-            {
-                @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
-            }
-            @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", null, new { @class = "btn btn-primary btn-block" })
-
-        </div>
-        <h3>Předsezóní nastavení</h3>
-        <div class="well well-lg">
-            @Html.ActionLink("Generate Trainings", "Index", "", null, new { @class = "btn btn-block btn-md btn-primary" })
-        </div>
-        <h3>Excersises</h3>
-        <div class="well well-lg">
-            @Html.ActionLink("Excersises", "Index", "Excersises", null, new { @class = "btn btn-block btn-md btn-primary" })
         </div>
     </div>
+    <div class="col-md-4  col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Cvičení</div>
+            
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

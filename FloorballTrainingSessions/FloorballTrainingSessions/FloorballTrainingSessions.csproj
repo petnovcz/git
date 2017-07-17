@@ -608,6 +608,7 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\MyTrainings\Index.cshtml" />
     <Content Include="Views\TeamPlayers\List.cshtml" />
+    <Content Include="Views\TeamPlayers\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

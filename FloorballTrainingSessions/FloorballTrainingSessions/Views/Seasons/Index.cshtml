@@ -11,33 +11,45 @@
 </div>
 
 <p>
-    @Html.ActionLink("Nová sezóna", "Create","Seasons", null, new { @class = "btn btn-success btn-lg" })
-    @Html.ActionLink("Administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-lg" })
+    @Html.ActionLink("Nová sezóna", "Create", "Seasons", null, new { @class = "btn btn-success btn-md" })
+    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SeasonName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActiveSeason)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeasonName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActiveSeason)
-        </td>
-        <td>
-            @Html.ActionLink("Edituj", "Edit", new { id=item.Id }, new { @class = "btn btn-warning " }) |
-            @Html.ActionLink("Smaž", "Delete", new { id=item.Id }, new { @class = "btn btn-danger " })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="well well-lg">
+    <div class="table-responsive">
+        <table class="table">
+            <colgroup>
+                <col class="col-md-7" />
+                <col class="col-md-3" />
+                <col class="col-md-2" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SeasonName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActiveSeason)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SeasonName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActiveSeason)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edituj", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-md" })
+                            @Html.ActionLink("Smaž", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-md" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

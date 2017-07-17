@@ -41,7 +41,6 @@ namespace FloorballTrainingSessions
         {
             var items = db.AspNetUsers.ToList();
             items.Insert(0, new AspNetUsers { Id = "", Email = "" });
-
             ViewBag.User = new SelectList(items, "Id", "Email");
             return View();
         }
@@ -62,7 +61,6 @@ namespace FloorballTrainingSessions
 
             var items = db.AspNetUsers.ToList();
             items.Insert(0, new AspNetUsers { Id = "", Email = "" });
-
             ViewBag.User = new SelectList(items, "Id", "Email");
             return View(players);
         }
@@ -79,7 +77,9 @@ namespace FloorballTrainingSessions
             {
                 return HttpNotFound();
             }
-            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", players.User);
+            var items = db.AspNetUsers.ToList();
+            items.Insert(0, new AspNetUsers { Id = "", Email = "" });
+            ViewBag.User = new SelectList(items, "Id", "Email",players.User);
             return View(players);
         }
 
@@ -96,7 +96,9 @@ namespace FloorballTrainingSessions
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", players.User);
+            var items = db.AspNetUsers.ToList();
+            items.Insert(0, new AspNetUsers { Id = "", Email = "" });
+            ViewBag.User = new SelectList(items, "Id", "Email", players.User);
             return View(players);
         }
 

@@ -4,30 +4,45 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <h1>Nastavení kategorie cvičení</h1>
+    <p class="lead">Nastavení kategorie svičení</p>
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "ExcersiseCategories", null, new { @class = "btn btn-success btn-md" })
+    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ExcersiseCategoryName)
-        </th>
-        <th></th>
-    </tr>
+<div class="well well-lg">
+    <div class="table-responsive">
+        <table class="table">
+            <colgroup>
+                <col class="col-md-10" />
+                <col class="col-md-2" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ExcersiseCategoryName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExcersiseCategoryName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "ExcersiseCategories", new { id = item.Id }, new { @class = "btn btn-warning btn-md" })
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExcersiseCategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-md" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

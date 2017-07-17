@@ -4,37 +4,43 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="jumbotron">
+    <h1>Nastavení kategorie cvičení</h1>
+    <p class="lead">Nastavení kategorie svičení</p>
+</div>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ExcersiseCategories</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+    <div class="well well-lg">
+        <div class="form-horizontal">
+            <h4>Kategorie cvičení</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ExcersiseCategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ExcersiseCategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ExcersiseCategoryName, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExcersiseCategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ExcersiseCategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ExcersiseCategoryName, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Ulož" class="btn btn-success btn-md" />
+                    @Html.ActionLink("Zpět na seznam", "Index", "ExcersiseCategories", null, new { @class = "btn btn-primary btn-md" })
+                    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
+                </div>
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    
 </div>
 
 @section Scripts {

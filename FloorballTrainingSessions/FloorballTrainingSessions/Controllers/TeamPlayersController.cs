@@ -16,7 +16,7 @@ namespace FloorballTrainingSessions
         // GET: TeamPlayers
         public ActionResult Index()
         {
-            var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams);
+            var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams).OrderBy(t=>t.Players.Name);
             
 
             return View(teamPlayers.ToList());
@@ -55,6 +55,33 @@ namespace FloorballTrainingSessions
             return View();
         }
 
+        public ActionResult Add()
+        {
+            ViewBag.PlayerFunction = new SelectList(db.PlayerFunctions, "Id", "PlayerFunctionName");
+            ViewBag.Player = new SelectList(db.Players, "Id", "Name");
+            ViewBag.Season = new SelectList(db.Seasons, "Id", "SeasonName");
+            ViewBag.Team = new SelectList(db.Teams, "Id", "TeamName");
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add([Bind(Include = "Id,Team,Player,PlayerFunction,Season")] TeamPlayers teamPlayers)
+        {
+            if (ModelState.IsValid)
+            {
+                int SeasonId = teamPlayers.Season;
+                int TeamId = teamPlayers.Team;
+                db.TeamPlayers.Add(teamPlayers);
+                db.SaveChanges();
+                return RedirectToAction("List", new { SeasonId = SeasonId, TeamId = TeamId });
+            }
+
+            ViewBag.PlayerFunction = new SelectList(db.PlayerFunctions, "Id", "PlayerFunctionName", teamPlayers.PlayerFunction);
+            ViewBag.Player = new SelectList(db.Players, "Id", "Name", teamPlayers.Player);
+            ViewBag.Season = new SelectList(db.Seasons, "Id", "SeasonName", teamPlayers.Season);
+            ViewBag.Team = new SelectList(db.Teams, "Id", "TeamName", teamPlayers.Team);
+            return View(teamPlayers);
+        }
         // POST: TeamPlayers/Create
         // Chcete-li zajistit ochranu před útoky typu OVERPOST, povolte konkrétní vlastnosti, k nimž chcete vytvořit vazbu. 
         // Další informace viz https://go.microsoft.com/fwlink/?LinkId=317598.

@@ -3,7 +3,18 @@
     ViewBag.Title = "Administrace";
 }
 
-<div class="jumbotron">
+<div class="well well-lg">
+    <div style="float:right;">@foreach (var item in Model.Seasons)
+    {
+        if (Model.ActiveSeason == item.Id)
+        {
+            @Html.ActionLink(item.SeasonName, "Index", "Admin", new { SeasonId = item.Id }, new { @class = "btn btn-md btn-success" });
+        }
+        if (Model.ActiveSeason != item.Id)
+        {
+            @Html.ActionLink(item.SeasonName, "Index", "Admin", new { SeasonId = item.Id }, new { @class = "btn btn-md btn-default" });
+        }
+    }</div>
     <h1>Administrace</h1>
     <p class="lead">Nastavení jednotlivých prvků aplikace správy tréninků.</p>
     
@@ -11,9 +22,9 @@
 </div>
 
 <div class="adminmenu">
-    <h3></h3> 
+    
     <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <button type="button" class="btn btn-primary visible-xs-block visible-sm-block dropdown-toggle" data-toggle="dropdown">
             Základní nastavení aplikace <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
@@ -43,17 +54,7 @@
         </ul>
     </div>
         
-        @foreach (var item in Model.Seasons)
-        {
-            if (Model.ActiveSeason == item.Id)
-            {
-                @Html.ActionLink(item.SeasonName, "Index", "Admin", new { SeasonId = item.Id }, new { @class = "btn btn-md btn-success" });
-            }
-            if (Model.ActiveSeason != item.Id)
-            {
-                @Html.ActionLink(item.SeasonName, "Index", "Admin", new { SeasonId = item.Id }, new { @class = "btn btn-md btn-default" });
-            }
-        }
+        
 
         <h3>Nastavení členů týmů</h3>
         <div class="well well-lg">

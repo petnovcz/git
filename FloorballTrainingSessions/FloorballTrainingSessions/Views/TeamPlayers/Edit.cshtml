@@ -17,13 +17,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Team, "Team", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Team", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Team, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @Html.HiddenFor(model => model.Team, new { @Value = ViewBag.Team })
+        @Html.HiddenFor(model => model.Season, new { @Value = ViewBag.Season })
 
         <div class="form-group">
             @Html.LabelFor(model => model.Player, "Player", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,13 +36,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Season, "Season", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Season", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Season, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -58,7 +47,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "List", new { SeasonId = ViewBag.Season, TeamId = ViewBag.Team }, new { @class = "btn btn-primary btn-md" })
 </div>
 
 @section Scripts {

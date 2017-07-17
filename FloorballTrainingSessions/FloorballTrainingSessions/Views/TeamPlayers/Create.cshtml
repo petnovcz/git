@@ -49,7 +49,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "List", new { SeasonId = ViewBag.Season, TeamId = ViewBag.Team}, new { @class = "btn btn-primary btn-md"})
 </div>
 
 @section Scripts {

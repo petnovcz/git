@@ -16,17 +16,18 @@ namespace FloorballTrainingSessions
         // GET: TeamPlayers
         public ActionResult Index()
         {
-            var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams).OrderBy(t=>t.Players.Name);
-            
-
+            var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams).OrderBy(t => t.PlayerFunctions.PlayerFunctionName).OrderBy(t=>t.Players.Name);
             return View(teamPlayers.ToList());
         }
         public ActionResult List(int SeasonId, int TeamId)
         {
-            var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams).Where(t => (t.Season == SeasonId && t.Team == TeamId));
+            var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams).Where(t => (t.Season == SeasonId && t.Team == TeamId)).OrderBy(t => t.PlayerFunctions.PlayerFunctionName).ThenBy(t => t.Players.Name);
             ViewBag.SelectedTeam = TeamId;
+            var team = db.Teams.Where(t => t.Id == TeamId).FirstOrDefault();
+            ViewBag.SelectedTeamName = team.TeamName;
             ViewBag.SelectedSeason = SeasonId;
-
+            var season = db.Seasons.Where(t => t.Id == SeasonId).FirstOrDefault();
+            ViewBag.SelectedSeasonName = season.SeasonName;
             return View(teamPlayers.ToList());
         }
 
@@ -106,7 +107,7 @@ namespace FloorballTrainingSessions
         }
 
         // GET: TeamPlayers/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int SelectedTeam, int SelectedSeason)
         {
             if (id == null)
             {
@@ -119,8 +120,8 @@ namespace FloorballTrainingSessions
             }
             ViewBag.PlayerFunction = new SelectList(db.PlayerFunctions, "Id", "PlayerFunctionName", teamPlayers.PlayerFunction);
             ViewBag.Player = new SelectList(db.Players, "Id", "Name", teamPlayers.Player);
-            ViewBag.Season = new SelectList(db.Seasons, "Id", "SeasonName", teamPlayers.Season);
-            ViewBag.Team = new SelectList(db.Teams, "Id", "TeamName", teamPlayers.Team);
+            ViewBag.Season = SelectedSeason;
+            ViewBag.Team = SelectedTeam;
             return View(teamPlayers);
         }
 
@@ -133,9 +134,11 @@ namespace FloorballTrainingSessions
         {
             if (ModelState.IsValid)
             {
+                int SeasonId = teamPlayers.Season;
+                int TeamId = teamPlayers.Team;
                 db.Entry(teamPlayers).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List", new { SeasonId = SeasonId, TeamId = TeamId });
             }
             ViewBag.PlayerFunction = new SelectList(db.PlayerFunctions, "Id", "PlayerFunctionName", teamPlayers.PlayerFunction);
             ViewBag.Player = new SelectList(db.Players, "Id", "Name", teamPlayers.Player);
@@ -165,9 +168,11 @@ namespace FloorballTrainingSessions
         public ActionResult DeleteConfirmed(int id)
         {
             TeamPlayers teamPlayers = db.TeamPlayers.Find(id);
+            int SeasonId = teamPlayers.Season;
+            int TeamId = teamPlayers.Team;
             db.TeamPlayers.Remove(teamPlayers);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("List", new { SeasonId = SeasonId, TeamId = TeamId });
         }
 
         protected override void Dispose(bool disposing)

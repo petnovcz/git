@@ -73,7 +73,7 @@
             <div class="panel-body">
                 @foreach (var item in Model.Teamplayers)
                 {
-                    @Html.ActionLink(item.Teams.TeamName, "Index", "Trainings", new { team = item.Team, season = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
+                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { selectedteam = item.Team, selectedseason = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
                 }
                 @Html.ActionLink("Vytvoření tréninku", "Create", "Trainings", null, new { @class = "btn btn-primary btn-block" })
                 @Html.ActionLink("Přehled tréninků", "Index", "Trainings", null, new { @class = "btn btn-primary btn-block" })

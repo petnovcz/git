@@ -38,15 +38,61 @@ namespace FloorballTrainingSessions
             return View(trainings.ToList());
         }
 
-        public ActionResult List()
+        public ActionResult List(int selectedseason, int selectedteam)
         {
-            var trainings = db.Trainings;
+            var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
+            // filtrování na základě vstupního parametru - tým a sezóna
+            trainings = trainings.Where(t => (t.Season == selectedseason));
+            trainings = trainings.Where(t => t.Team == selectedteam);
+            // odeslání parametru vybrané sezóny a týmu do view
+            ViewBag.selectedseason = selectedseason;
+            ViewBag.selectedteam = selectedteam;
+            // odeslání dat pro select list pro season part
+            var itemsseasonpart = db.SeasonParts.ToList();
+            itemsseasonpart.Insert(0, new SeasonParts { Id = 0, SeasonPartName = "" });
+            ViewBag.seasonpart = new SelectList(itemsseasonpart, "Id", "SeasonPartName");
+            // odeslání dat pro select list pro zaměření tréninku
+            var itemstrainingfocus = db.TrainingFocuses.ToList();
+            itemstrainingfocus.Insert(0, new TrainingFocuses { Id = 0, TrainingFocusName = "" });
+            ViewBag.trainingfocus = new SelectList(itemstrainingfocus, "Id", "TrainingFocusName");
+            // odeslání dat pro select list pro tréninkovou lokaci
+            var itemstraininglocation = db.TrainingLocations.ToList();
+            itemstraininglocation.Insert(0, new TrainingLocations { Id = 0, TrainingLocationName = "" });
+            ViewBag.traininglocation = new SelectList(itemstraininglocation, "Id", "TrainingLocationName");
+            // odeslání dat pro selec list tréninkového modelu
+            var itemsschememodel = db.TrainingSchemeModels.ToList();
+            itemsschememodel.Insert(0, new TrainingSchemeModels { Id = 0, TrainingSchemeName = "" });
+            ViewBag.trainingschememodel = new SelectList(itemsschememodel, "Id", "TrainingSchemeName");
+
             return View(trainings.ToList());
         }
-        public PartialViewResult GetTrainings(int seasonpart)
+        public PartialViewResult GetTrainings(int selectedseason, int selectedteam, int seasonpart, int traininglocation, int trainingfocus, int trainingschememodel)
         {
-            var trainings = db.Trainings;
-           return PartialView("_TrainingsList", trainings.ToList());
+            var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
+            trainings = trainings.Where(t => (t.Season == selectedseason));
+            trainings = trainings.Where(t => t.Team == selectedteam);
+            if (seasonpart != 0)
+            {
+                trainings = trainings.Where(t => t.SeasonPart == seasonpart);
+            }
+            if (traininglocation != 0)
+            {
+                trainings = trainings.Where(t => t.TrainingLocation == traininglocation);
+            }
+            if (trainingfocus != 0)
+            {
+                trainings = trainings.Where(t => t.TrainingFocus == trainingfocus);
+            }
+            if (trainingschememodel != 0)
+            {
+                trainings = trainings.Where(t => t.TrainingSchemeModel == trainingschememodel);
+            }
+
+
+            // odeslání parametru vybrané sezóny a týmu do view
+            ViewBag.selectedseason = selectedseason;
+            ViewBag.selectedteam = selectedteam;
+            return PartialView("_TrainingsList", trainings.ToList());
         }
         // GET: Trainings/Details/5
         public ActionResult Details(int? id)

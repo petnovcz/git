@@ -5,7 +5,7 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-<table id="traininglist" class="table">
+<table id="traininglist" class="table table-condensed">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.TrainingDate)
@@ -28,12 +28,7 @@
         <th>
             @Html.DisplayNameFor(model => model.SeasonParts.SeasonPartName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Seasons.SeasonName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Teams.TeamName)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.TrainingFocuses.TrainingFocusName)
         </th>
@@ -69,12 +64,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.SeasonParts.SeasonPartName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Seasons.SeasonName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Teams.TeamName)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.TrainingFocuses.TrainingFocusName)
         </td>

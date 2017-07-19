@@ -21,81 +21,125 @@
    
 </div>
 
-<div style="overflow:hidden">
-    <div class="col-md-4  col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">Obecná nastavení</div>
-            <div class="panel-body">
-                @Html.ActionLink("Nastavení částí sezóny", "Index", "SeasonParts", null, new { @class = "btn btn-primary btn-block" })
-                @Html.ActionLink("Nastavení funkcí členů týmu", "Index", "PlayerFunctions", null, new { @class = "btn btn-primary btn-block" })
-                @Html.ActionLink("Nastavení kategorií cvičení", "Index", "ExcersiseCategories", null, new { @class = "btn btn-primary btn-block" })
+
+    
+<div class="container">    
+<div class="row" style="overflow:hidden">
+
+
+    <div id="ON" style="display: none;border:thin" class="manson col-md-3 col-sm-12 col-xs-12">    
+            <div>
+                <center><h4>Obecná nastavení</h4></center>
+</div>
+            <div>
+                    @Html.ActionLink("Nastavení částí sezóny", "Index", "SeasonParts", null, new { @class = "btn btn-default btn-xs btn-block" })
+                    @Html.ActionLink("Nastavení funkcí členů týmu", "Index", "PlayerFunctions", null, new { @class = "btn btn-default btn-xs btn-block" })
+                    @Html.ActionLink("Nastavení týmů", "Index", "Teams", null, new { @class = "btn btn-default btn-xs btn-block" })
+                    @Html.ActionLink("Nastavení sezón", "Index", "Seasons", null, new { @class = "btn btn-default btn-xs btn-block" })
+                    @Html.ActionLink("Nastavení tréninkových lokací", "Index", "TrainingLocations", null, new { @class = "btn btn-default btn-xs btn-block" })
+            </div> 
+    </div>
+
+    <div id="NU" style="display: none;border:thin" class="manson col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div>
+                <center><h4>Nastavení uživatelů</h4></center>
+</div>         
+                <div>
+                    @Html.ActionLink("Přehled registrovaných uživatelů", "Index", "AspNetUsers", null, new { @class = "btn btn-info btn-xs btn-block" })
+                    @Html.ActionLink("Nastavení členů a jejich uživatelských účtů", "Index", "Players", null, new { @class = "btn btn-info btn-xs btn-block" })
+                </div>
+    </div>
+
+    
+
+
+
+
+
+
+    <div id="NCT" style="display: none;border:thin" class="manson col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div>
+            <div ><center><h4>Nastavení členů týmů</h4></center></div>
+            <div >
+                @foreach (var item in Model.Teamplayers)
+                {
+                    @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-xs btn-block" });
+                }
+                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", null, new { @class = "btn btn-info btn-xs btn-block" })
             </div>
         </div>
     </div>
-    <div class="col-md-5  col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">Nastavení uživatelů</div>
-            <div class="panel-body">
-                @Html.ActionLink("Přehled registrovaných uživatelů", "Index", "AspNetUsers", null, new { @class = "btn btn-primary btn-block" })
-                @Html.ActionLink("Nastavení členů a jejich uživatelských účtů", "Index", "Players", null, new { @class = "btn btn-primary btn-block" })
+
+    <div id="PT" style="display: none;border:thin" class="manson col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div >
+            <div ><center><h4>Přehled tréninků</h4></center></div>
+            <div >
+                @foreach (var item in Model.Teamplayers)
+                {
+                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { selectedteam = item.Team, selectedseason = Model.ActiveSeason }, new { @class = "btn btn-warning btn-xs btn-block" });
+                }
+                @Html.ActionLink("Vytvoření tréninku", "Create", "Trainings", null, new { @class = "btn btn-info btn-xs btn-block" })
+                @Html.ActionLink("Generování tréninků", "Create", "GenerateTrainings", null, new { @class = "btn btn-info btn-xs btn-block" })
+                @Html.ActionLink("Hromadná úprava tréninků", "Create", "GenerateTrainings", null, new { @class = "btn btn-info btn-xs btn-block" })
+
             </div>
         </div>
     </div>
-    <div class="col-md-3  col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">Přesezóní nastavení</div>
-            <div class="panel-body">
-                @Html.ActionLink("Nastavení týmů", "Index", "Teams", null, new { @class = "btn btn-primary btn-block" })
-                @Html.ActionLink("Nastavení sezón", "Index", "Seasons", null, new { @class = "btn btn-primary btn-block" })
+    <div id="TP" style="display: none;" class="manson col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div >
+            <div ><center><h4>Tréninkový plán</h4></center></div>
+            <div >
+                @foreach (var item in Model.Teamplayers)
+                {
+                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-xs btn-block" });
+                }
+
+            </div>
+        </div>
+    </div>
+    <div id="CV" style="display: none;" class="manson col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div>
+            <div><center><h4>Cvičení</h4></center></div>
+            <div>
+                @Html.ActionLink("Cvičení", "Index", "Excersises", null, new { @class = "btn btn-info btn-xs btn-block" })
+                @Html.ActionLink("Nastavení kategorií cvičení", "Index", "ExcersiseCategories", null, new { @class = "btn btn-default btn-xs btn-block" })
+                @Html.ActionLink("Nastavení zaměření tréninku", "Index", "TraningFocuses", null, new { @class = "btn btn-default btn-xs btn-block" })
             </div>
         </div>
     </div>
 
 </div>
-<div style="overflow:hidden">
-
-    <div class="col-md-4  col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">Nastavení členů týmů</div>
-            <div class="panel-body">
-                @foreach (var item in Model.Teamplayers)
-                {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
-                }
-                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", null, new { @class = "btn btn-primary btn-block" })
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4  col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">Přehled tréninků</div>
-            <div class="panel-body">
-                @foreach (var item in Model.Teamplayers)
-                {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { selectedteam = item.Team, selectedseason = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
-                }
-                @Html.ActionLink("Vytvoření tréninku", "Create", "Trainings", null, new { @class = "btn btn-primary btn-block" })
-                @Html.ActionLink("Přehled tréninků", "Index", "Trainings", null, new { @class = "btn btn-primary btn-block" })
-            </div>
-            </div>
-    </div>
-    <div class="col-md-4  col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">Tréninkový plán</div>
-            <div class="panel-body">
-                @foreach (var item in Model.Teamplayers)
-                {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
-                }
-                
-            </div>
-        </div>
-    </div>
-
 </div>
+@section Scripts {
 
 
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>    
+<script src="~/Scripts/jquery.masonry.min.js"></script>
 
+    <script>
+       
 
+    $('.row').masonry({
+        itemSelector: '.manson',
+        isAnimated: true        
+        });
 
+        $(document).ready(function () {
+            $("#ON").fadeIn("fast", function () {                
+            });
+            $("#NU").fadeIn("fast", function () {
+            });
+            
+            $("#NCT").fadeIn("fast", function () {
+            });
+            $("#PT").fadeIn("fast", function () {
+            });
+            $("#TP").fadeIn("fast", function () {
+            });
+            $("#CV").fadeIn("fast", function () {
+            });
+        });
+        
+
+</script>
+}

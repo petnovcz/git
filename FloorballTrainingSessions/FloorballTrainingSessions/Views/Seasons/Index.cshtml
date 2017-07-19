@@ -9,8 +9,8 @@
 </div>
 
 <p>
-    @Html.ActionLink("Vytvoření nové sezóny", "Create", "Seasons", null, new { @class = "btn btn-success btn-md" })
-    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
+    @Html.ActionLink("Vytvoření nové sezóny", "Create", "Seasons", null, new { @class = "btn btn-success btn-xs" })
+    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-xs" })
 </p>
 <div class="well well-lg">
     <div class="table-responsive">
@@ -42,8 +42,8 @@
                             @Html.DisplayFor(modelItem => item.IsActiveSeason)
                         </td>
                         <td>
-                            @Html.ActionLink("Edituj", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-md" })
-                            @Html.ActionLink("Smaž", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-md" })
+                            @Html.ActionLink("Edituj", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+                            @Html.ActionLink("Smaž", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
                         </td>
                     </tr>
                 }

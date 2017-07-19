@@ -17,30 +17,37 @@
         int seasonpart = 0; int traininglocation = 0; int trainingfocus = 0; int trainingschememodel = 0;
         int selectedteam = ViewBag.selectedteam;
         int selectedseason = ViewBag.selectedseason;
-        <div class="form-group">
-            @Html.LabelFor(x => traininglocation, "traininglocation", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.DropDownList("traininglocation", null, htmlAttributes: new { @class = "form-control" })
-            @Html.LabelFor(x => seasonpart, "seasonpart", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.DropDownList("seasonpart", null, htmlAttributes: new { @class = "form-control" })
-            @Html.LabelFor(x => trainingfocus, "trainingfocus", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.DropDownList("trainingfocus", null, htmlAttributes: new { @class = "form-control" })
-            @Html.LabelFor(x => trainingschememodel, "trainingschememodel", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.DropDownList("trainingschememodel", null, htmlAttributes: new { @class = "form-control" })
-        </div>
+        <div class="form-inline">
+        <div class="form-group col-lg-3 col-md-3">
+           
+            @Html.DropDownList("traininglocation", null, htmlAttributes: new { onchange = "$(this.form).submit();",  @class = "form-control col-md-3", @style = "width:100%" })
+         </div>
+         <div class="form-group col-lg-3 col-md-3">
+                
+                @Html.DropDownList("seasonpart", null, htmlAttributes: new { onchange = "$(this.form).submit();",  @class = "form-control col-md-3" , @style = "width:100%" })
+          </div>
+          <div class="form-group col-lg-3 col-md-3">
+               
+                @Html.DropDownList("trainingfocus", null, htmlAttributes: new { onchange = "$(this.form).submit();",   @class = "form-control col-md-3", @style = "width:100%" })
+          </div>
+          <div class="form-group col-lg-3 col-md-3">
+                       
+                        @Html.DropDownList("trainingschememodel", null, htmlAttributes: new { onchange = "$(this.form).submit();",   @class = "form-control col-md-3", @style = "width:100%" })
+           </div>
+            </div>
 
-        
-                                    @Html.HiddenFor(x => selectedteam, new { @Value = ViewBag.selectedteam })
-                                    @Html.HiddenFor(x => selectedseason, new { @Value = ViewBag.selectedseason })
-                                    <input type="submit" value="Search" />
-    }
+                    @Html.HiddenFor(x => selectedteam, new { @Value = ViewBag.selectedteam })
+                    @Html.HiddenFor(x => selectedseason, new { @Value = ViewBag.selectedseason })
+                    
+                    }
 
-    @* ... *@
-    <div id="loader" class=" aletr" style="display:none">
-        Loading...<img src="~/Images/ajax-loader.gif" />
-    </div>
-    @Html.Partial("_TrainingsList") @* this is view with patient table. Same view you will return from controller *@
+                    @* ... *@
+                    <div id="loader" class=" aletr" style="display:none">
+                        Loading...<img src="~/Images/ajax-loader.gif" />
+                    </div>
+                    @Html.Partial("_TrainingsList") @* this is view with patient table. Same view you will return from controller *@
 
-    @section Scripts {
+                    @section Scripts {
 
-        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    }
+                        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+                    }

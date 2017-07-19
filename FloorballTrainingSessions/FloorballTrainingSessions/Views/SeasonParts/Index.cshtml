@@ -9,12 +9,12 @@
 </div>
 
 <p>
-    @Html.ActionLink("Nový", "Create", "SeasonParts", null, new { @class = "btn btn-success btn-md" })
-    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
+    @Html.ActionLink("Nový", "Create", "SeasonParts", null, new { @class = "btn btn-success btn-xs" })
+    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-xs" })
 </p>
-<div class="well well-lg">
+
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-hover table-condensed table-striped">
             <colgroup>
                 <col class="col-md-10">
                 <col class="col-md-2">
@@ -35,12 +35,11 @@
                             @Html.DisplayFor(modelItem => item.SeasonPartName)
                         </td>
                         <td>
-                            @Html.ActionLink("Edituj", "Edit", "SeasonParts", new { id = item.Id }, new { @class = "btn btn-warning" })
-                            @Html.ActionLink("Smaž", "Delete", "SeasonParts", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Edituj", "Edit", "SeasonParts", new { id = item.Id }, new { @class = "btn btn-xs btn-warning" })
+                            @Html.ActionLink("Smaž", "Delete", "SeasonParts", new { id = item.Id }, new { @class = "btn btn-xs btn-danger" })
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-</div>

@@ -11,8 +11,8 @@
 </div>
 
 <p>
-    @Html.ActionLink("Přidej člena týmu", "Create", "TeamPlayers", new { SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-success btn-md"})
-    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
+    @Html.ActionLink("Přidej člena týmu", "Create", "TeamPlayers", new { SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-success btn-xs"})
+    @Html.ActionLink("Zpět do administrace", "Index", "Admin", new { seasonId = ViewBag.SelectedSeason }, new { @class = "btn btn-info btn-xs" })
 </p>
 
 <div class="row" style="overflow:hidden">
@@ -27,8 +27,8 @@
                 {
                             <div class="col-md-8 col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
                                 <div class="col-md-4 col-sm-4" style="display:inline-block; margin-bottom: 5px;">
-                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" })
-                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash" })
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-edit" })
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-xs glyphicon glyphicon-trash" })
                                 </div>
 
                         }
@@ -46,8 +46,8 @@
                 {
                             <div class="col-md-8 col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
                                 <div class="col-md-4 col-sm-4" style="display:inline-block; margin-bottom: 5px;">
-                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" })
-                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash" })
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-edit" })
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-xs glyphicon glyphicon-trash" })
                                 </div>
 
                         }
@@ -70,8 +70,8 @@
                 {
                             <div class="col-md-8  col-sm-8" style="display:inline-block">@Html.DisplayFor(modelItem => item.Players.Name)</div>
                                 <div class="col-md-4  col-sm-4" style="display:inline-block; margin-bottom: 5px;">
-                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" })
-                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash" })
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-edit" })
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-danger btn-xs glyphicon glyphicon-trash" })
                                 </div>
 
                         }

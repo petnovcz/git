@@ -49,19 +49,19 @@ namespace FloorballTrainingSessions
             ViewBag.selectedteam = selectedteam;
             // odeslání dat pro select list pro season part
             var itemsseasonpart = db.SeasonParts.ToList();
-            itemsseasonpart.Insert(0, new SeasonParts { Id = 0, SeasonPartName = "" });
+            itemsseasonpart.Insert(0, new SeasonParts { Id = 0, SeasonPartName = "-- Vyber část sezóny --" });
             ViewBag.seasonpart = new SelectList(itemsseasonpart, "Id", "SeasonPartName");
             // odeslání dat pro select list pro zaměření tréninku
             var itemstrainingfocus = db.TrainingFocuses.ToList();
-            itemstrainingfocus.Insert(0, new TrainingFocuses { Id = 0, TrainingFocusName = "" });
+            itemstrainingfocus.Insert(0, new TrainingFocuses { Id = 0, TrainingFocusName = "-- Vyber tréninkové zaměření --" });
             ViewBag.trainingfocus = new SelectList(itemstrainingfocus, "Id", "TrainingFocusName");
             // odeslání dat pro select list pro tréninkovou lokaci
             var itemstraininglocation = db.TrainingLocations.ToList();
-            itemstraininglocation.Insert(0, new TrainingLocations { Id = 0, TrainingLocationName = "" });
+            itemstraininglocation.Insert(0, new TrainingLocations { Id = 0, TrainingLocationName = "-- Vyber tréninkovou lokaci --" });
             ViewBag.traininglocation = new SelectList(itemstraininglocation, "Id", "TrainingLocationName");
             // odeslání dat pro selec list tréninkového modelu
             var itemsschememodel = db.TrainingSchemeModels.ToList();
-            itemsschememodel.Insert(0, new TrainingSchemeModels { Id = 0, TrainingSchemeName = "" });
+            itemsschememodel.Insert(0, new TrainingSchemeModels { Id = 0, TrainingSchemeName = "-- Vyber tréninkové schéma --" });
             ViewBag.trainingschememodel = new SelectList(itemsschememodel, "Id", "TrainingSchemeName");
 
             return View(trainings.ToList());

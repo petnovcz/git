@@ -55,8 +55,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger btn-md" /> 
-            @Html.ActionLink("Back to List", "List", new { SeasonId = ViewBag.Season, TeamId = ViewBag.Team }, new { @class = "btn btn-primary btn-md" })
+            <input type="submit" value="Delete" class="btn btn-danger btn-xs" /> 
+            @Html.ActionLink("Zpět na seznam", "List", new { SeasonId = ViewBag.Season, TeamId = ViewBag.Team }, new { @class = "btn btn-primary btn-xs" })
         </div>
     }
 </div>

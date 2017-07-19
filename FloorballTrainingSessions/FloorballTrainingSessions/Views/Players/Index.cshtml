@@ -9,41 +9,43 @@
 </div>
 
 <p>
-    @Html.ActionLink("Vytvoření nového člena", "Create", "Players", null, new { @class = "btn btn-success btn-md" })
-    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
+    @Html.ActionLink("Vytvoření nového člena", "Create", "Players", null, new { @class = "btn btn-success btn-xs" })
+    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-xs" })
 </p>
-<table class="table">
-    <colgroup>
-        <col class="col-md-5" />
-        <col class="col-md-5" />
-        <col class="col-md-2" />
-    </colgroup>
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AspNetUsers.Email)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-hover table-condensed">
+        <colgroup>
+            <col class="col-md-5" />
+            <col class="col-md-5" />
+            <col class="col-md-2" />
+        </colgroup>
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "Players", new { id = item.Id }, new { @class = "btn btn-warning btn-md" })
-                    @Html.ActionLink("Delete", "Delete", "Players", new { id = item.Id }, new { @class = "btn btn-danger btn-md" })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Players", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+                        @Html.ActionLink("Delete", "Delete", "Players", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

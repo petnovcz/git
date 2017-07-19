@@ -10,12 +10,12 @@
 </div>
 
 <p>
-    @Html.ActionLink("Vytvoření nové funkce člena týmu", "Create", "PlayerFunctions", null, new { @class = "btn btn-success btn-md"})
-    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
+    @Html.ActionLink("Vytvoření nové funkce člena týmu", "Create", "PlayerFunctions", null, new { @class = "btn btn-success btn-xs"})
+    @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-xs" })
 </p>
-<div class="well well-lg">
+
 <div class="table-responsive">
-<table class="table">
+<table class="table table-condensed table-hover" >
     <colgroup>
         <col class="col-md-6">
         <col class="col-md-1">
@@ -63,12 +63,11 @@
             @Html.DisplayFor(modelItem => item.IsManager)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit","PlayerFunctions", new { id=item.Id }, new { @class = "btn btn-warning btn-md"} )
-            @Html.ActionLink("Delete", "Delete", "PlayerFunctions", new { id=item.Id }, new { @class = "btn btn-danger btn-md" })
+            @Html.ActionLink("Edit", "Edit","PlayerFunctions", new { id=item.Id }, new { @class = "btn btn-warning btn-xs"} )
+            @Html.ActionLink("Delete", "Delete", "PlayerFunctions", new { id=item.Id }, new { @class = "btn btn-danger btn-xs" })
         </td>
     </tr>
 }
 </tbody>
 </table>
-</div>
 </div>

@@ -2,86 +2,53 @@
 
 
 <div id="traininglist">
+    <p></p>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Vytvoř nový trénink", "Create", "Trainings", new { SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-success btn-xs btn-block" })
     </p>
-<table id="traininglist" class="table table-condensed">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TrainingDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MeetDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SigningLimitDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrainingLength)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PublishTraining)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PublishExcersises)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeasonParts.SeasonPartName)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.TrainingFocuses.TrainingFocusName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrainingSchemeModels.TrainingSchemeName)
-        </th>
-        <th></th>
-    </tr>
+    <div>
+        @foreach (var item in Model)
+        {
+            <div class="panel panel-info">
+                <div class="panel-heading" style="overflow:hidden">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Datum tréninku</div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">@Html.DisplayFor(modelItem => item.TrainingDate)</div> 
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">Místo tréninku</div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">@Html.DisplayFor(modelItem => item.TrainingLocations.TrainingLocationName)</div>
+                    <div class="col-lg-1 col-lg-2 col-sm-12 col-xs-12 text-right">
+                        <div class="col-md-12">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</div>
+                        <div class="col-md-12">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainingDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MeetDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SigningLimitDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainingLength)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PublishTraining)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PublishExcersises)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeasonParts.SeasonPartName)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainingFocuses.TrainingFocusName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainingLocations.TrainingLocationName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainingSchemeModels.TrainingSchemeName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+                    </div>
+                </div>
+                <div class="panel-body row">
+                    <div class="row">
+                        <div class="pcol-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                            <div class="col-md-6 col-sm-6 ">Datum srazu</div><div class="col-md-6 col-sm-6 ">@Html.DisplayFor(modelItem => item.MeetDate)</div>
+                            <div class="col-md-6 col-sm-6 ">Datum nahlášení</div><div class="col-md-6 col-sm-6 ">@Html.DisplayFor(modelItem => item.SigningLimitDate)</div>
 
-</table>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                            <div class="col-md-6  col-sm-6">Část sezóny</div><div class="col-md-6 col-sm-6">@Html.DisplayFor(modelItem => item.SeasonParts.SeasonPartName)</div>
+                            <div class="col-md-6  col-sm-6">Zaměření tréninku</div><div class="col-md-6 col-sm-6">@Html.DisplayFor(modelItem => item.TrainingFocuses.TrainingFocusName)</div>
+                            <div class="col-md-6 col-sm-6">Schéma tréninku</div><div class="col-md-6 col-sm-6">@Html.DisplayFor(modelItem => item.TrainingSchemeModels.TrainingSchemeName)</div>
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                            <div class="col-md-12">Trénink <span class="glyphicon glyphicon-eye-open"></span></div>
+                            <div class="col-md-12">@Html.DisplayFor(modelItem => item.PublishTraining)</div>
+                            <div class="col-md-12">Cvičení <span class="glyphicon glyphicon-eye-open"></span></div>
+                            <div class="col-md-6">@Html.DisplayFor(modelItem => item.PublishExcersises)</div>
 
+                        </div>
+                        
+
+
+
+                    </div>
+                </div>
+            </div>
+            
+        }
+    </div>
 </div>
+

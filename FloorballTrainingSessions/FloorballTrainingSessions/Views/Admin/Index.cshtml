@@ -65,7 +65,7 @@
                 {
                     @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-xs btn-block" });
                 }
-                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", null, new { @class = "btn btn-info btn-xs btn-block" })
+                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", new { SelectedSeason = Model.ActiveSeason }, new { @class = "btn btn-info btn-xs btn-block" })
             </div>
         </div>
     </div>
@@ -93,7 +93,7 @@
                 {
                     @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-xs btn-block" });
                 }
-
+                @Html.ActionLink("Nastavení tréninkových schémat", "Index", "TrainingSchemeModels", null, new { @class = "btn btn-default btn-xs btn-block" })
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
             <div>
                 @Html.ActionLink("Cvičení", "Index", "Excersises", null, new { @class = "btn btn-info btn-xs btn-block" })
                 @Html.ActionLink("Nastavení kategorií cvičení", "Index", "ExcersiseCategories", null, new { @class = "btn btn-default btn-xs btn-block" })
-                @Html.ActionLink("Nastavení zaměření tréninku", "Index", "TraningFocuses", null, new { @class = "btn btn-default btn-xs btn-block" })
+                @Html.ActionLink("Nastavení zaměření tréninku", "Index", "TrainingFocuses", null, new { @class = "btn btn-default btn-xs btn-block" })
             </div>
         </div>
     </div>

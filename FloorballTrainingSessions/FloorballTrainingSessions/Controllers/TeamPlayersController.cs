@@ -60,12 +60,13 @@ namespace FloorballTrainingSessions
             return View();
         }
 
-        public ActionResult Add()
+        public ActionResult Add(int SelectedSeason)
         {
             ViewBag.PlayerFunction = new SelectList(db.PlayerFunctions, "Id", "PlayerFunctionName");
             ViewBag.Player = new SelectList(db.Players, "Id", "Name");
             ViewBag.Season = new SelectList(db.Seasons, "Id", "SeasonName");
             ViewBag.Team = new SelectList(db.Teams, "Id", "TeamName");
+            ViewBag.SelectedSeason = SelectedSeason;
             return View();
         }
         [HttpPost]

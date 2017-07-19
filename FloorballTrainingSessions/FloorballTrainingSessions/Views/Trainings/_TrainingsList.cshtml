@@ -1,0 +1,97 @@
+﻿@model IEnumerable<FloorballTrainingSessions.Trainings>
+
+
+<div id="traininglist">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+<table id="traininglist" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeetDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SigningLimitDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishTraining)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishExcersises)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeasonParts.SeasonPartName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seasons.SeasonName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teams.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingFocuses.TrainingFocusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingSchemeModels.TrainingSchemeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MeetDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SigningLimitDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishTraining)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishExcersises)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeasonParts.SeasonPartName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seasons.SeasonName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teams.TeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingFocuses.TrainingFocusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingLocations.TrainingLocationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingSchemeModels.TrainingSchemeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+</div>

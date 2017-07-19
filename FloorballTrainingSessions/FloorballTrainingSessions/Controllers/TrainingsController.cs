@@ -21,13 +21,33 @@ namespace FloorballTrainingSessions
         //}
 
         // GET: Trainings
-        public ActionResult Index(int? season, int? team)
+        public ActionResult Index(int season, int team, int? seasonpart, int? trainingfocus)
         {
             var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
-            trainings.Where(t => (t.Season == season && t.Team == team));
+            trainings = trainings.Where(t => (t.Season == season));
+            trainings = trainings.Where(t => t.Team == team);
+            if (seasonpart != null)
+            {
+                trainings = trainings.Where( t=>t.SeasonPart >= seasonpart); 
+            }
+            if (trainingfocus != null)
+            {
+                trainings = trainings.Where(t => t.TrainingFocus >= trainingfocus);
+            }
+
             return View(trainings.ToList());
         }
 
+        public ActionResult List()
+        {
+            var trainings = db.Trainings;
+            return View(trainings.ToList());
+        }
+        public PartialViewResult GetTrainings(int seasonpart)
+        {
+            var trainings = db.Trainings;
+           return PartialView("_TrainingsList", trainings.ToList());
+        }
         // GET: Trainings/Details/5
         public ActionResult Details(int? id)
         {

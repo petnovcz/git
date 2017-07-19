@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TrainingDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TrainingDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TrainingDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
                 @Html.ValidationMessageFor(model => model.TrainingDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MeetDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MeetDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MeetDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
                 @Html.ValidationMessageFor(model => model.MeetDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SigningLimitDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SigningLimitDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.SigningLimitDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
                 @Html.ValidationMessageFor(model => model.SigningLimitDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -130,5 +130,24 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+   <script>
+
+        $(document).ready(function ()
+        {
+            $(".datepicker").datetimepicker(
+                {
+                    defaultDate: '',
+                    showTodayButton: true,
+                    format: 'D.M.YYYY HH:mm',
+                    showClose: true,
+                    showClear: true,
+                    toolbarPlacement: 'top',
+                    stepping: 15
+                });
+
+        });
+
+
+
+</script>
 }

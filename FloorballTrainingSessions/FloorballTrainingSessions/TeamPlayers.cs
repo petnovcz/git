@@ -11,9 +11,6 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
     
     public partial class TeamPlayers
     {
@@ -22,7 +19,7 @@ namespace FloorballTrainingSessions
         public int Player { get; set; }
         public int PlayerFunction { get; set; }
         public int Season { get; set; }
-
+    
         public virtual PlayerFunctions PlayerFunctions { get; set; }
         public virtual Players Players { get; set; }
         public virtual Seasons Seasons { get; set; }

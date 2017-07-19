@@ -3,7 +3,7 @@
     ViewBag.Title = "Administrace";
 }
 
-<div class="well well-lg">
+<div class="well">
     <div style="float:right;">@foreach (var item in Model.Seasons)
     {
         if (Model.ActiveSeason == item.Id)
@@ -16,7 +16,7 @@
         }
     }</div>
     <h1>Administrace</h1>
-    <p class="lead">Nastavení jednotlivých prvků aplikace správy tréninků.</p>
+    
     
    
 </div>
@@ -69,14 +69,27 @@
 
     <div class="col-md-4  col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Sezóní nastavení</div>
-            
-        </div>
+            <div class="panel-heading">Přehled tréninků</div>
+            <div class="panel-body">
+                @foreach (var item in Model.Teamplayers)
+                {
+                    @Html.ActionLink(item.Teams.TeamName, "Index", "Trainings", new { team = item.Team, season = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
+                }
+                @Html.ActionLink("Vytvoření tréninku", "Create", "Trainings", null, new { @class = "btn btn-primary btn-block" })
+                @Html.ActionLink("Přehled tréninků", "Index", "Trainings", null, new { @class = "btn btn-primary btn-block" })
+            </div>
+            </div>
     </div>
     <div class="col-md-4  col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Cvičení</div>
-            
+            <div class="panel-heading">Tréninkový plán</div>
+            <div class="panel-body">
+                @foreach (var item in Model.Teamplayers)
+                {
+                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-block" });
+                }
+                
+            </div>
         </div>
     </div>
 

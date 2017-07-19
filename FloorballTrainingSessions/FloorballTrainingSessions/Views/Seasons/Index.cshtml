@@ -4,14 +4,12 @@
     ViewBag.Title = "Nastavení sezón";
 }
 
-<div class="jumbotron">
+<div class="well">
     <h1>Nastavení sezón</h1>
-    <p class="lead">Seznam vytvořených sezón v databázi. Nastavení aktivní sezóny určuje standardní náhledy na data.</p>
-
 </div>
 
 <p>
-    @Html.ActionLink("Nová sezóna", "Create", "Seasons", null, new { @class = "btn btn-success btn-md" })
+    @Html.ActionLink("Vytvoření nové sezóny", "Create", "Seasons", null, new { @class = "btn btn-success btn-md" })
     @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
 </p>
 <div class="well well-lg">

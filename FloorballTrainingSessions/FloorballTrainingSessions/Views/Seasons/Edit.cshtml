@@ -4,10 +4,8 @@
     ViewBag.Title = "Edit";
 }
 
-<div class="jumbotron">
-    <h1>Editace sezóny</h1>
-    <p class="lead">Formulář pro editaci sezóny v databázi. Nastavení aktivní sezóny určuje standardní náhledy na data.</p>
-
+<div class="well">
+    <h1>Nastavení sezón</h1>
 </div>
 
 
@@ -17,7 +15,7 @@
     @Html.AntiForgeryToken()
     <div class="well well-lg">
         <div class="form-horizontal">
-            <h4>Seasons</h4>
+            <h4>Editace sezóny</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)

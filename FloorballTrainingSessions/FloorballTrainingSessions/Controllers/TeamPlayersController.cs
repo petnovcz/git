@@ -53,6 +53,10 @@ namespace FloorballTrainingSessions
             ViewBag.Player = new SelectList(db.Players, "Id", "Name");
             ViewBag.Season = SelectedSeason;
             ViewBag.Team = SelectedTeam;
+            var team = db.Teams.Where(t => t.Id == SelectedTeam).FirstOrDefault();
+            ViewBag.SelectedTeamName = team.TeamName;
+            var season = db.Seasons.Where(t => t.Id == SelectedSeason).FirstOrDefault();
+            ViewBag.SelectedSeasonName = season.SeasonName;
             return View();
         }
 
@@ -122,6 +126,10 @@ namespace FloorballTrainingSessions
             ViewBag.Player = new SelectList(db.Players, "Id", "Name", teamPlayers.Player);
             ViewBag.Season = SelectedSeason;
             ViewBag.Team = SelectedTeam;
+            var team = db.Teams.Where(t => t.Id == SelectedTeam).FirstOrDefault();
+            ViewBag.SelectedTeamName = team.TeamName;
+            var season = db.Seasons.Where(t => t.Id == SelectedSeason).FirstOrDefault();
+            ViewBag.SelectedSeasonName = season.SeasonName;
             return View(teamPlayers);
         }
 
@@ -148,13 +156,19 @@ namespace FloorballTrainingSessions
         }
 
         // GET: TeamPlayers/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int SelectedTeam, int SelectedSeason)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             TeamPlayers teamPlayers = db.TeamPlayers.Find(id);
+            ViewBag.Season = SelectedSeason;
+            ViewBag.Team = SelectedTeam;
+            var team = db.Teams.Where(t => t.Id == SelectedTeam).FirstOrDefault();
+            ViewBag.SelectedTeamName = team.TeamName;
+            var season = db.Seasons.Where(t => t.Id == SelectedSeason).FirstOrDefault();
+            ViewBag.SelectedSeasonName = season.SeasonName;
             if (teamPlayers == null)
             {
                 return HttpNotFound();

@@ -4,9 +4,9 @@
     ViewBag.Title = "Create";
 }
 
-<div class="jumbotron">
-    <h1>Nastavení funkcí členů týmů</h1>
-    <p class="lead">Vytvoření nové funkce členů týmů.</p>
+<div class="well">
+    <h1>Nastavení funkcí</h1>
+    
 </div>
 
 
@@ -15,7 +15,7 @@
     @Html.AntiForgeryToken()
 <div class="well well-lg">    
     <div class="form-horizontal">
-        <h4>PlayerFunctions</h4>
+        <h4>Vytvoření nové funkce člena týmu</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         

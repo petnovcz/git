@@ -4,9 +4,8 @@
     ViewBag.Title = "Edit";
 }
 
-<div class="jumbotron">
-    <h1>Nastavení Týmů</h1>
-    <p class="lead">Editace nastavení týmu.</p>
+<div class="well">
+    <h1>Nastavení týmů</h1>
 </div>
 
 
@@ -15,7 +14,7 @@
     @Html.AntiForgeryToken()
 <div class="well well-lg">    
     <div class="form-horizontal">
-        <h4>Nastavení týmů</h4>
+        <h4>Editace týmu</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

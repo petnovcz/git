@@ -4,11 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<div class="well well-lg">
-    <p class="lead">Nastavení členů k týmu: @Html.Raw(ViewBag.SelectedTeamName)
-        , v sezóně: @Html.Raw(ViewBag.SelectedSeasonName).</p>
-
-
+<div class="well">
+    <h1>Nastavení členů týmu</h1>
+    <p>Tým:<b> @Html.Raw(ViewBag.SelectedTeamName)</b></p>
+    <p>Sezóna:<b> @Html.Raw(ViewBag.SelectedSeasonName)</b></p>
 </div>
 
 <p>

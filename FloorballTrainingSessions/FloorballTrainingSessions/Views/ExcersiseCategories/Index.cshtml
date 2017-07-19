@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<div class="jumbotron">
-    <h1>Nastavení kategorie cvičení</h1>
-    <p class="lead">Nastavení kategorie svičení</p>
+<div class="well">
+    <h1>Kategorie cvičení</h1>
+    
 </div>
 
 <p>
-    @Html.ActionLink("Create New", "Create", "ExcersiseCategories", null, new { @class = "btn btn-success btn-md" })
+    @Html.ActionLink("Vytvoř kategorii cvičení", "Create", "ExcersiseCategories", null, new { @class = "btn btn-success btn-md" })
     @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
 </p>
 <div class="well well-lg">

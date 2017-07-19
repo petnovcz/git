@@ -4,13 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<div class="jumbotron">
-    <h1>Nastavení členů a přiřazení účtů</h1>
-    <p class="lead">Nastavení členů týmů a přiřazení uživatelských účtů</p>
+<div class="well">
+    <h1>Nastavení členů a přiřazení účtů</h1>  
 </div>
 
 <p>
-    @Html.ActionLink("Nový", "Create", "Players", null, new { @class = "btn btn-success btn-md" })
+    @Html.ActionLink("Vytvoření nového člena", "Create", "Players", null, new { @class = "btn btn-success btn-md" })
     @Html.ActionLink("Zpět do administrace", "Index", "Admin", null, new { @class = "btn btn-info btn-md" })
 </p>
 <table class="table">

@@ -30,7 +30,7 @@
             @Html.DisplayFor(modelItem => item.SeasonParts.SeasonPartName)
         </td>
         <td>
-            @foreach (var itemx in item.TrainingSchemePartModels)
+            @foreach (var itemx in item.TrainingSchemePartModels) 
             {
                 @Html.DisplayFor(modelItem => itemx.ExcersiseCategories.ExcersiseCategoryName)<br>
             }

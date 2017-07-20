@@ -17,23 +17,24 @@
         int seasonpart = 0; int traininglocation = 0; int trainingfocus = 0; int trainingschememodel = 0;
         int selectedteam = ViewBag.selectedteam;
         int selectedseason = ViewBag.selectedseason;
-        <div class="form-inline" style="overflow:hidden">
+        <div class="form-inline" style="display:block;overflow: visible !important; position: relative">
         <div class="form-group col-lg-3 col-md-3">
            
-            @Html.DropDownList("traininglocation", null, htmlAttributes: new { onchange = "$(this.form).submit();",  @class = "form-control col-md-3", @style = "width:100%" })
+            @Html.DropDownList("traininglocation", null, htmlAttributes: new { onchange = "$(this.form).submit();",  @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
          </div>
          <div class="form-group col-lg-3 col-md-3">
                 
-                @Html.DropDownList("seasonpart", null, htmlAttributes: new { onchange = "$(this.form).submit();",  @class = "form-control col-md-3" , @style = "width:100%" })
+                @Html.DropDownList("seasonpart", null, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
           </div>
           <div class="form-group col-lg-3 col-md-3">
                
-                @Html.DropDownList("trainingfocus", null, htmlAttributes: new { onchange = "$(this.form).submit();",   @class = "form-control col-md-3", @style = "width:100%" })
+                @Html.DropDownList("trainingfocus", null, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
           </div>
           <div class="form-group col-lg-3 col-md-3">
                        
-                        @Html.DropDownList("trainingschememodel", null, htmlAttributes: new { onchange = "$(this.form).submit();",   @class = "form-control col-md-3", @style = "width:100%" })
+                        @Html.DropDownList("trainingschememodel", null, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
            </div>
+           
             </div>
 
                     @Html.HiddenFor(x => selectedteam, new { @Value = ViewBag.selectedteam })
@@ -45,9 +46,21 @@
                     <div id="loader" class=" aletr" style="display:none">
                        @* <center><img src="~/Images/ajax-loader.gif" /></center>*@
     </div>
+    <div class="col-md-12" style="display:inline-block;margin-top:10px">
+    
+        
+    @Html.ActionLink("Vytvoř nový trénink", "Create", "Trainings", new { SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-success btn-xs btn-block" })
+    </div>
     @Html.Partial("_TrainingsList") @* this is view with patient table. Same view you will return from controller *@
 
                     @section Scripts {
 
-                        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-                    }
+                        
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+
+<script type="text/javascript" src="~/Scripts/bootstrap-select.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap-select.css" />
+
+}
+                   

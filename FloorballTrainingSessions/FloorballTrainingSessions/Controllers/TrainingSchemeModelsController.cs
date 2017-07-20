@@ -17,6 +17,7 @@ namespace FloorballTrainingSessions
         public ActionResult Index()
         {
             var trainingSchemeModels = db.TrainingSchemeModels.Include(t => t.SeasonParts);
+            
             return View(trainingSchemeModels.ToList());
         }
 

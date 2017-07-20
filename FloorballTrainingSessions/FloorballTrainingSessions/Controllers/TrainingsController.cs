@@ -110,14 +110,18 @@ namespace FloorballTrainingSessions
         }
 
         // GET: Trainings/Create
-        public ActionResult Create()
+        public ActionResult Create(int selectedseason, int selectedteam)
         {
             ViewBag.SeasonPart = new SelectList(db.SeasonParts, "Id", "SeasonPartName");
             ViewBag.Season = new SelectList(db.Seasons, "Id", "SeasonName");
             ViewBag.Team = new SelectList(db.Teams, "Id", "TeamName");
             ViewBag.TrainingFocus = new SelectList(db.TrainingFocuses, "Id", "TrainingFocusName");
+            
             ViewBag.TrainingLocation = new SelectList(db.TrainingLocations, "Id", "TrainingLocationName");
             ViewBag.TrainingSchemeModel = new SelectList(db.TrainingSchemeModels, "Id", "TrainingSchemeName");
+            ViewBag.SelectedSeason = selectedseason;
+            ViewBag.SelectedTeam = selectedteam;
+            
             return View();
         }
 
@@ -130,9 +134,11 @@ namespace FloorballTrainingSessions
         {
             if (ModelState.IsValid)
             {
+                int SeasonId = trainings.Season;
+                int TeamId = trainings.Team;
                 db.Trainings.Add(trainings);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List", new { selectedseason = SeasonId, selectedteam = TeamId });
             }
 
             ViewBag.SeasonPart = new SelectList(db.SeasonParts, "Id", "SeasonPartName", trainings.SeasonPart);
@@ -145,7 +151,7 @@ namespace FloorballTrainingSessions
         }
 
         // GET: Trainings/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int selectedseason, int selectedteam)
         {
             if (id == null)
             {
@@ -162,6 +168,8 @@ namespace FloorballTrainingSessions
             ViewBag.TrainingFocus = new SelectList(db.TrainingFocuses, "Id", "TrainingFocusName", trainings.TrainingFocus);
             ViewBag.TrainingLocation = new SelectList(db.TrainingLocations, "Id", "TrainingLocationName", trainings.TrainingLocation);
             ViewBag.TrainingSchemeModel = new SelectList(db.TrainingSchemeModels, "Id", "TrainingSchemeName", trainings.TrainingSchemeModel);
+            ViewBag.SelectedSeason = selectedseason;
+            ViewBag.SelectedTeam = selectedteam;
             return View(trainings);
         }
 
@@ -174,9 +182,11 @@ namespace FloorballTrainingSessions
         {
             if (ModelState.IsValid)
             {
+                int SeasonId = trainings.Season;
+                int TeamId = trainings.Team;
                 db.Entry(trainings).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List", new { selectedseason = SeasonId, selectedteam = TeamId });
             }
             ViewBag.SeasonPart = new SelectList(db.SeasonParts, "Id", "SeasonPartName", trainings.SeasonPart);
             ViewBag.Season = new SelectList(db.Seasons, "Id", "SeasonName", trainings.Season);
@@ -188,7 +198,7 @@ namespace FloorballTrainingSessions
         }
 
         // GET: Trainings/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int selectedseason, int selectedteam)
         {
             if (id == null)
             {
@@ -199,6 +209,8 @@ namespace FloorballTrainingSessions
             {
                 return HttpNotFound();
             }
+            ViewBag.SelectedSeason = selectedseason;
+            ViewBag.SelectedTeam = selectedteam;
             return View(trainings);
         }
 
@@ -208,9 +220,11 @@ namespace FloorballTrainingSessions
         public ActionResult DeleteConfirmed(int id)
         {
             Trainings trainings = db.Trainings.Find(id);
+            int SeasonId = trainings.Season;
+            int TeamId = trainings.Team;
             db.Trainings.Remove(trainings);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("List", new { selectedseason = SeasonId, selectedteam = TeamId });
         }
 
         protected override void Dispose(bool disposing)

@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<FloorballTrainingSessions.Trainings>
 
 
-<div id="traininglist">
+<div id="traininglist" style="display:inline-block">
     <p></p>
-    <p>
-        @Html.ActionLink("Vytvoř nový trénink", "Create", "Trainings", new { SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-success btn-xs btn-block" })
-    </p>
+    
     <div>
         @foreach (var item in Model)
         {
@@ -16,27 +14,27 @@
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">Místo tréninku</div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">@Html.DisplayFor(modelItem => item.TrainingLocations.TrainingLocationName)</div>
                     <div class="col-lg-1 col-lg-2 col-sm-12 col-xs-12 text-right">
-                        <div class="col-md-12">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</div>
-                        <div class="col-md-12">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</div>
+                        @Html.ActionLink(" ", "Edit", new { id = item.Id, selectedseason = item.Season, selectedteam = item.Team }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-edit" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.Id, selectedseason = item.Season, selectedteam = item.Team }, new { @class = "btn btn-danger btn-xs glyphicon glyphicon-trash" })
 
                     </div>
                 </div>
                 <div class="panel-body row">
                     <div class="row">
-                        <div class="pcol-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
                             <div class="col-md-6 col-sm-6 ">Datum srazu</div><div class="col-md-6 col-sm-6 ">@Html.DisplayFor(modelItem => item.MeetDate)</div>
                             <div class="col-md-6 col-sm-6 ">Datum nahlášení</div><div class="col-md-6 col-sm-6 ">@Html.DisplayFor(modelItem => item.SigningLimitDate)</div>
 
                         </div>
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                        <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12">
                             <div class="col-md-6  col-sm-6">Část sezóny</div><div class="col-md-6 col-sm-6">@Html.DisplayFor(modelItem => item.SeasonParts.SeasonPartName)</div>
                             <div class="col-md-6  col-sm-6">Zaměření tréninku</div><div class="col-md-6 col-sm-6">@Html.DisplayFor(modelItem => item.TrainingFocuses.TrainingFocusName)</div>
                             <div class="col-md-6 col-sm-6">Schéma tréninku</div><div class="col-md-6 col-sm-6">@Html.DisplayFor(modelItem => item.TrainingSchemeModels.TrainingSchemeName)</div>
                         </div>
-                        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
-                            <div class="col-md-12">Trénink <span class="glyphicon glyphicon-eye-open"></span></div>
-                            <div class="col-md-12">@Html.DisplayFor(modelItem => item.PublishTraining)</div>
-                            <div class="col-md-12">Cvičení <span class="glyphicon glyphicon-eye-open"></span></div>
+                        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                            <div class="col-md-6">Trénink <span class="glyphicon glyphicon-eye-open"></span></div>
+                            <div class="col-md-6">@Html.DisplayFor(modelItem => item.PublishTraining)</div>
+                            <div class="col-md-6">Cvičení <span class="glyphicon glyphicon-eye-open"></span></div>
                             <div class="col-md-6">@Html.DisplayFor(modelItem => item.PublishExcersises)</div>
 
                         </div>

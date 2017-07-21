@@ -3,44 +3,51 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="row well well-sm">
+    <h1>Nastavení tréninkových schémat</h1>
+</div>
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(" ", "Create", "TrainingSchemeModels", null, new { @class= "btn btn-success btn-sm glyphicon glyphicon-plus" })
+    @Html.ActionLink(" ", "Index", "Admin", null, new { @class = "btn btn-info btn-sm glyphicon glyphicon-home" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TrainingSchemeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeasonParts.SeasonPartName)
-        </th>
-        <th></th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainingSchemeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeasonParts.SeasonPartName)
-        </td>
-        <td>
-            @foreach (var itemx in item.TrainingSchemePartModels) 
+<div class="table-responsive">
+    <table class="table table-hover table-condensed">
+        <colgroup>
+            <col class="col-md-5" />
+            <col class="col-md-5" />
+            <col class="col-md-2" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TrainingSchemeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SeasonParts.SeasonPartName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
             {
-                @Html.DisplayFor(modelItem => itemx.ExcersiseCategories.ExcersiseCategoryName)<br>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrainingSchemeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SeasonParts.SeasonPartName)
+                    </td>
+                    
+                    <td>
+                        @Html.ActionLink(" ", "Edit", "TrainingSchemeModels", new { id = item.Id }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" }) 
+                        @Html.ActionLink(" ", "Details", "TrainingSchemeModels", new { id = item.Id }, new { @class = "btn btn-info btn-sm glyphicon glyphicon-cog" }) 
+                        @Html.ActionLink(" ", "Delete", "TrainingSchemeModels", new { id = item.Id }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash" })
+                    </td>
+                </tr>
             }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+        </tbody>
+    </table>
+</div>

@@ -4,11 +4,20 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="row well well-sm">
+    <h1>Nastavení tréninkových schémat</h1>
+</div>
 
-<div>
-    <h4>TrainingSchemeModels</h4>
-    <hr />
+
+
+
+<div class="row well well-sm">
+    <div class="col-md-10" style="display:block;float:left"><h4>TrainingSchemeModels</h4></div><div class ="col-md-2" style="display:block;float:right">
+    @Html.ActionLink(" ", "Edit","TrainingSchemeModels", new { id = Model.Id }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" }) 
+    @Html.ActionLink(" ", "Index", "TrainingSchemeModels",null, new { @class = "btn btn-info btn-sm glyphicon glyphicon-th-list" })</div>
+    
+    <div class="col-md-12" style="display:inline-block;">
+        <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.TrainingSchemeName)
@@ -26,9 +35,43 @@
             @Html.DisplayFor(model => model.SeasonParts.SeasonPartName)
         </dd>
 
-    </dl>
+    </dl></div>
 </div>
+
+<div class="table-responsive">
+<table class="table table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.TrainingSchemePartModels.First().ExcersiseCategories.ExcersiseCategoryName)</th>
+            <th>@Html.DisplayNameFor(model => model.TrainingSchemePartModels.First().PartLength)</th>
+            <th>@Html.DisplayNameFor(model => model.TrainingSchemePartModels.First().NumberOfExcersises)</th>
+            <th>@Html.DisplayNameFor(model => model.TrainingSchemePartModels.First().Series)</th>
+            <th>@Html.DisplayNameFor(model => model.TrainingSchemePartModels.First().SeriesLength)</th>
+            <th>@Html.DisplayNameFor(model => model.TrainingSchemePartModels.First().RestBetweenSeries)</th>
+            <th>@Html.DisplayNameFor(model => model.TrainingSchemePartModels.First().RestBetweenExcersises)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TrainingSchemePartModels)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ExcersiseCategories.ExcersiseCategoryName)</td>
+                <td>@Html.DisplayFor(modelItem => item.PartLength)</td>
+                <td>@Html.DisplayFor(modelItem => item.NumberOfExcersises)</td>
+                <td>@Html.DisplayFor(modelItem => item.Series)</td>
+                <td>@Html.DisplayFor(modelItem => item.SeriesLength)</td>
+                <td>@Html.DisplayFor(modelItem => item.RestBetweenSeries)</td>
+                <td>@Html.DisplayFor(modelItem => item.RestBetweenExcersises)</td>
+                <td>@Html.ActionLink(" ", "Edit","TrainingSchemePartModels", new { id = item.Id }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-edit" }) 
+                @Html.ActionLink(" ", "Delete", "TrainingSchemePartModels", new { id = item.Id }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash" })</td>
+           </tr>
+        }
+    </tbody>
+</table>
+    
+</div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(" ", "Create", "TrainingSchemePartModels", new { TrainingSchemeModel = Model.Id }, new { @class = "btn btn-success btn-sm glyphicon glyphicon-plus btn-block" })
 </p>

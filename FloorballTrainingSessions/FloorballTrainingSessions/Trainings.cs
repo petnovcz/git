@@ -35,8 +35,7 @@ namespace FloorballTrainingSessions
         public double TrainingLength { get; set; }
         public bool PublishTraining { get; set; }
         public bool PublishExcersises { get; set; }
-        [NotMapped]
-        public int Excersisecount { get; set; }
+        
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlayerSigningToTrainings> PlayerSigningToTrainings { get; set; }
@@ -48,5 +47,7 @@ namespace FloorballTrainingSessions
         public virtual TrainingFocuses TrainingFocuses { get; set; }
         public virtual TrainingLocations TrainingLocations { get; set; }
         public virtual TrainingSchemeModels TrainingSchemeModels { get; set; }
+        [NotMapped]
+        public int Excersisecount { get { return this.TrainingExcersises.Count; } }
     }
 }

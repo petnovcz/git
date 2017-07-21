@@ -4,46 +4,57 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div class="row well well-sm">
+    <h1>Tréninková schémata</h1>
+</div>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>TrainingSchemeModels</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+    <div class="well well-sm">
+        <div class="form-horizontal">
+            <h4>Nové tréninkové schéma</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TrainingSchemeName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TrainingSchemeName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TrainingSchemeName, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TrainingSchemeName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TrainingSchemeName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TrainingSchemeName, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SeasonPart, "SeasonPart", htmlAttributes: new { @class = "control-label col-md-2" })
-            
-            <div class="col-md-10">
-                @Html.DropDownList("SeasonPart", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SeasonPart, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.SeasonPart, "SeasonPart", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    @Html.DropDownList("SeasonPart", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SeasonPart, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-plus "></span>
+                        <span class="submit-text"></span>
+                    </button>
+                    
+                   
+                    @Html.ActionLink(" ", "Index", "TrainingSchemeModels", null, new { @class = "btn btn-primary btn-sm glyphicon glyphicon-th-list" })
+                    @Html.ActionLink(" ", "Index", "Admin", new { seasonId = ViewBag.SelectedSeason }, new { @class = "btn btn-info btn-sm glyphicon glyphicon-home" })
+                </div>
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    
 </div>
 
 @section Scripts {

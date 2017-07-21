@@ -37,10 +37,11 @@ namespace FloorballTrainingSessions.Views
         }
 
         // GET: TrainingSchemePartModels/Create
-        public ActionResult Create()
+        public ActionResult Create(int TrainingSchemeModel)
         {
             ViewBag.ExcersiseCategory = new SelectList(db.ExcersiseCategories, "Id", "ExcersiseCategoryName");
             ViewBag.TrainingSchemeModel = new SelectList(db.TrainingSchemeModels, "Id", "TrainingSchemeName");
+            ViewBag.TrainingSchemeModel = TrainingSchemeModel;
             return View();
         }
 
@@ -53,9 +54,10 @@ namespace FloorballTrainingSessions.Views
         {
             if (ModelState.IsValid)
             {
+                int trainingschememodel = trainingSchemePartModels.TrainingSchemeModel;
                 db.TrainingSchemePartModels.Add(trainingSchemePartModels);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "TrainingSchemeModels", new { Id = trainingschememodel });
             }
 
             ViewBag.ExcersiseCategory = new SelectList(db.ExcersiseCategories, "Id", "ExcersiseCategoryName", trainingSchemePartModels.ExcersiseCategory);
@@ -77,6 +79,8 @@ namespace FloorballTrainingSessions.Views
             }
             ViewBag.ExcersiseCategory = new SelectList(db.ExcersiseCategories, "Id", "ExcersiseCategoryName", trainingSchemePartModels.ExcersiseCategory);
             ViewBag.TrainingSchemeModel = new SelectList(db.TrainingSchemeModels, "Id", "TrainingSchemeName", trainingSchemePartModels.TrainingSchemeModel);
+            int TrainingSchemeModel = trainingSchemePartModels.TrainingSchemeModel;
+            ViewBag.TrainingSchemeModel = TrainingSchemeModel;
             return View(trainingSchemePartModels);
         }
 
@@ -89,9 +93,10 @@ namespace FloorballTrainingSessions.Views
         {
             if (ModelState.IsValid)
             {
+                int trainingschememodel = trainingSchemePartModels.TrainingSchemeModel;
                 db.Entry(trainingSchemePartModels).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details","TrainingSchemeModels", new { Id = trainingschememodel});
             }
             ViewBag.ExcersiseCategory = new SelectList(db.ExcersiseCategories, "Id", "ExcersiseCategoryName", trainingSchemePartModels.ExcersiseCategory);
             ViewBag.TrainingSchemeModel = new SelectList(db.TrainingSchemeModels, "Id", "TrainingSchemeName", trainingSchemePartModels.TrainingSchemeModel);
@@ -106,6 +111,7 @@ namespace FloorballTrainingSessions.Views
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             TrainingSchemePartModels trainingSchemePartModels = db.TrainingSchemePartModels.Find(id);
+            ViewBag.trainingschememodels = trainingSchemePartModels.TrainingSchemeModel;
             if (trainingSchemePartModels == null)
             {
                 return HttpNotFound();
@@ -119,9 +125,10 @@ namespace FloorballTrainingSessions.Views
         public ActionResult DeleteConfirmed(int id)
         {
             TrainingSchemePartModels trainingSchemePartModels = db.TrainingSchemePartModels.Find(id);
+            int trainingschememodels = trainingSchemePartModels.TrainingSchemeModel;
             db.TrainingSchemePartModels.Remove(trainingSchemePartModels);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "TrainingSchemeModels", new { Id = trainingschememodels});
         }
 
         protected override void Dispose(bool disposing)

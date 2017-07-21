@@ -11,6 +11,7 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class TrainingSchemePartModels
     {
@@ -23,6 +24,7 @@ namespace FloorballTrainingSessions
         public int Id { get; set; }
         public int TrainingSchemeModel { get; set; }
         public int ExcersiseCategory { get; set; }
+        [Required]
         public string PartLength { get; set; }
         public Nullable<int> NumberOfExcersises { get; set; }
         public Nullable<int> Series { get; set; }

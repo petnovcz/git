@@ -27,15 +27,16 @@ namespace FloorballTrainingSessions
         public int dayinweek { get; set; }
         public int SeasonPart { get; set; }
         public int TrainingLocation { get; set; }
-        public int TrainingFocus { get; set; }
-        public int TrainingSchemeModel { get; set; }
-        public int TrainingLength { get; set; }
+        public int? TrainingFocus { get; set; }
+        public int? TrainingSchemeModel { get; set; }
+        public double TrainingLength { get; set; }
         public int Weekday { get; set; }
         public int SigningLimitDaysAhead { get; set; }
         public DateTime TrainingTime { get; set; }
         public DateTime SigningTime { get; set; }
         public DateTime MeetTime { get; set; }
 
+        
 
 
     }

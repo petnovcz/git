@@ -15,8 +15,16 @@
         <hr />
         
 
+        @Html.HiddenFor(model => model.CurrentUser, new { @Value = ViewBag.CurrentUser })
+        @Html.HiddenFor(model => model.CurrentPlayerName, new { @Value = ViewBag.CurrentPlayer })
+        @Html.HiddenFor(model => model.CurrentPlayer, new { @Value = ViewBag.CurrentPlayer })
         @Html.HiddenFor(model => model.SelectedTeam, new { @Value = ViewBag.SelectedTeam })
         @Html.HiddenFor(model => model.SelectedSeason, new { @Value = ViewBag.SelectedSeason })
+        @Html.HiddenFor(model => model.SelectedSeasonName, new { @Value = ViewBag.SelectedSeason })
+        @Html.HiddenFor(model => model.SelectedTeamName, new { @Value = ViewBag.SelectedTeam })
+        @Html.HiddenFor(model => model.TrainingSchemeModel)
+        @Html.HiddenFor(model => model.TrainingFocus)
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.DateFrom, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -36,39 +44,27 @@
             @Html.LabelFor(model => model.SeasonPart, "SeasonPart", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("SeasonPart", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SeasonPart, "", new { @class = "text-danger" })
+                
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.dayinweek, "DayInWeek", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("DayInWeek", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.dayinweek, "", new { @class = "text-danger" })
+                
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.TrainingLocation, "TrainingLocation", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("TrainingLocation", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TrainingLocation, "", new { @class = "text-danger" })
+                
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TrainingFocus, "TrainingFocus", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("TrainingFocus", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TrainingFocus, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TrainingSchemeModel, "TrainingSchemeModel", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("TrainingSchemeModel", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TrainingSchemeModel, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
         <div class="form-group">
             @Html.LabelFor(model => model.TrainingLength, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -79,9 +75,9 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.TrainingLength, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SigningLimitDaysAhead, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TrainingLength, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.SigningLimitDaysAhead, new { htmlAttributes = new { @class = "form-control" } })
 
 
             </div>

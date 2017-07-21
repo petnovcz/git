@@ -11,8 +11,7 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Trainings
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,20 +22,14 @@ namespace FloorballTrainingSessions
         }
     
         public int Id { get; set; }
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm}", ApplyFormatInEditMode = true)]
-        public DateTime TrainingDate { get; set; }
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm}", ApplyFormatInEditMode = true)]
-        public DateTime MeetDate { get; set; }
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm}", ApplyFormatInEditMode = true)]
-        public DateTime SigningLimitDate { get; set; }
+        public System.DateTime TrainingDate { get; set; }
+        public System.DateTime MeetDate { get; set; }
+        public System.DateTime SigningLimitDate { get; set; }
         public int TrainingLocation { get; set; }
         public int Team { get; set; }
         public int Season { get; set; }
         public int SeasonPart { get; set; }
-        public int TrainingFocus { get; set; }
+        public Nullable<int> TrainingFocus { get; set; }
         public Nullable<int> TrainingSchemeModel { get; set; }
         public double TrainingLength { get; set; }
         public bool PublishTraining { get; set; }

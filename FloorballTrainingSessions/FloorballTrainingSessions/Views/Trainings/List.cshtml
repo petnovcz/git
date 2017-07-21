@@ -34,6 +34,10 @@
                        
                         @Html.DropDownList("trainingschememodel", null, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
            </div>
+            <div class="form-group col-lg-3 col-md-3">
+                @Html.CheckBox("PublishTraining", true, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "form-control" })
+                @Html.CheckBox("PublishExcersise", true, htmlAttributes: new { onchange = "$(this.form).submit();",  @class = "form-control" })
+            </div>
            
             </div>
 

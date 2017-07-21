@@ -154,7 +154,7 @@
           <Property Name="Team" Type="int" Nullable="false" />
           <Property Name="Season" Type="int" Nullable="false" />
           <Property Name="SeasonPart" Type="int" Nullable="false" />
-          <Property Name="TrainingFocus" Type="int" Nullable="false" />
+          <Property Name="TrainingFocus" Type="int" />
           <Property Name="TrainingSchemeModel" Type="int" />
           <Property Name="TrainingLength" Type="float" Nullable="false" />
           <Property Name="PublishTraining" Type="bit" Nullable="false" />
@@ -423,7 +423,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Trainings_ToTraningFocuses">
-          <End Role="TrainingFocuses" Type="Self.TrainingFocuses" Multiplicity="1" />
+          <End Role="TrainingFocuses" Type="Self.TrainingFocuses" Multiplicity="0..1" />
           <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TrainingFocuses">
@@ -773,7 +773,7 @@
           <Property Name="Team" Type="Int32" Nullable="false" />
           <Property Name="Season" Type="Int32" Nullable="false" />
           <Property Name="SeasonPart" Type="Int32" Nullable="false" />
-          <Property Name="TrainingFocus" Type="Int32" Nullable="false" />
+          <Property Name="TrainingFocus" Type="Int32" />
           <Property Name="TrainingSchemeModel" Type="Int32" />
           <Property Name="TrainingLength" Type="Double" Nullable="false" />
           <Property Name="PublishTraining" Type="Boolean" Nullable="false" />
@@ -1056,7 +1056,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Trainings_ToTraningFocuses">
-          <End Role="TrainingFocuses" Type="Self.TrainingFocuses" Multiplicity="1" />
+          <End Role="TrainingFocuses" Type="Self.TrainingFocuses" Multiplicity="0..1" />
           <End Role="Trainings" Type="Self.Trainings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TrainingFocuses">

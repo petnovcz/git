@@ -34,7 +34,7 @@ namespace FloorballTrainingSessions
             {
                 trainings = trainings.Where(t => t.TrainingFocus >= trainingfocus);
             }
-
+            trainings.OrderBy(t => t.TrainingDate);
             return View(trainings.ToList());
         }
 
@@ -63,14 +63,15 @@ namespace FloorballTrainingSessions
             var itemsschememodel = db.TrainingSchemeModels.ToList();
             itemsschememodel.Insert(0, new TrainingSchemeModels { Id = 0, TrainingSchemeName = "-- Vyber tréninkové schéma --" });
             ViewBag.trainingschememodel = new SelectList(itemsschememodel, "Id", "TrainingSchemeName");
-
-            return View(trainings.ToList());
+            
+            return View(trainings.Distinct().OrderBy(t => t.TrainingDate).ToList());
         }
         public PartialViewResult GetTrainings(int selectedseason, int selectedteam, int seasonpart, int traininglocation, int trainingfocus, int trainingschememodel)
         {
             var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
             trainings = trainings.Where(t => (t.Season == selectedseason));
             trainings = trainings.Where(t => t.Team == selectedteam);
+            trainings.OrderBy(t => t.TrainingDate);
             if (seasonpart != 0)
             {
                 trainings = trainings.Where(t => t.SeasonPart == seasonpart);
@@ -92,7 +93,8 @@ namespace FloorballTrainingSessions
             // odeslání parametru vybrané sezóny a týmu do view
             ViewBag.selectedseason = selectedseason;
             ViewBag.selectedteam = selectedteam;
-            return PartialView("_TrainingsList", trainings.ToList());
+            
+            return PartialView("_TrainingsList", trainings.Distinct().OrderBy(t => t.TrainingDate).ToList());
         }
         // GET: Trainings/Details/5
         public ActionResult Details(int? id)

@@ -1,0 +1,159 @@
+﻿@model FloorballTrainingSessions.GenerateTrainings
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<h2>Vygenerování tréninků @ViewBag.SelectedSeasonName </h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Excersises</h4>
+        <hr />
+        
+
+        @Html.HiddenFor(model => model.SelectedTeam, new { @Value = ViewBag.SelectedTeam })
+        @Html.HiddenFor(model => model.SelectedSeason, new { @Value = ViewBag.SelectedSeason })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateFrom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateFrom, new { htmlAttributes = new { @class = "form-control datepicker" } })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateTo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateTo, new { htmlAttributes = new { @class = "form-control datepicker" } })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SeasonPart, "SeasonPart", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SeasonPart", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SeasonPart, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.dayinweek, "DayInWeek", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DayInWeek", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.dayinweek, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrainingLocation, "TrainingLocation", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TrainingLocation", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TrainingLocation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrainingFocus, "TrainingFocus", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TrainingFocus", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TrainingFocus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrainingSchemeModel, "TrainingSchemeModel", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TrainingSchemeModel", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TrainingSchemeModel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrainingLength, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TrainingLength, new { htmlAttributes = new { @class = "form-control" } })
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrainingLength, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TrainingLength, new { htmlAttributes = new { @class = "form-control" } })
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrainingTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TrainingTime, new { htmlAttributes = new { @class = "form-control timepicker" } })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MeetTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MeetTime, new { htmlAttributes = new { @class = "form-control timepicker" } })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SigningTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SigningTime, new { htmlAttributes = new { @class = "form-control timepicker" } })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $(".datepicker").datetimepicker(
+                {
+                    defaultDate: '',
+                    showTodayButton: true,
+                    format: 'D.M.YYYY',
+                    showClose: true,
+                    showClear: true,
+                    toolbarPlacement: 'top',
+                    stepping: 15
+                });
+            $(".timepicker").datetimepicker(
+                {
+                    defaultDate: '',
+                    showTodayButton: true,
+                    format: 'HH:mm',
+                    showClose: true,
+                    showClear: true,
+                    toolbarPlacement: 'top',
+                    stepping: 15,
+                    
+                });
+
+        });
+
+
+
+    </script>
+
+
+
+}
+
+

@@ -50,6 +50,7 @@
     
         
     @Html.ActionLink("Vytvoř nový trénink", "Create", "Trainings", new { SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-success btn-xs btn-block" })
+        @Html.ActionLink("Generování tréninků", "Create", "GenerateTrainings", new { selectedteam = ViewBag.SelectedTeam, selectedseason = ViewBag.SelectedSeason }, new { @class = "btn btn-info btn-xs btn-block" })
     </div>
     @Html.Partial("_TrainingsList") @* this is view with patient table. Same view you will return from controller *@
 

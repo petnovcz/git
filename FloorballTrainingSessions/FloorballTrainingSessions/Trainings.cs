@@ -11,7 +11,8 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Trainings
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -34,7 +35,9 @@ namespace FloorballTrainingSessions
         public double TrainingLength { get; set; }
         public bool PublishTraining { get; set; }
         public bool PublishExcersises { get; set; }
-    
+        [NotMapped]
+        public int Excersisecount { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlayerSigningToTrainings> PlayerSigningToTrainings { get; set; }
         public virtual SeasonParts SeasonParts { get; set; }

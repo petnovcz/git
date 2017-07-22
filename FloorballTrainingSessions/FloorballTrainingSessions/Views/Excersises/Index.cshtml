@@ -4,22 +4,32 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row well well-sm">
+    <h1>Cvičení</h1>
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    
+    @Html.ActionLink("Vytvoř nové cvičení", "Create", "Excersises", new { SelectedTeam = ViewBag.SelectedTeam, SelectedSeason = ViewBag.SelectedSeason }, new { @class = "btn btn-success btn-sm" })
 </p>
 <table class="table">
+    <colgroup>
+        <col class="col-md-2" />
+        <col class="col-md-4" />
+        <col class="col-md-2" />
+        <col class="col-md-2" />
+        <col class="col-md-2" />
+    </colgroup>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ExcersiseName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.ShortDescript)
         </th>
+        <th>Kategorie</th>
+        <th>Část sezóny</th>
         <th></th>
     </tr>
 
@@ -28,11 +38,21 @@
         <td>
             @Html.DisplayFor(modelItem => item.ExcersiseName)
         </td>
-        <td>
-            @Html.Raw(item.Description)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.ShortDescript)
+        </td>
+        <td>
+            @foreach (var itemx in item.ExcersiseBelongsToCategory)
+            {
+                @Html.DisplayFor(modelItem => itemx.ExcersiseCategories.ExcersiseCategoryName)<br>
+            }
+        </td>
+        <td>
+            @foreach (var itemx in item.ExcersiseBelongsToSeasonParts)
+            {
+                @Html.DisplayFor(modelItem => itemx.SeasonParts.SeasonPartName)
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

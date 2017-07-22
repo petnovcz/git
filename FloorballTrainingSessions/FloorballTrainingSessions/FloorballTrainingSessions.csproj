@@ -227,6 +227,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\CategoriesListExcersisesLinkedModel.cs" />
     <Compile Include="Models\GenerateTrainingsModel.cs" />
     <Compile Include="Models\MyTrainingsModel.cs" />
     <Compile Include="Models\HomeModels.cs" />
@@ -840,6 +841,10 @@
     <Content Include="Views\Trainings\_TrainingsList.cshtml" />
     <Content Include="Views\Trainings\List.cshtml" />
     <Content Include="Views\GenerateTrainings\Create.cshtml" />
+    <Content Include="Views\TrainingExcersises\ListForTraining.cshtml" />
+    <Content Include="Views\Excersises\_ExcersisesList.cshtml" />
+    <Content Include="Views\Excersises\List.cshtml" />
+    <Content Include="Views\ExcersiseCategories\CategoriesListForExcersises.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

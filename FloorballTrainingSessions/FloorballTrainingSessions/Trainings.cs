@@ -11,10 +11,12 @@ namespace FloorballTrainingSessions
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Trainings
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Trainings()
         {
@@ -23,8 +25,14 @@ namespace FloorballTrainingSessions
         }
     
         public int Id { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
         public System.DateTime TrainingDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:HH:mm}")]
         public System.DateTime MeetDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         public System.DateTime SigningLimitDate { get; set; }
         public int TrainingLocation { get; set; }
         public int Team { get; set; }
@@ -35,8 +43,10 @@ namespace FloorballTrainingSessions
         public double TrainingLength { get; set; }
         public bool PublishTraining { get; set; }
         public bool PublishExcersises { get; set; }
-        
-
+        public bool TrainingClosed { get; set; }
+        public bool TrainingCanceled { get; set; }
+        public bool AttendanceClosed { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlayerSigningToTrainings> PlayerSigningToTrainings { get; set; }
         public virtual SeasonParts SeasonParts { get; set; }
@@ -49,5 +59,10 @@ namespace FloorballTrainingSessions
         public virtual TrainingSchemeModels TrainingSchemeModels { get; set; }
         [NotMapped]
         public int Excersisecount { get { return this.TrainingExcersises.Count; } }
+        [NotMapped]
+        public DayOfWeek DayOfTraining { get {
+                
+
+                return this.TrainingDate.DayOfWeek; } }
     }
 }

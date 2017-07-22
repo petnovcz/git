@@ -132,7 +132,7 @@ namespace FloorballTrainingSessions
         // Další informace viz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TrainingDate,MeetDate,SigningLimitDate,TrainingLocation,Team,Season,SeasonPart,TrainingFocus,TrainingSchemeModel,TrainingLength,PublishTraining,PublishExcersises")] Trainings trainings)
+        public ActionResult Create([Bind(Include = "Id,TrainingDate,MeetDate,SigningLimitDate,TrainingLocation,Team,Season,SeasonPart,TrainingFocus,TrainingSchemeModel,TrainingLength,PublishTraining,PublishExcersises, TrainingClosed, TrainingCanceled, AttendanceClosed")] Trainings trainings)
         {
             if (ModelState.IsValid)
             {
@@ -180,7 +180,7 @@ namespace FloorballTrainingSessions
         // Další informace viz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TrainingDate,MeetDate,SigningLimitDate,TrainingLocation,Team,Season,SeasonPart,TrainingFocus,TrainingSchemeModel,TrainingLength,PublishTraining,PublishExcersises")] Trainings trainings)
+        public ActionResult Edit([Bind(Include = "Id,TrainingDate,MeetDate,SigningLimitDate,TrainingLocation,Team,Season,SeasonPart,TrainingFocus,TrainingSchemeModel,TrainingLength,PublishTraining,PublishExcersises, TrainingClosed, TrainingCanceled, AttendanceClosed")] Trainings trainings)
         {
             if (ModelState.IsValid)
             {

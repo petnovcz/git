@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FloorballTrainingSessions.ExcersiseCategories>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExcersiseCategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExcersiseCategoryName)
+        </td>
+        <td>
+        @foreach (var itemx in item.ExcersiseBelongsToCategory)
+        {
+            if (itemx.ExcersiseCategory == item.Id)
+            {
+                if (itemx.Excersise == ViewBag.ExcresiseId)
+                {
+                @Html.Raw(item.Id);
+                }
+            }
+        }
+        </td>
+    </tr>
+}
+
+</table>

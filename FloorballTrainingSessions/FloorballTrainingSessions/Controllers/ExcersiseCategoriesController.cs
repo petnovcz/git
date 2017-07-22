@@ -19,6 +19,21 @@ namespace FloorballTrainingSessions
             return View(db.ExcersiseCategories.ToList());
         }
 
+        public PartialViewResult CategoriesListForExcersises(int excersise)
+        {
+            var excersises = db.ExcersiseCategories;
+            excersises.Include(t=>t.ExcersiseBelongsToCategory);
+            ViewBag.ExcresiseId = excersise;
+            //foreach (var c in excersises)
+            //{
+            //    c.ExcersiseBelongsToCategory.Where(x => x.Excersise == excersise);
+            //}
+            //excersises = excersises.Where(t => t.ExcersiseBelongsToCategory.Any(x => x.ExcersiseCategory == excersisecategories));
+
+            return PartialView(excersises.ToList());
+        }
+
+
         // GET: ExcersiseCategories/Details/5
         public ActionResult Details(int? id)
         {

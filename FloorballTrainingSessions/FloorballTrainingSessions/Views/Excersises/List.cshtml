@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="row well well-sm">
+    <h1>Přehled cvičení</h1>
+</div>
+
+@using (Ajax.BeginForm("GetExcersises", "Excersises", new AjaxOptions
+{//GetPatients is name of method in PatientController
+    InsertionMode = InsertionMode.Replace, //target element(#patientList) will be replaced
+    UpdateTargetId = "ExcersisesList",
+    LoadingElementId = "loader", // div with .gif loader - that is shown when data are loading
+
+}))
+{
+
+
+    <div class="form-inline" style="display:block;overflow: visible !important; position: relative">
+        <div class="form-group col-lg-3 col-md-3">
+
+            @Html.DropDownList("excersisecategories", null, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
+        </div>
+        <div class="form-group col-lg-3 col-md-3">
+            @Html.DropDownList("seasonparts", null, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
+        </div>
+        <div class="form-group col-lg-3 col-md-3">
+            @Html.Editor("excersisename", new { htmlAttributes = new { onchange = "$(this.form).submit();", @class = "form-control" } })
+        </div>
+    </div>
+    <div class="col-md-12" style="display:inline-block;margin-top:10px">
+        @Html.ActionLink("Vytvoř nové cvičení", "Create", "Excersises", null, new { @class = "btn btn-success btn-xs btn-block" })
+        </div>
+        @*
+            <div class="form-group col-lg-3 col-md-3">
+
+                @Html.DropDownList("trainingfocus", null, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
+            </div>
+            <div class="form-group col-lg-3 col-md-3">
+
+                @Html.DropDownList("trainingschememodel", null, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
+            </div>
+            <div class="form-group col-lg-3 col-md-3">
+                  @Html.CheckBox("PublishTraining", true, htmlAttributes: new { onchange = "$(this.form).submit();", @class = "form-control" })
+                    @Html.CheckBox("PublishExcersise", true, htmlAttributes: new { onchange = "$(this.form).submit();",  @class = "form-control" })
+                </div>
+
+
+
+        *@
+
+        }
+
+        @* ... *@
+        <div id="loader" class=" aletr" style="display:none">
+            @* <center><img src="~/Images/ajax-loader.gif" /></center>*@
+        </div>
+        <div class="col-md-12" style="display:inline-block;margin-top:10px">
+
+            @Html.Partial("_ExcersisesList") @* this is view with patient table. Same view you will return from controller *@
+
+        </div>
+
+
+        @section Scripts {
+
+
+            <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+            <script type="text/javascript" src="~/Scripts/bootstrap-select.js"></script>
+            <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-select.css" />
+
+        }
+

@@ -159,6 +159,9 @@
           <Property Name="TrainingLength" Type="float" Nullable="false" />
           <Property Name="PublishTraining" Type="bit" Nullable="false" />
           <Property Name="PublishExcersises" Type="bit" Nullable="false" />
+          <Property Name="TrainingClosed" Type="bit" Nullable="false" />
+          <Property Name="TrainingCanceled" Type="bit" Nullable="false" />
+          <Property Name="AttendanceClosed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TrainingSchemeModels">
           <Key>
@@ -786,6 +789,9 @@
           <NavigationProperty Name="TrainingFocuses" Relationship="Self.FK_Trainings_ToTraningFocuses" FromRole="Trainings" ToRole="TrainingFocuses" />
           <NavigationProperty Name="TrainingLocations" Relationship="Self.FK_Trainings_ToTrainingLocations" FromRole="Trainings" ToRole="TrainingLocations" />
           <NavigationProperty Name="TrainingSchemeModels" Relationship="Self.FK_Trainings_ToTrainingSchemeModels" FromRole="Trainings" ToRole="TrainingSchemeModels" />
+          <Property Name="TrainingClosed" Type="Boolean" Nullable="false" />
+          <Property Name="TrainingCanceled" Type="Boolean" Nullable="false" />
+          <Property Name="AttendanceClosed" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="TrainingSchemeModels">
           <Key>
@@ -1380,7 +1386,10 @@
     <EntitySetMapping Name="Trainings">
       <EntityTypeMapping TypeName="IsTypeOf(Model.Trainings)">
         <MappingFragment StoreEntitySet="Trainings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AttendanceClosed" ColumnName="AttendanceClosed" />
+                <ScalarProperty Name="TrainingCanceled" ColumnName="TrainingCanceled" />
+                <ScalarProperty Name="TrainingClosed" ColumnName="TrainingClosed" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="TrainingDate" ColumnName="TrainingDate" />
           <ScalarProperty Name="MeetDate" ColumnName="MeetDate" />
           <ScalarProperty Name="SigningLimitDate" ColumnName="SigningLimitDate" />

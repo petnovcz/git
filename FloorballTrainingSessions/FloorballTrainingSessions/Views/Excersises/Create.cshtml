@@ -5,13 +5,16 @@
 }
 
 
-    <h2>Create</h2>
+<div class="row well well-sm">
+    <h1>Cvičení</h1>
+</div>
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Excersises</h4>
+            <h4>Nové cvičení</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -23,15 +26,6 @@
                     @Html.ValidationMessageFor(model => model.ExcersiseName, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.ShortDescript, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -40,6 +34,15 @@
 
                 </div>
             </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -47,6 +50,7 @@
                 </div>
             </div>
         </div>
+
     }
 
     <div>
@@ -68,7 +72,7 @@
             function initialize() {
                 $('#Description').summernote({
                     focus: true,
-                    height: 150,
+                    height: 400,
                     codemirror: {
                         theme: 'united'
                     } 

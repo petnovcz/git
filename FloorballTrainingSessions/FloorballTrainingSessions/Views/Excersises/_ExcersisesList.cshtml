@@ -1,0 +1,60 @@
+﻿@model IEnumerable<FloorballTrainingSessions.Excersises>
+
+
+<div id="ExcersisesList" class="table-responsive">
+<table class="table table-condensed table-hover">
+    <colgroup>
+        <col class="col-md-2" />
+        <col class="col-md-2" />
+        <col class="col-md-2" />
+        <col class="col-md-2" />
+        
+        <col class="col-md-2" />
+    </colgroup>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExcersiseName)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescript)
+            </th>
+            <th>Část sezóny</th>
+            <th>Kategorie</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExcersiseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescript)
+                </td>
+                <td>
+                    @foreach (var itemx in item.ExcersiseBelongsToSeasonParts)
+                    {
+                        @Html.DisplayFor(modelItem => itemx.SeasonParts.SeasonPartName)
+                    }
+                </td>
+                <td>
+                    @foreach (var itemx in item.ExcersiseBelongsToCategory)
+                    {
+                        @Html.DisplayFor(modelItem => itemx.ExcersiseCategories.ExcersiseCategoryName)<br>
+                    }
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

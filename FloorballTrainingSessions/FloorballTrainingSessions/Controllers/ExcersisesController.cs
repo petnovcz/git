@@ -20,6 +20,48 @@ namespace FloorballTrainingSessions
         {
             return View(db.Excersises.ToList());
         }
+        public ActionResult List()
+        {
+            var excersisecategories = db.ExcersiseCategories.ToList();
+            excersisecategories.Insert(0, new ExcersiseCategories { Id = 0, ExcersiseCategoryName = "-- Vyber kategorii cvičení --" });
+            ViewBag.excersisecategories = new SelectList(excersisecategories, "Id", "ExcersiseCategoryName");
+
+            var seasonparts = db.SeasonParts.ToList();
+            seasonparts.Insert(0, new SeasonParts { Id = 0, SeasonPartName = "-- Vyber část sezóny --" });
+            ViewBag.seasonparts = new SelectList(seasonparts, "Id", "SeasonPartName");
+
+            var excersises = db.Excersises.Include(t => t.ExcersiseBelongsToCategory).Include(t => t.ExcersiseBelongsToSeasonParts); 
+
+
+            return View(db.Excersises.ToList());
+        }
+
+        public PartialViewResult GetExcersises(int excersisecategories, int seasonparts, string excersisename)
+        {
+            var excersises = db.Excersises.Include(t => t.ExcersiseBelongsToCategory).Include(t => t.ExcersiseBelongsToSeasonParts);
+
+            
+            //excersises.OrderBy(t => t.ExcersiseName);
+
+            if (excersisecategories != 0)
+            {
+                excersises = excersises.Where(t => t.ExcersiseBelongsToCategory.Any(x => x.ExcersiseCategory == excersisecategories));
+            }
+            if (seasonparts != 0)
+            {
+                excersises = excersises.Where(t => t.ExcersiseBelongsToSeasonParts.Any(x => x.SeasonPart == seasonparts));
+            }
+            if (excersisename != "")
+            {
+                excersises = excersises.Where(t => t.ExcersiseName.Contains(excersisename));
+            }
+
+
+            // odeslání parametru vybrané sezóny a týmu do view
+
+
+            return PartialView("_ExcersisesList", excersises.Distinct().OrderBy(t => t.ExcersiseName).ToList());
+        }
 
         // GET: Excersises/Details/5
         public ActionResult Details(int? id)
@@ -51,9 +93,11 @@ namespace FloorballTrainingSessions
         {
             if (ModelState.IsValid)
             {
+                
                 db.Excersises.Add(excersises);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                int excersiseId = excersises.Id;
+                return RedirectToAction("Details","Excersises", new { Id = excersiseId});
             }
 
             return View(excersises);

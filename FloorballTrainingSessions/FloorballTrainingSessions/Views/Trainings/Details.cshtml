@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TrainingDate)
+            @Html.DisplayNameFor(model => model.TrainingDate) Id: @Html.DisplayFor(model => model.Id)
         </dt>
 
         <dd>
@@ -82,13 +82,7 @@
             @Html.DisplayFor(model => model.Teams.TeamName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrainingFocuses.TrainingFocusName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrainingFocuses.TrainingFocusName)
-        </dd>
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)
@@ -98,17 +92,70 @@
             @Html.DisplayFor(model => model.TrainingLocations.TrainingLocationName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrainingSchemeModels.TrainingSchemeName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrainingSchemeModels.TrainingSchemeName)
-        </dd>
+        
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="bs-example">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Cvičení</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="col-md-3">Zaměření tréninku</div>
+                    <div class="col-md-3">@Html.DisplayFor(model => model.TrainingFocuses.TrainingFocusName)</div>
+                    <div class="col-md-3">Tréninkové schéma</div>
+                    <div class="col-md-3">@Html.DisplayFor(model => model.TrainingSchemeModels.TrainingSchemeName)</div>
+                    <hr/>
+                    @foreach (var item in Model.TrainingSchemeModels.TrainingSchemePartModels)
+                    {
+                        <div class="col-md-1" style="writing-mode:tb-rl;">@Html.DisplayFor(modelItem => item.ExcersiseCategories.ExcersiseCategoryName)</div><div class="col-md-11">@Html.Action("ListForTraining", "TrainingExcersises", new { Training = Model.Id, TrainingSchemePart = item.Id })</div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Přiřazení drezů</a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="https://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Docházka</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Doplnění docházky</a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="https://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+

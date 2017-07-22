@@ -20,6 +20,14 @@ namespace FloorballTrainingSessions
             return View(trainingExcersises.ToList());
         }
 
+        public PartialViewResult ListForTraining(int Training, int TrainingSchemePart)
+        {
+            var trainingExcersises = db.TrainingExcersises.Include(t => t.Excersises).Include(t => t.Trainings).Include(t => t.TrainingSchemePartModels);
+            trainingExcersises = trainingExcersises.Where(t => t.Training == Training);
+            trainingExcersises = trainingExcersises.Where(t => t.TrainingSchemePartModel == TrainingSchemePart);
+            return PartialView(trainingExcersises.ToList());
+        }
+
         // GET: TrainingExcersises/Details/5
         public ActionResult Details(int? id)
         {
@@ -40,7 +48,7 @@ namespace FloorballTrainingSessions
         {
             ViewBag.Excersise = new SelectList(db.Excersises, "Id", "ExcersiseName");
             ViewBag.Training = new SelectList(db.Trainings, "Id", "Id");
-            ViewBag.TrainingSchemePartModel = new SelectList(db.TrainingSchemePartModels, "Id", "PartLength");
+            ViewBag.TrainingSchemePartModel = new SelectList(db.TrainingSchemePartModels, "Id", "ExcersiseCategories.ExcersiseCategoryName");
             return View();
         }
 

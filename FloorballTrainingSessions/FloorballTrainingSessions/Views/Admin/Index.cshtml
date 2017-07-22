@@ -32,11 +32,11 @@
                 <center><h4>Obecná nastavení</h4></center>
 </div>
             <div>
-                    @Html.ActionLink("Nastavení částí sezóny", "Index", "SeasonParts", null, new { @class = "btn btn-default btn-xs btn-block" })
-                    @Html.ActionLink("Nastavení funkcí členů týmu", "Index", "PlayerFunctions", null, new { @class = "btn btn-default btn-xs btn-block" })
-                    @Html.ActionLink("Nastavení týmů", "Index", "Teams", null, new { @class = "btn btn-default btn-xs btn-block" })
-                    @Html.ActionLink("Nastavení sezón", "Index", "Seasons", null, new { @class = "btn btn-default btn-xs btn-block" })
-                    @Html.ActionLink("Nastavení tréninkových lokací", "Index", "TrainingLocations", null, new { @class = "btn btn-default btn-xs btn-block" })
+                    @Html.ActionLink("Nastavení částí sezóny", "Index", "SeasonParts", null, new { @class = "btn btn-default btn-sm btn-block" })
+                    @Html.ActionLink("Nastavení funkcí členů týmu", "Index", "PlayerFunctions", null, new { @class = "btn btn-default btn-sm btn-block" })
+                    @Html.ActionLink("Nastavení týmů", "Index", "Teams", null, new { @class = "btn btn-default btn-sm btn-block" })
+                    @Html.ActionLink("Nastavení sezón", "Index", "Seasons", null, new { @class = "btn btn-default btn-sm btn-block" })
+                    @Html.ActionLink("Nastavení tréninkových lokací", "Index", "TrainingLocations", null, new { @class = "btn btn-default btn-sm btn-block" })
             </div> 
     </div>
 
@@ -45,8 +45,8 @@
                 <center><h4>Nastavení uživatelů</h4></center>
 </div>         
                 <div>
-                    @Html.ActionLink("Přehled registrovaných uživatelů", "Index", "AspNetUsers", null, new { @class = "btn btn-info btn-xs btn-block" })
-                    @Html.ActionLink("Nastavení členů a jejich uživatelských účtů", "Index", "Players", null, new { @class = "btn btn-info btn-xs btn-block" })
+                    @Html.ActionLink("Přehled registrovaných uživatelů", "Index", "AspNetUsers", null, new { @class = "btn btn-info btn-sm btn-block" })
+                    @Html.ActionLink("Nastavení členů a jejich uživatelských účtů", "Index", "Players", null, new { @class = "btn btn-info btn-sm btn-block" })
                 </div>
     </div>
 
@@ -63,9 +63,9 @@
             <div >
                 @foreach (var item in Model.Teamplayers)
                 {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-xs btn-block" });
+                    @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-sm btn-block" });
                 }
-                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", new { SelectedSeason = Model.ActiveSeason }, new { @class = "btn btn-info btn-xs btn-block" })
+                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", new { SelectedSeason = Model.ActiveSeason }, new { @class = "btn btn-info btn-sm btn-block" })
             </div>
         </div>
     </div>
@@ -76,12 +76,12 @@
             <div >
                 @foreach (var item in Model.Teamplayers)
                 {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { selectedteam = item.Team, selectedseason = Model.ActiveSeason }, new { @class = "btn btn-warning btn-xs btn-block" });
+                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { selectedteam = item.Team, selectedseason = Model.ActiveSeason }, new { @class = "btn btn-warning btn-sm btn-block" });
                     
                 }
-                @Html.ActionLink("Vytvoření tréninku", "Create", "Trainings", null, new { @class = "btn btn-info btn-xs btn-block" })
+                @Html.ActionLink("Vytvoření tréninku", "Create", "Trainings", null, new { @class = "btn btn-info btn-sm btn-block" })
                 
-                @Html.ActionLink("Hromadná úprava tréninků", "Create", "GenerateTrainings", null, new { @class = "btn btn-info btn-xs btn-block" })
+                @Html.ActionLink("Hromadná úprava tréninků", "Create", "GenerateTrainings", null, new { @class = "btn btn-info btn-sm btn-block" })
                  
             </div>
         </div>
@@ -92,9 +92,9 @@
             <div >
                 @foreach (var item in Model.Teamplayers)
                 {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-xs btn-block" });
+                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-sm btn-block" });
                 }
-                @Html.ActionLink("Nastavení tréninkových schémat", "Index", "TrainingSchemeModels", null, new { @class = "btn btn-default btn-xs btn-block" })
+                @Html.ActionLink("Nastavení tréninkových schémat", "Index", "TrainingSchemeModels", null, new { @class = "btn btn-default btn-sm btn-block" })
             </div>
         </div>
     </div>
@@ -102,9 +102,11 @@
         <div>
             <div><center><h4>Cvičení</h4></center></div>
             <div>
-                @Html.ActionLink("Cvičení", "Index", "Excersises", null, new { @class = "btn btn-info btn-xs btn-block" })
-                @Html.ActionLink("Nastavení kategorií cvičení", "Index", "ExcersiseCategories", null, new { @class = "btn btn-default btn-xs btn-block" })
-                @Html.ActionLink("Nastavení zaměření tréninku", "Index", "TrainingFocuses", null, new { @class = "btn btn-default btn-xs btn-block" })
+                @Html.ActionLink("Cvičení", "List", "Excersises", null, new { @class = "btn btn-info btn-sm btn-block" })
+                @Html.ActionLink("Přiřazení cvičení ke kategorii", "Index", "ExcersiseBelongsToCategories", null, new { @class = "btn btn-info btn-sm btn-block" })
+                @Html.ActionLink("Přiřazení cvičení k části sezóny", "Index", "ExcersiseBelongsToSeasonParts", null, new { @class = "btn btn-info btn-sm btn-block" })
+                @Html.ActionLink("Nastavení kategorií cvičení", "Index", "ExcersiseCategories", null, new { @class = "btn btn-default btn-sm btn-block" })
+                @Html.ActionLink("Nastavení zaměření tréninku", "Index", "TrainingFocuses", null, new { @class = "btn btn-default btn-sm btn-block" })
             </div>
         </div>
     </div>

@@ -4,14 +4,16 @@
     ViewBag.Title = "Create";
 }
 
-
+<div class="well well-sm">
 <h2>Vygenerování tréninků @ViewBag.SelectedSeasonName </h2>
+</div>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+<div class="well well-sm">
     <div class="form-horizontal">
-        <h4>Excersises</h4>
+        
         <hr />
         
 
@@ -105,15 +107,19 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-plus "></span>
+                    <span class="submit-text"></span>
+                </button>
+                @Html.ActionLink(" ", "List", "Trainings", new { selectedseason = ViewBag.SelectedSeason, selectedteam = ViewBag.SelectedTeam }, new { @class = "btn btn-primary btn-sm glyphicon glyphicon-th-list" })
+                @Html.ActionLink(" ", "Index", "Admin", new { seasonId = ViewBag.SelectedSeason }, new { @class = "btn btn-info btn-sm glyphicon glyphicon-home" })
             </div>
         </div>
     </div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
@@ -132,7 +138,7 @@
                 });
             $(".timepicker").datetimepicker(
                 {
-                    defaultDate: '',
+                    
                     showTodayButton: true,
                     format: 'HH:mm',
                     showClose: true,

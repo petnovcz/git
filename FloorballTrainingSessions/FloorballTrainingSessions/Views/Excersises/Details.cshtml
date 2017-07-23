@@ -41,4 +41,17 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 <hr/>
-@Html.Action("CategoriesListForExcersises", "ExcersiseCategories", new { excersise = Model.Id })
+@*@Html.Action("CategoriesListForExcersises", "ExcersiseCategories", new { excersise = Model.Id })*@
+
+<div id="seasonparts">
+    @Html.Action("Index", "SeasonPartsListExcersisesLinked", new { excersise = Model.Id })
+</div>
+
+@section Scripts {
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap-select.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-select.css" />
+
+}

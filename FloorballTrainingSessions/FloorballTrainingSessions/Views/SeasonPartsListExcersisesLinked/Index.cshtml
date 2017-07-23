@@ -1,0 +1,21 @@
+﻿@model List<FloorballTrainingSessions.SeasonPartsListExcersisesLinkedModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    
+
+    @foreach (var item in Model)
+    {
+        
+        
+        @Html.Action("test", "SeasonPartsListExcersisesLinked", new { excersise = item.Excersise, seasonpart = item.SeasonPart, seasonpartname = item.SeasonPartName, linked = item.Linked})
+          
+            }
+</p>
+
+

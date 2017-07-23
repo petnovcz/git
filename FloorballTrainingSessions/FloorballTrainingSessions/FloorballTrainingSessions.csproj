@@ -188,10 +188,12 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesListExcersisesLinkedController.cs" />
     <Compile Include="Controllers\GenerateTrainingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ExcersiseBelongsToCategoriesController.cs" />
+    <Compile Include="Controllers\SeasonPartsListExcersisesLinkedController.cs" />
     <Compile Include="ExcersiseBelongsToCategory.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
@@ -233,6 +235,7 @@
     <Compile Include="Models\HomeModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SeasonPartsLisExcersisesLinkedModel.cs" />
     <Compile Include="MyTrainingsController.cs" />
     <Compile Include="PlayerFunctions.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
@@ -845,6 +848,8 @@
     <Content Include="Views\Excersises\_ExcersisesList.cshtml" />
     <Content Include="Views\Excersises\List.cshtml" />
     <Content Include="Views\ExcersiseCategories\CategoriesListForExcersises.cshtml" />
+    <Content Include="Views\SeasonPartsListExcersisesLinked\Index.cshtml" />
+    <Content Include="Views\SeasonPartsListExcersisesLinked\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -855,6 +860,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\CategoriesListExcersisesLinked\" />
     <Folder Include="Views\TinyMCE\" />
   </ItemGroup>
   <PropertyGroup>

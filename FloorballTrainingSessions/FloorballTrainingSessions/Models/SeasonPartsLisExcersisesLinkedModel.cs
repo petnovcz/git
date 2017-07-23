@@ -5,25 +5,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace FloorballTrainingSessions.Models
+namespace FloorballTrainingSessions
 {
-    public partial class CategoriesListExcersisesLinkedModel
+    public partial class SeasonPartsListExcersisesLinkedModel
     {
-        public CategoriesListExcersisesLinkedModel()
+        public SeasonPartsListExcersisesLinkedModel()
         {
             //this.Seasons = new HashSet<Seasons>();
             //this.Teamplayers = new HashSet<TeamPlayers>();
 
         }
         [NotMapped]
+        [Key]
+        public int SeasonPart { get; set; }
+        [NotMapped]        
+        public string SeasonPartName { get; set; }
+        [NotMapped]
         public int Excersise { get; set; }
         [NotMapped]
-        public int ExcersiseCategory { get; set; }
+        public bool Linked { get; set; }
         [NotMapped]
-        public int Selected { get; set; }
-        [NotMapped]
-        public int Available { get; set; }
-
+        public bool Available { get; set; }
+        //public int excersise
 
 
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,27 @@
+﻿@model FloorballTrainingSessions.SeasonPartsListExcersisesLinkedModel
+
+@using (Ajax.BeginForm("Index", "SeasonPartsListExcersisesLinked", new { excersise = Model.Excersise }, new AjaxOptions
+{//GetPatients is name of method in PatientController
+    InsertionMode = InsertionMode.Replace, //target element(#patientList) will be replaced
+    UpdateTargetId = "seasonparts",
+    LoadingElementId = "loader" // div with .gif loader - that is shown when data are loading
+}))
+{
+    //string patient_Name = "";
+    //@Html.EditorFor(x => patient_Name) //text box with name and id, that it will pass to controller
+    <div id="">
+                                    @if (Model.Linked == true)
+                                    {<input type="submit" value="@Html.DisplayName(Model.SeasonPartName)" class="btn btn-success" />}
+        @if (Model.Linked == false)
+        {<input type="submit" value="@Html.DisplayName(Model.SeasonPartName)" class="btn btn-default" />}
+
+    </div>
+}
+
+@* ... *@
+
+@*@Html.Partial("test")  this is view with patient table. Same view you will return from controller *@
+
+
+
+

@@ -111,6 +111,8 @@ namespace FloorballTrainingSessions
             return View(trainings);
         }
 
+        
+
         // GET: Trainings/Create
         public ActionResult Create(int selectedseason, int selectedteam)
         {

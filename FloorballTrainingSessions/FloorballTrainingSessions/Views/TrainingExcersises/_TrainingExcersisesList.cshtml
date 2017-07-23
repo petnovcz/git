@@ -1,0 +1,34 @@
+﻿@model IEnumerable<FloorballTrainingSessions.TrainingExcersises>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Excersises.ExcersiseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Excersises.Description)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Excersises.ExcersiseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Excersises.Description)
+            </td>
+
+            <td>
+                
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+

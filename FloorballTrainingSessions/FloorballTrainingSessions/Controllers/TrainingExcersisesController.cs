@@ -22,10 +22,58 @@ namespace FloorballTrainingSessions
 
         public PartialViewResult ListForTraining(int Training, int TrainingSchemePart)
         {
+
+            /*Načtení všech cvičení k tréninku*/
             var trainingExcersises = db.TrainingExcersises.Include(t => t.Excersises).Include(t => t.Trainings).Include(t => t.TrainingSchemePartModels);
             trainingExcersises = trainingExcersises.Where(t => t.Training == Training);
             trainingExcersises = trainingExcersises.Where(t => t.TrainingSchemePartModel == TrainingSchemePart);
-            return PartialView(trainingExcersises.ToList());
+
+            /*Odeslání hodnot tréninkové části a tréninku do view jako viewbag*/
+            ViewBag.TrainingSchemePart = TrainingSchemePart;
+            ViewBag.Training = Training;
+
+            /*Načtení všech cvičení spadajících do tréninkové části*/
+            var trainingschemeparts = db.TrainingSchemePartModels.Include(t => t.ExcersiseCategories).Where(t => t.Id == TrainingSchemePart).FirstOrDefault();
+            var excersises = db.Excersises.Include(t => t.ExcersiseBelongsToCategory);
+            List<Excersises> excersiselist = new List<Excersises>();
+
+            foreach (Excersises excersise in excersises)
+            {
+                int i = 0;
+                if (excersise.ExcersiseBelongsToCategory.Any(t=>t.ExcersiseCategory == trainingschemeparts.ExcersiseCategory) )
+                {
+                    
+                        excersiselist.Insert(i, new Excersises() { Id = excersise.Id, Description = excersise.Description, ExcersiseName = excersise.ExcersiseName, ShortDescript = excersise.ShortDescript });
+                        i = i + 1;
+                    
+                }
+
+            }
+
+            //excersises = excersiselist.ToDictionary(x=>x.Id , x => x );
+            ViewBag.ExcersiseList = new SelectList(excersiselist, "Id", "ExcersiseName");
+
+            return PartialView(trainingExcersises);
+        }
+
+        public PartialViewResult GetTrainingExcersises(int Training, int TrainingSchemePart, int? ExcersiseList)
+        {
+            if (ExcersiseList != null)
+            {
+                TrainingExcersises trainingExcersisesAdd = new TrainingExcersises();
+                trainingExcersisesAdd.Training = Training;
+                trainingExcersisesAdd.Excersise = ExcersiseList.Value;
+                trainingExcersisesAdd.TrainingSchemePartModel = TrainingSchemePart;
+                db.TrainingExcersises.Add(trainingExcersisesAdd);
+                db.SaveChanges();
+
+            }
+            var trainingExcersises = db.TrainingExcersises.Include(t => t.Excersises).Include(t => t.Trainings).Include(t => t.TrainingSchemePartModels);
+            trainingExcersises = trainingExcersises.Where(t => t.Training == Training);
+            trainingExcersises = trainingExcersises.Where(t => t.TrainingSchemePartModel == TrainingSchemePart);
+            ViewBag.TrainingSchemePart = TrainingSchemePart;
+            ViewBag.Training = Training;
+            return PartialView("_TrainingExcersisesList",trainingExcersises.ToList());
         }
 
         // GET: TrainingExcersises/Details/5

@@ -1,39 +1,56 @@
 ﻿@model IEnumerable<FloorballTrainingSessions.TrainingExcersises>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Excersises.ExcersiseName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Trainings.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrainingSchemePartModels.PartLength)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Excersises.ExcersiseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Trainings.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainingSchemePartModels.PartLength)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@{
+    ViewBag.Title = "List";
 }
 
-</table>
+
+
+@using (Ajax.BeginForm("GetTrainingExcersises", "TrainingExcersises", new { Training = @ViewBag.Training, TrainingSchemePart = @ViewBag.TrainingSchemePart }, new AjaxOptions
+{//GetPatients is name of method in PatientController
+    InsertionMode = InsertionMode.Replace, //target element(#patientList) will be replaced
+    UpdateTargetId = "TES_" + @ViewBag.TrainingSchemePart,
+    LoadingElementId = "loader", // div with .gif loader - that is shown when data are loading
+
+}))
+{
+
+
+    <div class="form-inline" style="display:block;overflow: visible !important; position: relative">
+        <div class="form-group col-lg-3 col-md-3">
+
+            @Html.DropDownList("ExcersiseList", null, htmlAttributes: new { /*onchange = "$(this.form).submit();",*/ id = @ViewBag.TrainingSchemePart+"DDL" , @class = "selectpicker", @style = "width:100%", data_live_search = "true" })
+        </div>
+        @Html.Hidden("Training" , new { @Value = ViewBag.Training })
+        @Html.Hidden("TrainingSchemePartModel", new { @Value = ViewBag.TrainingSchemePart })
+        <input type="submit" value="Submit" class="btn btn-success" />
+        @{
+            String onclick = String.Format("{0}{1}",
+               @ViewBag.TrainingSchemePart, "DDL");
+        }
+        @{
+            String btnonclick = String.Format("{2}{0}{1}",
+               @ViewBag.TrainingSchemePart, "DDL","btn");
+        }
+        <input type="button" value="Show" class="btn btn-info DDL" data-id="@onclick"/>
+
+    </div>
+
+            
+
+}
+
+@* ... *@
+<div id="loader" class=" aletr" style="display:none">
+    @* <center><img src="~/Images/ajax-loader.gif" /></center>*@
+</div>
+<div class="col-md-12" style="display:inline-block;margin-top:10px">
+
+
+    
+</div>
+<div id='TES_@ViewBag.TrainingSchemePart'>
+@Html.Partial("_TrainingExcersisesList") @* this is view with patient table. Same view you will return from controller *@
+</div>
+
+
+

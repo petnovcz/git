@@ -852,6 +852,8 @@
     <Content Include="Views\SeasonPartsListExcersisesLinked\seasonpartsajax.cshtml" />
     <Content Include="Views\CategoriesListExcersisesLinked\Index.cshtml" />
     <Content Include="Views\CategoriesListExcersisesLinked\categoriesajax.cshtml" />
+    <Content Include="Views\TrainingExcersises\_TrainingExcersisesList.cshtml" />
+    <Content Include="Views\Excersises\DetailsModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

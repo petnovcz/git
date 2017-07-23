@@ -78,6 +78,20 @@ namespace FloorballTrainingSessions
             return View(excersises);
         }
 
+        public PartialViewResult DetailsModal(int? id)
+        {
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Excersises excersises = db.Excersises.Find(id);
+            if (excersises == null)
+            {
+                //return HttpNotFound();
+            }
+            return PartialView(excersises);
+        }
+
         // GET: Excersises/Create
         public ActionResult Create()
         {

@@ -43,10 +43,13 @@
 <hr/>
 @*@Html.Action("CategoriesListForExcersises", "ExcersiseCategories", new { excersise = Model.Id })*@
 
-<div id="seasonparts">
+<div id="seasonparts" class="col-md-6">
     @Html.Action("Index", "SeasonPartsListExcersisesLinked", new { excersise = Model.Id })
 </div>
-
+<div id="categories" class="col-md-6">
+    
+    @Html.Action("Index", "CategoriesListExcersisesLinked", new { excersise = Model.Id })
+</div>
 @section Scripts {
 
 

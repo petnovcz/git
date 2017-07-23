@@ -10,8 +10,28 @@ namespace FloorballTrainingSessions
     {
         private Entities db = new Entities();
         // GET: SeasonPartsListExcersisesLinked
-        public ActionResult Index(int excersise)
+        public ActionResult Index(int excersise, int? seasonpartparam)
         {
+            if (seasonpartparam != null)
+            {
+                var count = db.ExcersiseBelongsToSeasonParts.Where(t => t.Excersise == excersise).Where(t => t.SeasonPart == seasonpartparam).Count();
+                if (count > 0)
+                { 
+                ExcersiseBelongsToSeasonParts excersiseBelongsToSeasonParts = db.ExcersiseBelongsToSeasonParts.Where(t=>t.Excersise == excersise).Where(t => t.SeasonPart == seasonpartparam).FirstOrDefault();
+                db.ExcersiseBelongsToSeasonParts.Remove(excersiseBelongsToSeasonParts);
+                db.SaveChanges();
+                }
+                if (count == 0)
+                {
+                    ExcersiseBelongsToSeasonParts excersiseBelongsToSeasonParts = new ExcersiseBelongsToSeasonParts();
+                    excersiseBelongsToSeasonParts.Excersise = excersise;
+                    
+                    excersiseBelongsToSeasonParts.SeasonPart = seasonpartparam.Value;
+                    
+                    db.ExcersiseBelongsToSeasonParts.Add(excersiseBelongsToSeasonParts);
+                    db.SaveChanges();
+                }
+            }
             var seasonparts = db.SeasonParts.ToList();
             SeasonPartsListExcersisesLinkedModel seasonpartslist = new SeasonPartsListExcersisesLinkedModel();
             List<SeasonPartsListExcersisesLinkedModel> seasonpartslists = new List<SeasonPartsListExcersisesLinkedModel>();
@@ -29,14 +49,14 @@ namespace FloorballTrainingSessions
             return View(seasonpartslists);
         }
 
-        public PartialViewResult test(int excersise, int seasonpart, string seasonpartname, bool linked)
+        public PartialViewResult seasonpartsajax(int excersise, int seasonpart, string seasonpartname, bool linked)
         {
             SeasonPartsListExcersisesLinkedModel seasonpartslist = new SeasonPartsListExcersisesLinkedModel();
             seasonpartslist.SeasonPart = seasonpart;
             seasonpartslist.SeasonPartName = seasonpartname;
             seasonpartslist.Excersise = excersise;
             seasonpartslist.Linked = linked;
-            return PartialView("test", seasonpartslist);
+            return PartialView("seasonpartsajax", seasonpartslist);
         }
     }
 }

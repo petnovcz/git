@@ -849,7 +849,9 @@
     <Content Include="Views\Excersises\List.cshtml" />
     <Content Include="Views\ExcersiseCategories\CategoriesListForExcersises.cshtml" />
     <Content Include="Views\SeasonPartsListExcersisesLinked\Index.cshtml" />
-    <Content Include="Views\SeasonPartsListExcersisesLinked\test.cshtml" />
+    <Content Include="Views\SeasonPartsListExcersisesLinked\seasonpartsajax.cshtml" />
+    <Content Include="Views\CategoriesListExcersisesLinked\Index.cshtml" />
+    <Content Include="Views\CategoriesListExcersisesLinked\categoriesajax.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -860,7 +862,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Views\CategoriesListExcersisesLinked\" />
     <Folder Include="Views\TinyMCE\" />
   </ItemGroup>
   <PropertyGroup>

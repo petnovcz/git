@@ -1,33 +1,41 @@
 ﻿@model FloorballTrainingSessions.Excersises
 
-<div>
-    <h4>Excersises</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ExcersiseName)
-        </dt>
+<div class="modal-dialog">
 
-        <dd>
-            @Html.DisplayFor(model => model.ExcersiseName)
-        </dd>
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">@Html.DisplayFor(model => model.ExcersiseName)</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div id="showtext" class="form-group">
+                    <div class="panel panel-default">
+                        <div class="panel-body"><i>@Html.DisplayFor(model => model.ShortDescript)</i></div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">@Html.Raw(Model.Description)</div>
+                    </div>
+                    
+                    
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                    <input type="button" value="Close" data-dismiss="modal" class="btn btn-danger" />
+                </div>
+            </div>
 
-        <dd>
-            @Html.Raw(Model.Description)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortDescript)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShortDescript)
-        </dd>
-
-    </dl>
 </div>
+
+
+
+
 

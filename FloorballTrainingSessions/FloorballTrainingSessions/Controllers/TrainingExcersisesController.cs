@@ -40,12 +40,12 @@ namespace FloorballTrainingSessions
             foreach (Excersises excersise in excersises)
             {
                 int i = 0;
-                if (excersise.ExcersiseBelongsToCategory.Any(t=>t.ExcersiseCategory == trainingschemeparts.ExcersiseCategory) )
+                if (excersise.ExcersiseBelongsToCategory.Any(t => t.ExcersiseCategory == trainingschemeparts.ExcersiseCategory))
                 {
-                    
-                        excersiselist.Insert(i, new Excersises() { Id = excersise.Id, Description = excersise.Description, ExcersiseName = excersise.ExcersiseName, ShortDescript = excersise.ShortDescript });
-                        i = i + 1;
-                    
+
+                    excersiselist.Insert(i, new Excersises() { Id = excersise.Id, Description = excersise.Description, ExcersiseName = excersise.ExcersiseName, ShortDescript = excersise.ShortDescript });
+                    i = i + 1;
+
                 }
 
             }
@@ -73,7 +73,25 @@ namespace FloorballTrainingSessions
             trainingExcersises = trainingExcersises.Where(t => t.TrainingSchemePartModel == TrainingSchemePart);
             ViewBag.TrainingSchemePart = TrainingSchemePart;
             ViewBag.Training = Training;
-            return PartialView("_TrainingExcersisesList",trainingExcersises.ToList());
+            return PartialView("_TrainingExcersisesList", trainingExcersises.ToList());
+        }
+
+        
+        public PartialViewResult DeltTrainingExcersises(int Training, int TrainingSchemePart, int? excersise)
+        {
+            if (excersise != null)
+            {
+                TrainingExcersises te = db.TrainingExcersises.Find(excersise);
+                db.TrainingExcersises.Remove(te);
+                db.SaveChanges();
+
+            }
+            var trainingExcersises = db.TrainingExcersises.Include(t => t.Excersises).Include(t => t.Trainings).Include(t => t.TrainingSchemePartModels);
+            trainingExcersises = trainingExcersises.Where(t => t.Training == Training);
+            trainingExcersises = trainingExcersises.Where(t => t.TrainingSchemePartModel == TrainingSchemePart);
+            ViewBag.TrainingSchemePart = TrainingSchemePart;
+            ViewBag.Training = Training;
+            return PartialView("_TrainingExcersisesList", trainingExcersises.ToList());
         }
 
         // GET: TrainingExcersises/Details/5

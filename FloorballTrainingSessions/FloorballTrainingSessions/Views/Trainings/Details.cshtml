@@ -162,33 +162,7 @@
 </div>
 
 <div id="Search" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Search By Property</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div id="showtext" class="form-group well well-sm">
-                        
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        
-                        <input type="button" value="Close" data-dismiss="modal" class="btn btn-danger" />
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
+    
 </div>
 
 
@@ -204,7 +178,7 @@
     $(document).ready(function () {
         $(".DDL").click(function () {
             var id = $(this).attr("data-id");
-            alert(id);
+            //alert(id);
             var value = $('#'+id).val();
 
             var url = "/Excersises/DetailsModal/" + value;
@@ -212,7 +186,7 @@
                 url: url,
                 success: function (data) {
                     
-                    $('#showtext').html(data);
+                    $('#Search').html(data);
                 },
                 cache: false
             });

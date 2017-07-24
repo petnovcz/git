@@ -1,34 +1,61 @@
 ﻿@model IEnumerable<FloorballTrainingSessions.TrainingExcersises>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Excersises.ExcersiseName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Excersises.Description)
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="">
+<table class="table table-condensed table-hover">
+    <colgroup>
+        <col class="col-md-5" />
+        <col class="col-md-5" />
+        <col class="col-md-2" />
+    </colgroup>
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Excersises.ExcersiseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Excersises.Description)
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Excersises.ExcersiseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Excersises.ShortDescript)
+                @ViewBag.TrainingSchemePart
+            </th>
 
-            <td>
-                
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Excersises.ExcersiseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Excersises.ShortDescript)
+                </td>
 
+                <td>
+                    @Ajax.ActionLink("Smaž", // <-- Text to display
+                    "DeltTrainingExcersises", // <-- Action Method Name
+                    "TrainingExcersises",
+                    new  { Training = @ViewBag.Training, TrainingSchemePart = @ViewBag.TrainingSchemePart, excersise = item.Id }   ,
+                 new AjaxOptions
+                 {
+                     UpdateTargetId = "TES_"+ @ViewBag.TrainingSchemePart, // <-- DOM element ID to update
+                     InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                     HttpMethod = "POST" // <-- HTTP method
+                 }
+                 , new { @class = "btn btn-danger btn-xs"}
+                 )
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+</div>
 
+
+@section scripts{
+
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+
+}

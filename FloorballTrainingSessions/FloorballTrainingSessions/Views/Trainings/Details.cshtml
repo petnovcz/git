@@ -4,98 +4,50 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Trainings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TrainingDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrainingDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MeetDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MeetDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SigningLimitDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SigningLimitDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TrainingLength)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrainingLength)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PublishTraining)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PublishTraining)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PublishExcersises)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PublishExcersises)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SeasonParts.SeasonPartName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SeasonParts.SeasonPartName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Seasons.SeasonName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Seasons.SeasonName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Teams.TeamName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Teams.TeamName)
-        </dd>
-
-        
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrainingLocations.TrainingLocationName)
-        </dd>
-
-        
-
-    </dl>
+<div class="well well-sm" style="display:block; overflow:hidden;">
+    <div class="col-md-1">@Html.DisplayNameFor(model => model.TrainingDate)</div>
+    <div class="col-md-3">@Html.DisplayFor(model => model.TrainingDate) @Model.DayOfTraining</div>
+    <div class="col-md-2">@Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)</div>
+    <div class="col-md-2">@Html.DisplayFor(model => model.TrainingLocations.TrainingLocationName)</div>
+    <div class="col-md-1">@Html.DisplayFor(model => model.Teams.TeamName)</div>
+    <div class="col-md-1">@Html.DisplayFor(model => model.Seasons.SeasonName)</div>
+    <div class="col-md-2">@Html.DisplayFor(model => model.SeasonParts.SeasonPartName)</div>
+    <div class="col-md-1">@Html.DisplayNameFor(model => model.MeetDate)</div>
+    <div class="col-md-3">@Html.DisplayFor(model => model.MeetDate)</div>
+    <div class="col-md-2">@Html.DisplayNameFor(model => model.SigningLimitDate)</div>
+    <div class="col-md-2">@Html.DisplayFor(model => model.SigningLimitDate)</div>
+    <div class="col-md-1">@Html.DisplayNameFor(model => model.Id)</div>
+    <div class="col-md-3">@Html.DisplayFor(model => model.Id) </div>
 </div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class=" panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.PublishTraining)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.PublishTraining)</div>
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.PublishExcersises)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.PublishExcersises)</div>
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.AttendanceClosed)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.AttendanceClosed)</div>
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.TrainingClosed)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.TrainingClosed)</div>
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.TrainingCanceled)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.TrainingCanceled)</div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
 <div class="bs-example">
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
@@ -123,12 +75,12 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Přiřazení drezů</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Nahlášení</a>
                 </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="https://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
+                    @Html.Action("TeamPlayersList","Teamplayers",new { TeamId = Model.Team , SeasonId = Model.Season, training = Model.Id })
                 </div>
             </div>
         </div>

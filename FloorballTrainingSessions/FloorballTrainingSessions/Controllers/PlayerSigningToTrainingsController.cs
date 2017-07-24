@@ -20,6 +20,13 @@ namespace FloorballTrainingSessions
             return View(playerSigningToTrainings.ToList());
         }
 
+        public PartialViewResult List(int player, int training)
+        {
+            var playerSigningToTrainings = db.PlayerSigningToTrainings.Include(p => p.Players).Include(p => p.Trainings);
+            playerSigningToTrainings = playerSigningToTrainings.Where(t => t.Player == player).Where(t => t.Training == training);
+            return PartialView(playerSigningToTrainings.FirstOrDefault());
+        }
+
         // GET: PlayerSigningToTrainings/Details/5
         public ActionResult Details(int? id)
         {

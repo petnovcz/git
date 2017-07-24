@@ -15,11 +15,20 @@ namespace FloorballTrainingSessions
         [AllowHtml]
         public string HtmlContent { get; set; }
 
-        // GET: Excersises
+        ///<summary>
+        ///Returns list of excersises.
+        ///</summary>
         public ActionResult Index()
         {
+
             return View(db.Excersises.ToList());
         }
+
+
+
+        ///<summary>
+        ///This is a description of my function.
+        ///</summary>
         public ActionResult List()
         {
             var excersisecategories = db.ExcersiseCategories.ToList();
@@ -30,35 +39,60 @@ namespace FloorballTrainingSessions
             seasonparts.Insert(0, new SeasonParts { Id = 0, SeasonPartName = "-- Vyber část sezóny --" });
             ViewBag.seasonparts = new SelectList(seasonparts, "Id", "SeasonPartName");
 
-            var excersises = db.Excersises.Include(t => t.ExcersiseBelongsToCategory).Include(t => t.ExcersiseBelongsToSeasonParts); 
+            var excersises = db.Excersises.Include(t => t.ExcersiseBelongsToCategory).Include(t => t.ExcersiseBelongsToSeasonParts);
 
 
             return View(db.Excersises.ToList());
         }
 
+        ///<summary>
+        /// Function returnes set of excersises filtered by category.
+        ///</summary>
+        public static  IQueryable<Excersises> FilterByBelongsToCategory(IQueryable<Excersises> ex, int excersisecategories)
+        {
+            if (excersisecategories != 0)
+            {
+                ex = ex.Where(t => t.ExcersiseBelongsToCategory.Any(x => x.ExcersiseCategory == excersisecategories));
+            }
+            return (ex);
+        }
+
+        ///<summary>
+        /// Function returnes set of excersises filtered by season pars.
+        ///</summary>
+        public static IQueryable<Excersises> FilterByBelongsToSeasonPart(IQueryable<Excersises> ex, int seasonparts)
+        {
+            if (seasonparts != 0)
+            {
+                ex = ex.Where(t => t.ExcersiseBelongsToSeasonParts.Any(x => x.SeasonPart == seasonparts));
+            }
+            return (ex);
+        }
+
+        ///<summary>
+        /// Function returnes set of excersises filtered by season pars.
+        ///</summary>
+        public static IQueryable<Excersises> FilterByExcersiseNameConains(IQueryable<Excersises> ex, string excersisename)
+        {
+            if (excersisename != "")
+            {
+                ex = ex.Where(t => t.ExcersiseName.Contains(excersisename));
+            }
+            return (ex);
+        }
+
+        ///<summary>
+        ///GetExcersises function returnes list of excersises filtered by parameters ordered by excersise name. Returns it to partial view.
+        ///</summary>
         public PartialViewResult GetExcersises(int excersisecategories, int seasonparts, string excersisename)
         {
             var excersises = db.Excersises.Include(t => t.ExcersiseBelongsToCategory).Include(t => t.ExcersiseBelongsToSeasonParts);
-
-            
-            //excersises.OrderBy(t => t.ExcersiseName);
-
-            if (excersisecategories != 0)
-            {
-                excersises = excersises.Where(t => t.ExcersiseBelongsToCategory.Any(x => x.ExcersiseCategory == excersisecategories));
-            }
-            if (seasonparts != 0)
-            {
-                excersises = excersises.Where(t => t.ExcersiseBelongsToSeasonParts.Any(x => x.SeasonPart == seasonparts));
-            }
-            if (excersisename != "")
-            {
-                excersises = excersises.Where(t => t.ExcersiseName.Contains(excersisename));
-            }
-
-
-            // odeslání parametru vybrané sezóny a týmu do view
-
+            // provede otestování nenulové hodnoty parametru a filtrování dle excersisecategories
+            excersises = FilterByBelongsToCategory(excersises, excersisecategories);
+            // provede otestování nenulové hodnoty parametru a filtrování dle seasonparts
+            excersises = FilterByBelongsToSeasonPart(excersises, seasonparts);
+            // provede otestování nenulové hodnoty parametru a filtrování dle excersisename
+            excersises = FilterByExcersiseNameConains(excersises, excersisename);
 
             return PartialView("_ExcersisesList", excersises.Distinct().OrderBy(t => t.ExcersiseName).ToList());
         }

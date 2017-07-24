@@ -13,28 +13,125 @@ namespace FloorballTrainingSessions
     {
         private Entities db = new Entities();
 
-        // GET: Trainings
-        //public ActionResult Index()
-        //{
-        //    var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
-        //    return View(trainings.ToList());
-        //}
+        ///<summary>
+        /// Function returnes set of trainings filtered by season.
+        ///</summary>
+        public static IQueryable<Trainings> FilterBySeason(IQueryable<Trainings> tr, int season)
+        {
+            if (season != 0)
+            {
+                tr = tr.Where(t => (t.Season == season));
+            }
+            return (tr);
+        }
+        ///<summary>
+        /// Function returnes set of trainings filtered by team.
+        ///</summary>
+        public static IQueryable<Trainings> FilterByTeam(IQueryable<Trainings> tr, int team)
+        {
+            if (team != 0)
+            {
+                tr = tr.Where(t => t.Team == team);
+            }
+            return (tr);
+        }
+        ///<summary>
+        /// Function returnes set of trainings filtered by unconditional parameter Season Part.
+        ///</summary>
+        public static IQueryable<Trainings> FilterBySeasonPart(IQueryable<Trainings> tr, int? seasonpart)
+        {
+            if (seasonpart != 0)
+            {
+                tr = tr.Where(t => t.SeasonPart == seasonpart);
+            }
+            return (tr);
+        }
+        ///<summary>
+        /// Function returnes set of trainings filtered by unconditional parameter Training Focus.
+        ///</summary>
+        public static IQueryable<Trainings> FilterByTrainingFocus(IQueryable<Trainings> tr, int? trainingfocus)
+        {
+            if (trainingfocus != 0)
+            {
+                tr = tr.Where(t => t.TrainingFocus == trainingfocus);
+            }
+            return (tr);
+        }
+        ///<summary>
+        /// Function returnes set of trainings filtered by traininglocation.
+        ///</summary>
+        public static IQueryable<Trainings> FilterByTrainingLocation(IQueryable<Trainings> tr, int? traininglocation)
+        {
+            if (traininglocation != 0)
+            {
+                tr = tr.Where(t => t.TrainingLocation == traininglocation);
+            }
+            return (tr);
+        }
+        ///<summary>
+        /// Function returnes set of trainings filtered by Training Scheme Model.
+        ///</summary>
+        public static IQueryable<Trainings> FilterByTrainingSchemeModel(IQueryable<Trainings> tr, int? trainingschememodel)
+        {
+            if (trainingschememodel != 0)
+            {
+                tr = tr.Where(t => t.TrainingSchemeModel == trainingschememodel);
+            }
+            return (tr);
+        }
+        ///<summary>
+        /// Generates select list values of Season Parts with zero value for filtering (no filter)
+        ///</summary>
+        public SelectList AddViewBagForSelectListOfSeasonPartsForFilter ()
+        {
+            var seasonparts = db.SeasonParts.ToList();
+            seasonparts.Insert(0, new SeasonParts { Id = 0, SeasonPartName = "-- Vyber část sezóny --" });
+            var seasonpartlist = new SelectList(seasonparts, "Id", "SeasonPartName");
+            return (seasonpartlist);
+        }
+
+        ///<summary>
+        /// Generates select list values of Training Focuses with zero value for filtering (no filter)
+        ///</summary>
+        public SelectList AddViewBagForSelectListOfTrainingFocusForFilter()
+        {
+           
+            var trainingfocuses = db.TrainingFocuses.ToList();
+            trainingfocuses.Insert(0, new TrainingFocuses { Id = 0, TrainingFocusName = "-- Vyber tréninkové zaměření --" });
+            var trainingfocuslist = new SelectList(trainingfocuses, "Id", "TrainingFocusName");
+            return (trainingfocuslist);
+        }
+        ///<summary>
+        /// Generates select list values of Training Location with zero value for filtering (no filter)
+        ///</summary>
+        public SelectList AddViewBagForSelectListOfTrainingLocationForFilter()
+        {
+            var traininglocations = db.TrainingLocations.ToList();
+            traininglocations.Insert(0, new TrainingLocations { Id = 0, TrainingLocationName = "-- Vyber tréninkovou lokaci --" });
+            var traininglocationlist = new SelectList(traininglocations, "Id", "TrainingLocationName");
+            return (traininglocationlist);
+        }
+        ///<summary>
+        /// Generates select list values of Training Scheme Model with zero value for filtering (no filter)
+        ///</summary>
+        public SelectList AddViewBagForSelectListOfTrainingSchemeModelForFilter()
+        {
+            var trainingschememodels = db.TrainingSchemeModels.ToList();
+            trainingschememodels.Insert(0, new TrainingSchemeModels { Id = 0, TrainingSchemeName = "-- Vyber tréninkové schéma --" });
+            var trainingschememodelslist = new SelectList(trainingschememodels, "Id", "TrainingSchemeName");
+            return (trainingschememodelslist);
+        }
 
         // GET: Trainings
         public ActionResult Index(int season, int team, int? seasonpart, int? trainingfocus)
         {
             var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
-            trainings = trainings.Where(t => (t.Season == season));
-            trainings = trainings.Where(t => t.Team == team);
-            if (seasonpart != null)
-            {
-                trainings = trainings.Where( t=>t.SeasonPart >= seasonpart); 
-            }
-            if (trainingfocus != null)
-            {
-                trainings = trainings.Where(t => t.TrainingFocus >= trainingfocus);
-            }
+            trainings = FilterBySeason(trainings, season);
+            trainings = FilterByTeam(trainings, team);
+            trainings = FilterBySeasonPart(trainings, seasonpart);
+            trainings = FilterByTrainingFocus(trainings, trainingfocus);            
             trainings.OrderBy(t => t.TrainingDate);
+
             return View(trainings.ToList());
         }
 
@@ -42,54 +139,31 @@ namespace FloorballTrainingSessions
         {
             var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
             // filtrování na základě vstupního parametru - tým a sezóna
-            trainings = trainings.Where(t => (t.Season == selectedseason));
-            trainings = trainings.Where(t => t.Team == selectedteam);
+            trainings = FilterBySeason(trainings, selectedseason);
+            trainings = FilterByTeam(trainings, selectedteam);
+            
             // odeslání parametru vybrané sezóny a týmu do view
             ViewBag.selectedseason = selectedseason;
             ViewBag.selectedteam = selectedteam;
             // odeslání dat pro select list pro season part
-            var itemsseasonpart = db.SeasonParts.ToList();
-            itemsseasonpart.Insert(0, new SeasonParts { Id = 0, SeasonPartName = "-- Vyber část sezóny --" });
-            ViewBag.seasonpart = new SelectList(itemsseasonpart, "Id", "SeasonPartName");
+            ViewBag.seasonpart = AddViewBagForSelectListOfSeasonPartsForFilter();
             // odeslání dat pro select list pro zaměření tréninku
-            var itemstrainingfocus = db.TrainingFocuses.ToList();
-            itemstrainingfocus.Insert(0, new TrainingFocuses { Id = 0, TrainingFocusName = "-- Vyber tréninkové zaměření --" });
-            ViewBag.trainingfocus = new SelectList(itemstrainingfocus, "Id", "TrainingFocusName");
+            ViewBag.trainingfocus = AddViewBagForSelectListOfTrainingFocusForFilter();
             // odeslání dat pro select list pro tréninkovou lokaci
-            var itemstraininglocation = db.TrainingLocations.ToList();
-            itemstraininglocation.Insert(0, new TrainingLocations { Id = 0, TrainingLocationName = "-- Vyber tréninkovou lokaci --" });
-            ViewBag.traininglocation = new SelectList(itemstraininglocation, "Id", "TrainingLocationName");
+            ViewBag.traininglocation = AddViewBagForSelectListOfTrainingLocationForFilter();
             // odeslání dat pro selec list tréninkového modelu
-            var itemsschememodel = db.TrainingSchemeModels.ToList();
-            itemsschememodel.Insert(0, new TrainingSchemeModels { Id = 0, TrainingSchemeName = "-- Vyber tréninkové schéma --" });
-            ViewBag.trainingschememodel = new SelectList(itemsschememodel, "Id", "TrainingSchemeName");
-            
+            ViewBag.trainingschememodel = AddViewBagForSelectListOfTrainingSchemeModelForFilter();
             return View(trainings.Distinct().OrderBy(t => t.TrainingDate).ToList());
         }
         public PartialViewResult GetTrainings(int selectedseason, int selectedteam, int seasonpart, int traininglocation, int trainingfocus, int trainingschememodel)
         {
             var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
-            trainings = trainings.Where(t => (t.Season == selectedseason));
-            trainings = trainings.Where(t => t.Team == selectedteam);
-            trainings.OrderBy(t => t.TrainingDate);
-            if (seasonpart != 0)
-            {
-                trainings = trainings.Where(t => t.SeasonPart == seasonpart);
-            }
-            if (traininglocation != 0)
-            {
-                trainings = trainings.Where(t => t.TrainingLocation == traininglocation);
-            }
-            if (trainingfocus != 0)
-            {
-                trainings = trainings.Where(t => t.TrainingFocus == trainingfocus);
-            }
-            if (trainingschememodel != 0)
-            {
-                trainings = trainings.Where(t => t.TrainingSchemeModel == trainingschememodel);
-            }
-
-
+            trainings = FilterBySeason(trainings, selectedseason);
+            trainings = FilterByTeam(trainings, selectedteam);
+            trainings = FilterBySeasonPart(trainings, seasonpart);
+            trainings = FilterByTrainingLocation(trainings, traininglocation);
+            trainings = FilterByTrainingFocus(trainings, trainingfocus);
+            trainings = FilterByTrainingSchemeModel(trainings, trainingschememodel);
             // odeslání parametru vybrané sezóny a týmu do view
             ViewBag.selectedseason = selectedseason;
             ViewBag.selectedteam = selectedteam;
@@ -119,8 +193,7 @@ namespace FloorballTrainingSessions
             ViewBag.SeasonPart = new SelectList(db.SeasonParts, "Id", "SeasonPartName");
             ViewBag.Season = new SelectList(db.Seasons, "Id", "SeasonName");
             ViewBag.Team = new SelectList(db.Teams, "Id", "TeamName");
-            ViewBag.TrainingFocus = new SelectList(db.TrainingFocuses, "Id", "TrainingFocusName");
-            
+            ViewBag.TrainingFocus = new SelectList(db.TrainingFocuses, "Id", "TrainingFocusName");            
             ViewBag.TrainingLocation = new SelectList(db.TrainingLocations, "Id", "TrainingLocationName");
             ViewBag.TrainingSchemeModel = new SelectList(db.TrainingSchemeModels, "Id", "TrainingSchemeName");
             ViewBag.SelectedSeason = selectedseason;

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<FloorballTrainingSessions.TeamPlayers>
+
+
+<table class="table table-condensed table-hover">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlayerFunctions.PlayerFunctionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Players.Name)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlayerFunctions.PlayerFunctionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Players.Name)
+                </td>
+                <td>
+                    @Html.Action("List","PlayerSigningToTrainings", new { player = item.Player, training = ViewBag.training})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

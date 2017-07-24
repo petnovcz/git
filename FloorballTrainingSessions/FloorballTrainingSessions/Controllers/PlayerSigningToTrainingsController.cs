@@ -20,10 +20,37 @@ namespace FloorballTrainingSessions
             return View(playerSigningToTrainings.ToList());
         }
 
-        public PartialViewResult List(int player, int training)
+        public PartialViewResult List(int player, int training, bool? status)
         {
+            if (status != null)
+            {
+                var exists = db.PlayerSigningToTrainings.Where(t=> t.Player == player).Where(t=>t.Training == training).FirstOrDefault();
+                
+                if (exists != null && exists.Status != status)
+                {
+                    var Id = exists.Id;
+                    //update entity a save
+                    PlayerSigningToTrainings edit = db.PlayerSigningToTrainings.Find(Id);
+                    edit.Status = status.Value;
+                    edit.SignedDate = DateTime.Now;
+                    db.Entry(edit).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                if (exists == null)
+                {
+                    PlayerSigningToTrainings add = new PlayerSigningToTrainings();
+                    add.Player = player;
+                    add.Training = training;
+                    add.Status = status.Value;
+                    add.SignedDate = DateTime.Now;
+                    db.PlayerSigningToTrainings.Add(add);
+                    db.SaveChanges();
+                }
+            }
             var playerSigningToTrainings = db.PlayerSigningToTrainings.Include(p => p.Players).Include(p => p.Trainings);
             playerSigningToTrainings = playerSigningToTrainings.Where(t => t.Player == player).Where(t => t.Training == training);
+            ViewBag.player = player;
+            ViewBag.training = training;
             return PartialView(playerSigningToTrainings.FirstOrDefault());
         }
 
@@ -55,7 +82,7 @@ namespace FloorballTrainingSessions
         // Další informace viz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Training,Player,Status,PlayerSignedDate")] PlayerSigningToTrainings playerSigningToTrainings)
+        public ActionResult Create([Bind(Include = "Id,Training,Player,Status,PlayerSignedDate,SignedDate ")] PlayerSigningToTrainings playerSigningToTrainings)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +118,7 @@ namespace FloorballTrainingSessions
         // Další informace viz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Training,Player,Status,PlayerSignedDate")] PlayerSigningToTrainings playerSigningToTrainings)
+        public ActionResult Edit([Bind(Include = "Id,Training,Player,Status,PlayerSignedDate, SignedDate")] PlayerSigningToTrainings playerSigningToTrainings)
         {
             if (ModelState.IsValid)
             {

@@ -19,6 +19,7 @@ namespace FloorballTrainingSessions
         public int Player { get; set; }
         public bool Status { get; set; }
         public byte[] PlayerSignedDate { get; set; }
+        public System.DateTime SignedDate { get; set; }
     
         public virtual Players Players { get; set; }
         public virtual Trainings Trainings { get; set; }

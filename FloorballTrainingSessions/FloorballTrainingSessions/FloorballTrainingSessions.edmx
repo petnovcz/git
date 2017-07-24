@@ -77,11 +77,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Training" Type="int" Nullable="false" />
           <Property Name="Player" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="PlayerSignedDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="SignedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="SeasonParts">
           <Key>
@@ -686,6 +687,7 @@
           <Property Name="PlayerSignedDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Players" Relationship="Self.FK_PlayerSigningToTrainings_ToPlayers" FromRole="PlayerSigningToTrainings" ToRole="Players" />
           <NavigationProperty Name="Trainings" Relationship="Self.FK_PlayerSigningToTrainings_ToTrainings" FromRole="PlayerSigningToTrainings" ToRole="Trainings" />
+          <Property Name="SignedDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="SeasonParts">
           <Key>
@@ -1309,7 +1311,8 @@
     <EntitySetMapping Name="PlayerSigningToTrainings">
       <EntityTypeMapping TypeName="IsTypeOf(Model.PlayerSigningToTrainings)">
         <MappingFragment StoreEntitySet="PlayerSigningToTrainings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Training" ColumnName="Training" />
           <ScalarProperty Name="Player" ColumnName="Player" />
           <ScalarProperty Name="Status" ColumnName="Status" />

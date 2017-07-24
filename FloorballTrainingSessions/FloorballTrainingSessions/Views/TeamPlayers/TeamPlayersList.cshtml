@@ -2,7 +2,11 @@
 
 
 <table class="table table-condensed table-hover">
-
+    <colgroup>
+        <col class="col-md-3" />
+        <col class="col-md-3" />
+        <col class="col-md-6" />
+    </colgroup>
     <thead>
         <tr>
             <th>
@@ -25,7 +29,9 @@
                     @Html.DisplayFor(modelItem => item.Players.Name)
                 </td>
                 <td>
+                    <div id= "PL_@item.Player" data-player="@item.Player" data-training="@ViewBag.training">
                     @Html.Action("List","PlayerSigningToTrainings", new { player = item.Player, training = ViewBag.training})
+                    </div>
                 </td>
             </tr>
         }

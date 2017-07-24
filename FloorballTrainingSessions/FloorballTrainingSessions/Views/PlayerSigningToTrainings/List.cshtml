@@ -1,12 +1,39 @@
 ﻿@model FloorballTrainingSessions.PlayerSigningToTrainings
 
   
-            @Html.DisplayFor(model => model.Status)
-        
-- 
+<div>            @Html.DisplayFor(model => model.Status)</div>
+<div>@Html.DisplayFor(model => model.SignedDate)</div>
+<div>
+    @Ajax.ActionLink("Jde", // <-- Text to display
+                    "List", // <-- Action Method Name
+                    "PlayerSigningToTrainings",
+                    new { player = ViewBag.Player, training = ViewBag.training, status = true },
+                 new AjaxOptions
+                 {
+                     UpdateTargetId = "PL_" + @ViewBag.Player, // <-- DOM element ID to update
+                     InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                     HttpMethod = "POST" // <-- HTTP method
+                 }
+                 , new { @class = "btn btn-danger btn-xs" }
+                 )
+
+</div>
+<div>@Ajax.ActionLink("Nejde", // <-- Text to display
+                    "List", // <-- Action Method Name
+                    "PlayerSigningToTrainings",
+                    new { player = ViewBag.Player, training = ViewBag.training, status = false },
+                 new AjaxOptions
+                 {
+                     UpdateTargetId = "PL_" + @ViewBag.Player, // <-- DOM element ID to update
+                     InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                     HttpMethod = "POST" // <-- HTTP method
+                 }
+                 , new { @class = "btn btn-danger btn-xs" }
+                 )</div>        
+ 
   
         
-            @Html.DisplayFor(model => model.PlayerSignedDate)
+            
        
 
   

@@ -51,7 +51,21 @@ namespace FloorballTrainingSessions
             playerSigningToTrainings = playerSigningToTrainings.Where(t => t.Player == player).Where(t => t.Training == training);
             ViewBag.player = player;
             ViewBag.training = training;
-            return PartialView(playerSigningToTrainings.FirstOrDefault());
+            if (playerSigningToTrainings.Count() != 0)
+                    {
+                        if (playerSigningToTrainings.FirstOrDefault().Status == true)
+                        {
+                            ViewBag.Jdu = true;
+                            ViewBag.Nejdu = false;
+                        }
+                        if (playerSigningToTrainings.FirstOrDefault().Status == false)
+                        {
+                            ViewBag.Jdu = false;
+                            ViewBag.Nejdu = true;
+                        }
+            }
+            
+                return PartialView(playerSigningToTrainings.FirstOrDefault());
         }
 
         // GET: PlayerSigningToTrainings/Details/5

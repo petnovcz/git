@@ -13,6 +13,7 @@ namespace FloorballTrainingSessions
     {
         private Entities db = new Entities();
 
+
         ///<summary>
         /// Function returnes set of trainings filtered by season.
         ///</summary>
@@ -182,6 +183,7 @@ namespace FloorballTrainingSessions
             {
                 return HttpNotFound();
             }
+            ViewBag.Id = trainings.Id;
             return View(trainings);
         }
 

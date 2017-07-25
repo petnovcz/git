@@ -194,6 +194,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ExcersiseBelongsToCategoriesController.cs" />
     <Compile Include="Controllers\SeasonPartsListExcersisesLinkedController.cs" />
+    <Compile Include="Controllers\SigningSummaryController.cs" />
     <Compile Include="ExcersiseBelongsToCategory.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
@@ -236,6 +237,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SeasonPartsLisExcersisesLinkedModel.cs" />
+    <Compile Include="Models\SigningSummaryModel.cs" />
     <Compile Include="MyTrainingsController.cs" />
     <Compile Include="PlayerFunctions.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
@@ -856,6 +858,7 @@
     <Content Include="Views\Excersises\DetailsModal.cshtml" />
     <Content Include="Views\TeamPlayers\TeamPlayersList.cshtml" />
     <Content Include="Views\PlayerSigningToTrainings\List.cshtml" />
+    <Content Include="Views\SigningSummary\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

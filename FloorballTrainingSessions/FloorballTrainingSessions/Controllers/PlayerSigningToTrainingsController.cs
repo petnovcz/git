@@ -20,7 +20,7 @@ namespace FloorballTrainingSessions
             return View(playerSigningToTrainings.ToList());
         }
 
-        public PartialViewResult List(int player, int training, bool? status)
+        public PartialViewResult List(int player, int training, int team, bool? status)
         {
             if (status != null)
             {
@@ -64,7 +64,7 @@ namespace FloorballTrainingSessions
                             ViewBag.Nejdu = true;
                         }
             }
-            
+            ViewBag.Team = team;
                 return PartialView(playerSigningToTrainings.FirstOrDefault());
         }
 

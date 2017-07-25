@@ -24,9 +24,24 @@
     <div class="col-md-8">
         <div class="panel panel-default">
             <div class="panel-body">
-                @Html.Action("Result", "SigningSummary", new { Training = Model.Id, Team = Model.Team })
+                
+                @using (Ajax.BeginForm("Result","SigningSummary",
+                 new {training = Model.Id, team = Model.Team },
+                new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "signingsummary"
+                }
+                ))
+                {
+                    <input type="submit" value="Refresh" id="SigningSummaryRefresh" hidden>
+                }
+                
+                <div id="signingsummary" data-id="@Model.Id" data-team="@Model.Team">
+                    @Html.Action("Result", "SigningSummary", new { Training = Model.Id, team = Model.Team })
+                </div>
 
-            </div>
+                </div>
         </div>
     </div>
     <div class="col-md-4">
@@ -125,52 +140,44 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap-select.js"></script>
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-select.css" />
-
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script>
-    $(document).ready(function () {
-        $(".DDL").click(function () {
-            var id = $(this).attr("data-id");
-            //alert(id);
-            var value = $('#'+id).val();
+        function OnSuccess(data) {
+            $("#signingsummary").fadeOut(300, function () {
+                $("#SigningSummaryRefresh").trigger("click");
+                $("#signingsummary").fadeIn(300);
+                
 
-            var url = "/Excersises/DetailsModal/" + value;
-            $.ajax({
-                url: url,
-                success: function (data) {
-                    
-                    $('#Search').html(data);
-                },
-                cache: false
-            });
-   
+            })
+            
+            
+        }
+
+        $(document).ready(function () {
+
+            $(".DDL").click(function () {
+                var id = $(this).attr("data-id");
+                //alert(id);
+                var value = $('#' + id).val();
+                var url = "/Excersises/DetailsModal/" + value;
+
+                $.ajax({
+                    url: url,
+                    success: function (data) {
+
+                        $('#Search').html(data);
+                    },
+                    cache: false
+                });
+
                 $('#Search').modal('show');
-            
-        });
 
-        $(".signingstatus").click(function () {
-            var id = $(this).attr("data-id");
-            alert(id);
-            
-
-
-            var url = "/SigningSummary/Result/?training=1";
-            alert(url);
-            $.ajax({
-                url: url,
-                success: function (data) {
-
-                    $('#signingsummary').html(data);
-                },
-                cache: false
             });
 
             
-
         });
 
-
-
-        });
+        
         </script>
 }
 

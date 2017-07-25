@@ -31,16 +31,17 @@
         @Ajax.ActionLink("Jde", // <-- Text to display
                      "List", // <-- Action Method Name
                      "PlayerSigningToTrainings",
-                     new { player = ViewBag.Player, training = ViewBag.training, status = true },
+                     new { player = ViewBag.Player, training = ViewBag.training, status = true, team=ViewBag.team },
                   new AjaxOptions
                   {
                       UpdateTargetId = "PL_" + @ViewBag.Player, // <-- DOM element ID to update
                       InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
-                      HttpMethod = "POST" // <-- HTTP method
+                      HttpMethod = "POST", // <-- HTTP method,
+                      OnSuccess = "OnSuccess();"
                   }
-                  
 
-                 , new { @class = @jdu, @data_Id = ViewBag.training}
+
+                 , new { @class = @jdu, @data_Id = ViewBag.training, @data_team= ViewBag.team }
 
 
                      )
@@ -49,18 +50,23 @@
     <div class="col-md-2">@Ajax.ActionLink("Nejde", // <-- Text to display
                         "List", // <-- Action Method Name
                         "PlayerSigningToTrainings",
-                        new { player = ViewBag.Player, training = ViewBag.training, status = false },
+                        new { player = ViewBag.Player, training = ViewBag.training, status = false, team = ViewBag.team },
                      new AjaxOptions
                      {
                          UpdateTargetId = "PL_" + @ViewBag.Player, // <-- DOM element ID to update
                          InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
-                         HttpMethod = "POST" // <-- HTTP method
+                         HttpMethod = "POST", // <-- HTTP method
+                         OnSuccess = "OnSuccess"
                      }
-                     , new { @class = @nejdu, @data_Id = ViewBag.training }
+                     , new { @class = @nejdu, @data_Id = ViewBag.training, @data_team = ViewBag.team }
                      )
     </div>        
  </div>           
        
 
   
+@section Scripts {
 
+
+
+}

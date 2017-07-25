@@ -30,7 +30,7 @@
                 </td>
                 <td>
                     <div id= "PL_@item.Player" data-player="@item.Player" data-training="@ViewBag.training">
-                    @Html.Action("List","PlayerSigningToTrainings", new { player = item.Player, training = ViewBag.training})
+                    @Html.Action("List","PlayerSigningToTrainings", new { player = item.Player, training = ViewBag.training, team =item.Team})
                     </div>
                 </td>
             </tr>

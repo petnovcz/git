@@ -64,7 +64,7 @@ namespace FloorballTrainingSessions
                 
 
                 return this.TrainingDate.DayOfWeek; } }
-
+        
         
     }
 }

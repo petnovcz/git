@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace FloorballTrainingSessions
 {
+       
     public class AspNetUsersController : Controller
     {
         private Entities db = new Entities();

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace FloorballTrainingSessions
 {
@@ -66,6 +67,59 @@ namespace FloorballTrainingSessions
             }
             ViewBag.Team = team;
                 return PartialView(playerSigningToTrainings.FirstOrDefault());
+        }
+        public int GetPlayerID(string userid)
+        {
+            var players = db.Players.Where(t => (t.User == userid)).FirstOrDefault();
+            return players.Id;
+        }
+
+        public PartialViewResult MyList(int player, int training, int team, bool? status)
+        {
+            if (status != null)
+            {
+                var exists = db.PlayerSigningToTrainings.Where(t => t.Player == player).Where(t => t.Training == training).FirstOrDefault();
+                player = GetPlayerID(User.Identity.GetUserId());
+                if (exists != null && exists.Status != status)
+                {
+                    var Id = exists.Id;
+                    //update entity a save
+                    PlayerSigningToTrainings edit = db.PlayerSigningToTrainings.Find(Id);
+                    edit.Status = status.Value;
+                    edit.SignedDate = DateTime.Now;
+                    db.Entry(edit).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                if (exists == null)
+                {
+                    PlayerSigningToTrainings add = new PlayerSigningToTrainings();
+                    add.Player = player;
+                    add.Training = training;
+                    add.Status = status.Value;
+                    add.SignedDate = DateTime.Now;
+                    db.PlayerSigningToTrainings.Add(add);
+                    db.SaveChanges();
+                }
+            }
+            var playerSigningToTrainings = db.PlayerSigningToTrainings.Include(p => p.Players).Include(p => p.Trainings);
+            playerSigningToTrainings = playerSigningToTrainings.Where(t => t.Player == player).Where(t => t.Training == training);
+            ViewBag.player = player;
+            ViewBag.training = training;
+            if (playerSigningToTrainings.Count() != 0)
+            {
+                if (playerSigningToTrainings.FirstOrDefault().Status == true)
+                {
+                    ViewBag.Jdu = true;
+                    ViewBag.Nejdu = false;
+                }
+                if (playerSigningToTrainings.FirstOrDefault().Status == false)
+                {
+                    ViewBag.Jdu = false;
+                    ViewBag.Nejdu = true;
+                }
+            }
+            ViewBag.Team = team;
+            return PartialView(playerSigningToTrainings.FirstOrDefault());
         }
 
         // GET: PlayerSigningToTrainings/Details/5

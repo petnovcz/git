@@ -40,7 +40,9 @@
                 <div id="signingsummary" data-id="@Model.Id" data-team="@Model.Team">
                     @Html.Action("Result", "SigningSummary", new { Training = Model.Id, team = Model.Team })
                 </div>
-
+                <div id="mylist">
+                    @Html.Action("MyList", "PlayerSigningToTrainings", new { player = ViewBag.CurrentPlayer, training = Model.Id, team = Model.Team })
+                </div>
                 </div>
         </div>
     </div>
@@ -94,7 +96,7 @@
                 </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
+                <div class="panel-body" id="teamplayerList" data-Teamid="@Model.Team" data-season="@Model.Season" data-training="Model.Id" >
                     @Html.Action("TeamPlayersList","Teamplayers",new { TeamId = Model.Team , SeasonId = Model.Season, training = Model.Id })
                 </div>
             </div>
@@ -142,17 +144,46 @@
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-select.css" />
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script>
-        function OnSuccess(data) {
+        function OnSuccess(training, player, team, status) {
             $("#signingsummary").fadeOut(300, function () {
                 $("#SigningSummaryRefresh").trigger("click");
                 $("#signingsummary").fadeIn(300);
                 
-
+                
             })
+            var url = "/PlayerSigningToTrainings/MyList?player=" + player + "&training=" + training + "&team=" + team + "&status=" + status;
             
+            $.ajax({
+                url: url,
+                success: function (data) {
+
+                    $('#mylist').html(data);
+                },
+                cache: false
+            });
             
         }
 
+        function OnSuccessMyList(training, player, team, status) {
+            $("#signingsummary").fadeOut(300, function () {
+                $("#SigningSummaryRefresh").trigger("click");
+                $("#signingsummary").fadeIn(300);
+                
+                var url = "/PlayerSigningToTrainings/List?player=" + player + "&training="+training+ "&team="+team+"&status="+status;
+
+                $.ajax({
+                    url: url,
+                    success: function (data) {
+
+                        $('#PL_'+player).html(data);
+                    },
+                    cache: false
+                });
+
+            })
+
+
+        }
         $(document).ready(function () {
 
             $(".DDL").click(function () {

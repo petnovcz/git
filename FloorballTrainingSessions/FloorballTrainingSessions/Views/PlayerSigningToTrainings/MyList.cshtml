@@ -1,0 +1,72 @@
+﻿@model FloorballTrainingSessions.PlayerSigningToTrainings
+
+<div>
+    
+    <div class="col-md-6">
+
+        @{  var jdu = "btn btn-success btn-xs btn-block disabled signingstatus";
+            var nejdu = "btn btn-danger btn-xs btn-block signingstatus";
+
+            jdu = "btn btn-success btn-xs btn-block signingstatus";
+            nejdu = "btn btn-danger btn-xs btn-block signingstatus";
+        }
+        @if (ViewBag.Jdu == true)
+        {
+            jdu = "btn btn-success btn-xs btn-block signingstatus disabled";
+        }
+        else
+        {
+            jdu = "btn btn-success btn-xs btn-block signingstatus";
+        }
+        @if (ViewBag.Nejdu == true)
+        {
+            nejdu = "btn btn-danger btn-xs btn-block signingstatus disabled";
+        }
+        else
+        {
+            nejdu = "btn btn-danger btn-xs btn-block signingstatus";
+        }
+
+        @Ajax.ActionLink("Jde", // <-- Text to display
+                     "MyList", // <-- Action Method Name
+                     "PlayerSigningToTrainings",
+                     new { player = ViewBag.Player, training = ViewBag.training, status = true, team = ViewBag.team },
+                  new AjaxOptions
+                  {
+                      UpdateTargetId = "mylist", // <-- DOM element ID to update
+                      InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                      HttpMethod = "POST", // <-- HTTP method,
+                      OnSuccess = "OnSuccessMyList(" + @ViewBag.training + "," + @ViewBag.player + ", " + @ViewBag.team + ","+0+")"
+                  }
+
+
+                 , new { @class = @jdu, @data_Id = ViewBag.training, @data_team = ViewBag.team }
+
+
+                     )
+
+    </div>
+    <div class="col-md-6">
+        @Ajax.ActionLink("Nejde", // <-- Text to display
+                        "MyList", // <-- Action Method Name
+                        "PlayerSigningToTrainings",
+                        new { player = ViewBag.Player, training = ViewBag.training, status = false, team = ViewBag.team },
+                     new AjaxOptions
+                     {
+                         UpdateTargetId = "mylist", // <-- DOM element ID to update
+                         InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                         HttpMethod = "POST", // <-- HTTP method
+                         OnSuccess = "OnSuccessMyList("+ @ViewBag.training + ","+ @ViewBag.player +", "+@ViewBag.team+","+1+ ")"
+                     }
+                     , new { @class = @nejdu, @data_Id = ViewBag.training, @data_team = ViewBag.team }
+                     )
+</div>
+</div>
+
+
+
+@section Scripts {
+
+
+
+}

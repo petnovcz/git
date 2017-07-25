@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace FloorballTrainingSessions
 {
@@ -184,10 +185,17 @@ namespace FloorballTrainingSessions
                 return HttpNotFound();
             }
             ViewBag.Id = trainings.Id;
+
+            ViewBag.CurrentPlayer = GetPlayerID(User.Identity.GetUserId());
             return View(trainings);
         }
+        public int GetPlayerID(string userid)
+        {
+            var players = db.Players.Where(t => (t.User == userid)).FirstOrDefault();
+            return players.Id;
+        }
 
-        
+       
 
         // GET: Trainings/Create
         public ActionResult Create(int selectedseason, int selectedteam)

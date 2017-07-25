@@ -22,7 +22,7 @@ namespace FloorballTrainingSessions
             
 
 
-            signingSummary.SignedInAll = x;
+            //signingSummary.SignedInAll = x;
                 
                 
             signingSummary.SignedOutAll = db.PlayerSigningToTrainings

@@ -13,6 +13,15 @@ namespace FloorballTrainingSessions
     {
         private Entities db = new Entities();
 
+        public Teams GetTeamById(int Id)
+        {
+            
+                var teams = db.Teams.Where(t => (t.Id == Id)).FirstOrDefault();
+                return teams;
+            
+        }
+        
+        
         // GET: Teams
         public ActionResult Index()
         {

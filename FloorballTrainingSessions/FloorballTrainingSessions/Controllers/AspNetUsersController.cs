@@ -9,11 +9,22 @@ using System.Web.Mvc;
 
 namespace FloorballTrainingSessions
 {
-       
+
     public class AspNetUsersController : Controller
     {
         private Entities db = new Entities();
 
+
+        public AspNetUsers AspNetUserByID(string userid)
+        {
+            AspNetUsers aspNetUsers = new AspNetUsers();
+            aspNetUsers = db.AspNetUsers.Where(t => t.Id == userid).FirstOrDefault();
+            return (aspNetUsers);
+        }
+        
+        
+        
+        
         // GET: AspNetUsers
         public ActionResult Index()
         {

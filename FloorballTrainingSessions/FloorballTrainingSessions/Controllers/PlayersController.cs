@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using FloorballTrainingSessions.Controllers;
 
 
 namespace FloorballTrainingSessions
@@ -13,6 +14,12 @@ namespace FloorballTrainingSessions
     public class PlayersController : Controller
     {
         private Entities db = new Entities();
+
+        public Players GetPlayerbyUserID(string userid)
+        {
+            var players = db.Players.Where(t => (t.User == userid)).FirstOrDefault();
+            return players;
+        }
 
         // GET: Players
         public ActionResult Index()

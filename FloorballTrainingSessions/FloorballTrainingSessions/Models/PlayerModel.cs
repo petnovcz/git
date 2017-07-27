@@ -4,16 +4,20 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace FloorballTrainingSessions
 {
-    public partial class AdminModel
+    public partial class PlayerModel
     {
-        public AdminModel()
+        public PlayerModel()
         {
+            
             this.Seasons = new HashSet<Seasons>();
-            this.Teamplayers = new HashSet<TeamPlayers>();
-
+            this.CurrentPlayerTeams = new HashSet<TeamPlayers>();
+            this.CurrentPlayerTrainings = new HashSet<Trainings>();
         }
         [NotMapped]
         [Key]
@@ -21,16 +25,18 @@ namespace FloorballTrainingSessions
         [NotMapped]
         public Players CurrentPlayer { get; set; }
         public Seasons ActiveSeason { get; set; }
-        public Seasons SelectedSeason { get; set; }
+        //public Seasons SelectedSeason { get; set; }
+        public Teams ActiveTeam { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seasons> Seasons { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamPlayers> Teamplayers { get; set; }
+        public virtual ICollection<TeamPlayers> CurrentPlayerTeams { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Trainings> Trainings { get; set; }
+        public virtual ICollection<Trainings> CurrentPlayerTrainings { get; set; }
     }
 }
 

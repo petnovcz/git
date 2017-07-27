@@ -13,6 +13,36 @@ namespace FloorballTrainingSessions
     {
         private Entities db = new Entities();
 
+        /// <summary>
+        /// Funkce která dohledá aktivní sezónu
+        /// </summary>
+        /// <returns>Vrací sezónu</returns>
+
+        public Seasons GetActiveSeason()
+        {
+            var seasons = db.Seasons.Where(t => (t.IsActiveSeason == true)).FirstOrDefault();
+            return seasons;
+        }
+        /// <summary>
+        /// Funkce která dohledá sezónu dle zadaného ID
+        /// </summary>
+        /// <returns>Vrací sezónu</returns>
+        public Seasons GetSeasonByID(int SeasonId)
+        {
+            var seasons = db.Seasons.Where(t => (t.Id == SeasonId)).FirstOrDefault();
+            return seasons;
+        }
+        public ICollection<Seasons> GetSeason()
+        {
+            var seasons = db.Seasons.ToList();
+            return seasons;
+        }
+
+
+
+
+
+
         // GET: Seasons
         public ActionResult Index()
         {

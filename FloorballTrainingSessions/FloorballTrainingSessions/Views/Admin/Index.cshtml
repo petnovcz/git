@@ -6,11 +6,11 @@
 <div class="well">
     <div style="float:right;">@foreach (var item in Model.Seasons)
     {
-        if (Model.ActiveSeason == item.Id)
+        if (Model.ActiveSeason.Id == item.Id)
         {
             @Html.ActionLink(item.SeasonName, "Index", "Admin", new { SeasonId = item.Id }, new { @class = "btn btn-md btn-success" });
         }
-        if (Model.ActiveSeason != item.Id)
+        if (Model.ActiveSeason.Id != item.Id)
         {
             @Html.ActionLink(item.SeasonName, "Index", "Admin", new { SeasonId = item.Id }, new { @class = "btn btn-md btn-default" });
         }
@@ -63,9 +63,9 @@
             <div >
                 @foreach (var item in Model.Teamplayers)
                 {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-sm btn-block" });
+                    @Html.ActionLink(item.Teams.TeamName, "List", "TeamPlayers", new { TeamId = item.Team, SeasonId = Model.ActiveSeason.Id}, new { @class = "btn btn-warning btn-sm btn-block" });
                 }
-                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", new { SelectedSeason = Model.ActiveSeason }, new { @class = "btn btn-info btn-sm btn-block" })
+                @Html.ActionLink("Přidání člena k týmu", "Add", "TeamPlayers", new { SelectedSeason = Model.ActiveSeason.Id }, new { @class = "btn btn-info btn-sm btn-block" })
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@
             <div >
                 @foreach (var item in Model.Teamplayers)
                 {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { selectedteam = item.Team, selectedseason = Model.ActiveSeason }, new { @class = "btn btn-warning btn-sm btn-block" });
+                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { selectedteam = item.Team, selectedseason = Model.ActiveSeason.Id }, new { @class = "btn btn-warning btn-sm btn-block" });
                     
                 }
                 @Html.ActionLink("Vytvoření tréninku", "Create", "Trainings", null, new { @class = "btn btn-info btn-sm btn-block" })
@@ -92,7 +92,7 @@
             <div >
                 @foreach (var item in Model.Teamplayers)
                 {
-                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { TeamId = item.Team, SeasonId = Model.ActiveSeason }, new { @class = "btn btn-warning btn-sm btn-block" });
+                    @Html.ActionLink(item.Teams.TeamName, "List", "Trainings", new { TeamId = item.Team, SeasonId = Model.ActiveSeason.Id }, new { @class = "btn btn-warning btn-sm btn-block" });
                 }
                 @Html.ActionLink("Nastavení tréninkových schémat", "Index", "TrainingSchemeModels", null, new { @class = "btn btn-default btn-sm btn-block" })
             </div>

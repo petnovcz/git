@@ -236,6 +236,8 @@
     <Compile Include="Models\HomeModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Models\SeasonPartsLisExcersisesLinkedModel.cs" />
     <Compile Include="Models\SigningSummaryModel.cs" />
     <Compile Include="MyTrainingsController.cs" />
@@ -860,6 +862,7 @@
     <Content Include="Views\PlayerSigningToTrainings\List.cshtml" />
     <Content Include="Views\SigningSummary\Result.cshtml" />
     <Content Include="Views\PlayerSigningToTrainings\MyList.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

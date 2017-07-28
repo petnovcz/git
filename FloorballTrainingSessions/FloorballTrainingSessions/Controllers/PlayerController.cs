@@ -23,8 +23,8 @@ namespace FloorballTrainingSessions.Models
             p.CurrentPlayer = c.GetPlayerbyUserID(p.CurrentUser.Id);
             p.ActiveSeason = s.GetActiveSeason();
             if (SeasonId != null) { p.ActiveSeason = s.GetSeasonByID(SeasonId.Value); };
-            p.CurrentPlayerTeams = tp.GetTeamsForPlayerandSeason(p.CurrentPlayer.Id, p.ActiveSeason.Id);
-            p.Seasons = s.GetSeason();
+            p.CurrentPlayerTeams = tp.GetTeamsForPlayerandSeason(p.CurrentPlayer.Id, p.ActiveSeason.Id,true,null);
+            p.Seasons = s.GetSeason(p.CurrentPlayer.Id,true,null);
             if (TeamId != null) { p.ActiveTeam = t.GetTeamById(TeamId.Value); }
             if (TeamId == null) { p.ActiveTeam = t.GetTeamById(p.CurrentPlayerTeams.FirstOrDefault().Teams.Id); }
             

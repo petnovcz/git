@@ -27,8 +27,8 @@ namespace FloorballTrainingSessions
             admins.CurrentPlayer = c.GetPlayerbyUserID(admins.CurrentUser.Id);
             admins.ActiveSeason = s.GetActiveSeason();
             if (SeasonId != null) { admins.ActiveSeason = s.GetSeasonByID(SeasonId.Value); };
-            admins.Teamplayers = tp.GetTeamsForPlayerandSeason(admins.CurrentPlayer.Id, admins.ActiveSeason.Id);
-            admins.Seasons = s.GetSeason();
+            admins.Teamplayers = tp.GetTeamsForPlayerandSeason(admins.CurrentPlayer.Id, admins.ActiveSeason.Id,null,true);
+            admins.Seasons = s.GetSeason(admins.CurrentPlayer.Id,null,true);
             return View(admins);
         }
     }

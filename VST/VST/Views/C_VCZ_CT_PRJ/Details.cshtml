@@ -1,0 +1,554 @@
+﻿@model VST.C_VCZ_CT_PRJ
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>C_VCZ_CT_PRJ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocEntry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocEntry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Canceled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Canceled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Object)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Object)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserSign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserSign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transfered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transfered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataSource)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_Descript)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_Descript)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_Series)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_Series)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_CardCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_CardCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_CardName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_CardName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_CntCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_CntCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_StartDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_StartDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ActStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ActStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ActEndDt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ActEndDt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_DelDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_DelDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_AcptDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_AcptDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_CurSourc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_CurSourc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_DocCurr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_DocCurr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_DocRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_DocRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_SysRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_SysRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_Rezijni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_Rezijni)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_BlockNPB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_BlockNPB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_EmpNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_EmpNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_SmlCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_SmlCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_SmlName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_SmlName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_SmlDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_SmlDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_SmlOrdN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_SmlOrdN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_SmlRev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_SmlRev)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_SmlExp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_SmlExp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_FaktType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_FaktType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_FaktItm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_FaktItm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_FinType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_FinType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_SmlVers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_SmlVers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ValidFr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ValidFr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ValidTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ValidTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_HoldRecs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_HoldRecs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_EquipID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_EquipID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ContrID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ContrID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_PaymGrp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_PaymGrp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_PlaRev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_PlaRev)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_PlaRevFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_PlaRevFC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_PlaRevSC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_PlaRevSC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ActRev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ActRev)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ActRevFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ActRevFC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ActRevSC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ActRevSC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_PlaExp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_PlaExp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_PlaExpFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_PlaExpFC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_PlaExpSC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_PlaExpSC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ActExp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ActExp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ActExpFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ActExpFC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ActExpSC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ActExpSC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_AttPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_AttPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_DonePrc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_DonePrc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_ProbRealO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_ProbRealO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_DonePrAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_DonePrAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_MainPrj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_MainPrj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_GenATmpl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_GenATmpl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Code }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -863,6 +863,7 @@
     <Content Include="Views\SigningSummary\Result.cshtml" />
     <Content Include="Views\PlayerSigningToTrainings\MyList.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
+    <Content Include="Views\Trainings\Getnext10Trainings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -137,6 +137,18 @@ namespace FloorballTrainingSessions
             return View(trainings.ToList());
         }
 
+        public ActionResult Getnext10Trainings(int season, int team)
+        {
+            var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
+            trainings = trainings.Where(t => t.Season == season);
+            trainings = trainings.Where(t => t.Team == team);
+            trainings = trainings.Where(t => t.TrainingDate >= DateTime.Now);
+            trainings = trainings.OrderBy(t => t.TrainingDate);
+            trainings = trainings.Take(10);
+
+            return View(trainings.ToList());
+        }
+
         public ActionResult List(int selectedseason, int selectedteam)
         {
             var trainings = db.Trainings.Include(t => t.SeasonParts).Include(t => t.Seasons).Include(t => t.Teams).Include(t => t.TrainingFocuses).Include(t => t.TrainingLocations).Include(t => t.TrainingSchemeModels);
@@ -173,21 +185,21 @@ namespace FloorballTrainingSessions
             return PartialView("_TrainingsList", trainings.Distinct().OrderBy(t => t.TrainingDate).ToList());
         }
         // GET: Trainings/Details/5
-        public ActionResult Details(int? id)
+        public PartialViewResult Details(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Trainings trainings = db.Trainings.Find(id);
             if (trainings == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
             }
             ViewBag.Id = trainings.Id;
 
             ViewBag.CurrentPlayer = GetPlayerID(User.Identity.GetUserId());
-            return View(trainings);
+            return PartialView(trainings);
         }
         public int GetPlayerID(string userid)
         {

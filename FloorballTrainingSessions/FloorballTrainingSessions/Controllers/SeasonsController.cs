@@ -14,30 +14,55 @@ namespace FloorballTrainingSessions
         private Entities db = new Entities();
 
         /// <summary>
-        /// Funkce která dohledá aktivní sezónu
+        /// Gets season that is set up as active
         /// </summary>
-        /// <returns>Vrací sezónu</returns>
-
+        /// <returns>Seasons</returns>
         public Seasons GetActiveSeason()
         {
             var seasons = db.Seasons.Where(t => (t.IsActiveSeason == true)).FirstOrDefault();
             return seasons;
         }
         /// <summary>
-        /// Funkce která dohledá sezónu dle zadaného ID
+        /// Gets season details based on SeasonID
         /// </summary>
-        /// <returns>Vrací sezónu</returns>
+        /// <returns>Seasons</returns>
         public Seasons GetSeasonByID(int SeasonId)
         {
             var seasons = db.Seasons.Where(t => (t.Id == SeasonId)).FirstOrDefault();
             return seasons;
         }
+        /// <summary>
+        /// Gets list of all seasons
+        /// </summary>
+        /// <returns>ICollection<Seasons></Seasons></returns>
         public ICollection<Seasons> GetSeason()
         {
             var seasons = db.Seasons.ToList();
             return seasons;
         }
+        /// <summary>
+        /// Gets list of all seasons where player is (player or goalie) or where player is (trainer or manager)
+        /// </summary>
+        /// <returns>ICollection<Seasons></Seasons></returns>
+        public ICollection<Seasons> GetSeason(int player, bool? playerorgoalie, bool? trainerormanager)
+        {
 
+            var seasons = db.Seasons.Where(s => s.TeamPlayers.Any((tp=>tp.Player == player)));
+            if (playerorgoalie != null)
+            {
+                seasons = seasons.Where(s => s.TeamPlayers
+                .Any(tp => tp.Player == player && tp.PlayerFunctions.IsGoalie == playerorgoalie.Value || tp.PlayerFunctions.IsPlayer == playerorgoalie.Value));
+            }
+            if (trainerormanager != null)
+            {
+                seasons = seasons.Where(s => s.TeamPlayers
+                .Any(tp => tp.Player == player && tp.PlayerFunctions.IsManager == trainerormanager.Value || tp.PlayerFunctions.IsTrainer == trainerormanager.Value));
+            }
+            
+
+
+            return seasons.ToList();
+        }
 
 
 

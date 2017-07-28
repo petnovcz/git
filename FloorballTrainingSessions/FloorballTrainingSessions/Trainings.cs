@@ -25,13 +25,13 @@ namespace FloorballTrainingSessions
         }
     
         public int Id { get; set; }
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
         public System.DateTime TrainingDate { get; set; }
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:HH:mm}")]
         public System.DateTime MeetDate { get; set; }
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         public System.DateTime SigningLimitDate { get; set; }
         public int TrainingLocation { get; set; }

@@ -1,0 +1,451 @@
+﻿@model IEnumerable<VST.C_VCZ_CT_PRJ>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+    <table id="tb1" class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DocEntry)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Canceled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Object)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LogInst)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserSign)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transfered)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreateDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdateDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataSource)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_Descript)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_Series)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_CardCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_CardName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_CntCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_StartDat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ActStart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ActEndDt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_DelDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_AcptDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_CurSourc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_DocCurr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_DocRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_SysRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_Rezijni)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_BlockNPB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_EmpNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_SmlCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_SmlName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_SmlDesc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_SmlOrdN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_SmlRev)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_SmlExp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_FaktType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_FaktItm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_FinType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_SmlVers)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ValidFr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ValidTo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_HoldRecs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_EquipID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ContrID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_PaymGrp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_PlaRev)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_PlaRevFC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_PlaRevSC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ActRev)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ActRevFC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ActRevSC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_PlaExp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_PlaExpFC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_PlaExpSC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ActExp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ActExpFC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ActExpSC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_AttPath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_DonePrc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_ProbRealO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_DonePrAR)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_MainPrj)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.U_GenATmpl)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DocEntry)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Canceled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Object)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LogInst)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserSign)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Transfered)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UpdateDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UpdateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataSource)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_Descript)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_Series)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_CardCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_CardName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_CntCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_StartDat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ActStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ActEndDt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_DelDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_AcptDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_CurSourc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_DocCurr)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_DocRate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_SysRate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_Rezijni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_BlockNPB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_EmpNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_SmlCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_SmlName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_SmlDesc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_SmlOrdN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_SmlRev)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_SmlExp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_FaktType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_FaktItm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_FinType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_SmlVers)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ValidFr)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ValidTo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_HoldRecs)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_EquipID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ContrID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_PaymGrp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_PlaRev)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_PlaRevFC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_PlaRevSC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ActRev)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ActRevFC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ActRevSC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_PlaExp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_PlaExpFC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_PlaExpSC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ActExp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ActExpFC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ActExpSC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_AttPath)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_DonePrc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_ProbRealO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_DonePrAR)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_MainPrj)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.U_GenATmpl)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Code }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Code })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+    
+<script type="text/javascript" language="javascript" src="~/scripts/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="~/scripts/jquery.dataTables.twitterbootstrap.js"></script>
+<script type="text/javascript">
+
+    /* Table initialisation */
+   
+    $('#tb1').dataTable({
+        "bServerSide": true,
+        "sAjaxSource": "server_processing.php"
+    });
+</script>
+
+
+    
+    }

@@ -13,11 +13,21 @@ namespace FloorballTrainingSessions
     {
         private Entities db = new Entities();
 
-        public ICollection<TeamPlayers> GetTeamsForPlayerandSeason(int PlayerID, int SeasonID)
+        public ICollection<TeamPlayers> GetTeamsForPlayerandSeason(int PlayerID, int SeasonID, bool? isplayerorgoalie, bool? istrainerormanager)
         {
-            var teamplayers = db.TeamPlayers.Where(t => (t.Season == SeasonID && t.Player == PlayerID)).ToList();
+            var teamplayers = db.TeamPlayers.Where(t => (t.Season == SeasonID && t.Player == PlayerID));
+            if (isplayerorgoalie != null)
+            {
+                teamplayers = teamplayers.Where(t => (t.PlayerFunctions.IsPlayer == isplayerorgoalie || t.PlayerFunctions.IsGoalie == isplayerorgoalie));
+            }
+            
+            if (istrainerormanager != null)
+            {
+                teamplayers = teamplayers.Where(t => (t.PlayerFunctions.IsTrainer == istrainerormanager || t.PlayerFunctions.IsTrainer == istrainerormanager));
+            }
+            
 
-            return teamplayers;
+            return teamplayers.ToList(); ;
         }
 
 

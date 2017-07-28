@@ -5,8 +5,17 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    
+    
     padding-left: 15px;
     padding-right: 15px;
+}
+
+
+
+div.container.body-content {
+    
+    padding-left: 0px !important;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +30,9 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.nospacing {
+    margin: 0 !important; 
+    padding:0 !important;
 }

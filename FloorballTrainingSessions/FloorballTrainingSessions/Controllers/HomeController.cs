@@ -26,5 +26,11 @@ namespace FloorballTrainingSessions.Controllers
 
             return View();
         }
+        public ActionResult VznikAplikace()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

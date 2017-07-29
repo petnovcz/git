@@ -26,25 +26,40 @@ namespace FloorballTrainingSessions
     
         public int Id { get; set; }
         
+        [Display(Name ="Trénink")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
         public System.DateTime TrainingDate { get; set; }
-        
+
+        [Display(Name = "Sraz")]
         [DisplayFormat(DataFormatString = "{0:HH:mm}")]
         public System.DateTime MeetDate { get; set; }
-        
+
+        [Display(Name = "Nahlášení")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         public System.DateTime SigningLimitDate { get; set; }
+        [Display(Name = "Místo")]
         public int TrainingLocation { get; set; }
+        [Display(Name = "Tým")]
         public int Team { get; set; }
+        [Display(Name = "Sezóna")]
         public int Season { get; set; }
+        [Display(Name = "Èást tréninku")]
         public int SeasonPart { get; set; }
+        [Display(Name = "Zamìøení")]
         public Nullable<int> TrainingFocus { get; set; }
+        [Display(Name = "Model")]
         public Nullable<int> TrainingSchemeModel { get; set; }
+        [Display(Name = "Doba trvání")]
         public double TrainingLength { get; set; }
+        [Display(Name = "Trénink vid.")]
         public bool PublishTraining { get; set; }
+        [Display(Name = "Cvièení vid.")]
         public bool PublishExcersises { get; set; }
+        [Display(Name = "Tr. uzavøen")]
         public bool TrainingClosed { get; set; }
+        [Display(Name = "Tr. zrušen")]
         public bool TrainingCanceled { get; set; }
+        [Display(Name = "Docházka uz.")]
         public bool AttendanceClosed { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

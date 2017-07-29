@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FloorballTrainingSessions.TrainingExcersises>
+
+
+
+            @foreach (var item in Model)
+            {
+               
+                        @Html.DisplayFor(modelItem => item.Excersises.ExcersiseName)
+                    <hr/>
+                    <em>
+                        @Html.Raw(item.Excersises.Description)
+                        </em>
+                    <hr/>
+                        
+            }
+        
+
+
+

@@ -1,22 +1,22 @@
 ﻿@model IEnumerable<FloorballTrainingSessions.Trainings>
 
 
-<div class="btn-group btn-group-justified" style="margin: 0 !important; padding:0 !important;">
+<div class="btn-group btn-group-justified" style="margin-top: 10px !important; margin-bottom: 10px !important; padding:0 !important;">
     @foreach (var item in Model)
     {
 
         <div class="btn-group" style="margin: 0 !important; padding:0 !important;">
             @Ajax.ActionLink(item.TrainingDate.ToShortDateString(), "Details",
                               "Trainings",
-                              new { Id = item.Id },
+                              new { Id = item.Id, View = "Player" },
                               new AjaxOptions
                               {
                                   HttpMethod = "GET",
                                   InsertionMode = InsertionMode.Replace,
                                   UpdateTargetId = "main-main",
-
+                                  OnSuccess = "Showmainmain()"
                               },
-                              new { @class = "btn" })
+                              new { @class = "btn btn-default" })
         </div>
 
 

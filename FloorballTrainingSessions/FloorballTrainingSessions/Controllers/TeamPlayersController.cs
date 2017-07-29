@@ -62,6 +62,20 @@ namespace FloorballTrainingSessions
             return PartialView(teamPlayers.ToList());
         }
 
+        public PartialViewResult TeamPlayersListPlayer(int SeasonId, int TeamId, int? Training)
+        {
+            var teamPlayers = db.TeamPlayers.Include(t => t.PlayerFunctions).Include(t => t.Players).Include(t => t.Seasons).Include(t => t.Teams).Where(t => (t.Season == SeasonId && t.Team == TeamId)).OrderBy(t => t.PlayerFunctions.PlayerFunctionName).ThenBy(t => t.Players.Name);
+            ViewBag.SelectedTeam = TeamId;
+            var team = db.Teams.Where(t => t.Id == TeamId).FirstOrDefault();
+            ViewBag.SelectedTeamName = team.TeamName;
+            ViewBag.SelectedSeason = SeasonId;
+            ViewBag.Training = Training;
+            var season = db.Seasons.Where(t => t.Id == SeasonId).FirstOrDefault();
+            ViewBag.SelectedSeasonName = season.SeasonName;
+            return PartialView(teamPlayers.ToList());
+        }
+
+
         // GET: TeamPlayers/Details/5
         public ActionResult Details(int? id)
         {

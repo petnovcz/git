@@ -185,7 +185,7 @@ namespace FloorballTrainingSessions
             return PartialView("_TrainingsList", trainings.Distinct().OrderBy(t => t.TrainingDate).ToList());
         }
         // GET: Trainings/Details/5
-        public PartialViewResult Details(int? id)
+        public PartialViewResult Details(int? id, string Viewselect)
         {
             if (id == null)
             {
@@ -199,8 +199,13 @@ namespace FloorballTrainingSessions
             ViewBag.Id = trainings.Id;
 
             ViewBag.CurrentPlayer = GetPlayerID(User.Identity.GetUserId());
-            return PartialView(trainings);
+            if (Viewselect == "Player")
+            { return PartialView("_PlayerDetail", trainings); }
+            else
+            { return PartialView("Details" ,trainings); }
         }
+
+
         public int GetPlayerID(string userid)
         {
             var players = db.Players.Where(t => (t.User == userid)).FirstOrDefault();

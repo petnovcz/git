@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Details";
 }
-<div class="col-md-12">
-<div class="well well " style="display:block; overflow:hidden;">
+
+<div class="well well-sm nospacing" style="display:block; overflow:hidden;">
     <div class="col-md-1">@Html.DisplayNameFor(model => model.TrainingDate)</div>
     <div class="col-md-3">@Html.DisplayFor(model => model.TrainingDate) @Model.DayOfTraining</div>
     <div class="col-md-2">@Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)</div>
@@ -16,72 +16,77 @@
     <div class="col-md-3">@Html.DisplayFor(model => model.MeetDate)</div>
     <div class="col-md-2">@Html.DisplayNameFor(model => model.SigningLimitDate)</div>
     <div class="col-md-2">@Html.DisplayFor(model => model.SigningLimitDate)</div>
-    
+    <div class="col-md-1">@Html.DisplayNameFor(model => model.Id)</div>
+    <div class="col-md-3">@Html.DisplayFor(model => model.Id) </div>
 </div>
-</div>
-<div class="row nomargin">
-    <div class="col-md-8 ">
-        <div class="well mydiv" style="display:block">
-            <div class="" style="display:inline-block">
-                
-                @using (Ajax.BeginForm("Result","SigningSummary",
-                 new {training = Model.Id, team = Model.Team },
-                new AjaxOptions
-                {
-                    InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "signingsummary"
-                }
-                ))
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                @using (Ajax.BeginForm("Result", "SigningSummary",
+             new { training = Model.Id, team = Model.Team },
+            new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "signingsummary"
+            }
+            ))
                 {
                     <input type="submit" value="Refresh" id="SigningSummaryRefresh" hidden>
                 }
-                @* Blok se zobrazením sumáře nahlášených uživatelů*@
+
                 <div id="signingsummary" data-id="@Model.Id" data-team="@Model.Team">
                     @Html.Action("Result", "SigningSummary", new { Training = Model.Id, team = Model.Team })
                 </div>
-                
+                <div id="mylist">
+                    @Html.Action("MyList", "PlayerSigningToTrainings", new { player = ViewBag.CurrentPlayer, training = Model.Id, team = Model.Team })
                 </div>
-        </div>
-    </div>
-    @* Blok s nahlášením na trénink  *@
-    <div class="col-md-4">
-        <div class="well mydiv" style="display:block">
-            <div id="mylist" style="display:block; overflow:hidden">
-                @Html.Action("MyList", "PlayerSigningToTrainings", new { player = ViewBag.CurrentPlayer, training = Model.Id, team = Model.Team })
             </div>
         </div>
     </div>
-    
+    <div class="col-md-4">
+        <div class=" panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.PublishTraining)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.PublishTraining)</div>
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.PublishExcersises)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.PublishExcersises)</div>
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.AttendanceClosed)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.AttendanceClosed)</div>
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.TrainingClosed)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.TrainingClosed)</div>
+                <div class="col-md-8">@Html.DisplayNameFor(model => model.TrainingCanceled)</div>
+                <div class="col-md-4">@Html.DisplayFor(model => model.TrainingCanceled)</div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div class="bs-example row nomargin">
-    <div class="col-md-12">
+<div class="bs-example">
     <div class="panel-group" id="accordion">
-        <div class="panel panel-default mydiv">
-            <div class="panel-heading mydiv">
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Cvičení</a>
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in">
                 <div class="panel-body">
-                    
-                    
-                    <div class="col-md-6"><h4>@Html.DisplayFor(model => model.TrainingFocuses.TrainingFocusName)</h4></div>
-                    <div class="col-md-6"><h4>@Html.DisplayFor(model => model.TrainingSchemeModels.TrainingSchemeName)</h4></div>
-                    <hr/>
+                    <div class="col-md-3">Zaměření tréninku</div>
+                    <div class="col-md-3">@Html.DisplayFor(model => model.TrainingFocuses.TrainingFocusName)</div>
+                    <div class="col-md-3">Tréninkové schéma</div>
+                    <div class="col-md-3">@Html.DisplayFor(model => model.TrainingSchemeModels.TrainingSchemeName)</div>
+                    <hr />
                     @foreach (var item in Model.TrainingSchemeModels.TrainingSchemePartModels)
                     {
-                        
-                            
-                            <div class="col-md-6 text-center text-capitalize " ><h5>@Html.DisplayFor(modelItem => item.ExcersiseCategories.ExcersiseCategoryName)</h5></div>
-                            <div class="col-md-6 text-center media-middle" >@Html.DisplayFor(modelItem => item.PartLength)</div>
-                            
-                            <div class="col-md-12 ">@Html.Action("ListForTrainingPlayer", "TrainingExcersises", new { Training = Model.Id, TrainingSchemePart = item.Id })</div>
-                        
+                        <div class="col-md-1" style="writing-mode:tb-rl;">@Html.DisplayFor(modelItem => item.ExcersiseCategories.ExcersiseCategoryName)</div>
+                        <div class="col-md-1" style="writing-mode:tb-rl;">@Html.DisplayFor(modelItem => item.PartLength)</div>
+                        <div class="col-md-10">@Html.Action("ListForTraining", "TrainingExcersises", new { Training = Model.Id, TrainingSchemePart = item.Id })</div>
                     }
-                        </div>
-                
+                </div>
             </div>
         </div>
         <div class="panel panel-default">
@@ -91,8 +96,8 @@
                 </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body" id="teamplayerList" data-Teamid="@Model.Team" data-season="@Model.Season" data-training="Model.Id" >
-                    @Html.Action("TeamPlayersListPlayer","Teamplayers",new { TeamId = Model.Team , SeasonId = Model.Season, training = Model.Id })
+                <div class="panel-body" id="teamplayerList" data-Teamid="@Model.Team" data-season="@Model.Season" data-training="Model.Id">
+                    @Html.Action("TeamPlayersList", "Teamplayers", new { TeamId = Model.Team, SeasonId = Model.Season, training = Model.Id })
                 </div>
             </div>
         </div>
@@ -120,14 +125,15 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
-    </div>
+
 </div>
 
 <div id="Search" class="modal fade" role="dialog">
     search
 </div>
+
 
 
 

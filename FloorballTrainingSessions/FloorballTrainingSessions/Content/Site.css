@@ -11,8 +11,6 @@
     padding-right: 15px;
 }
 
-
-
 div.container.body-content {
     
     padding-left: 0px !important;
@@ -33,6 +31,63 @@ textarea {
 }
 
 .nospacing {
-    margin: 0 !important; 
-    padding:0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    
+}
+.nomargin {
+    margin: 0 !important;
+    
+}
+
+.jumbotron {
+    background: rgba(0, 0, 0, 0.6);
+    
+    text-shadow: #f1f1f1;
+    color: #FFFFCC;
+}
+
+.mydiv {
+    background: rgba(0, 0, 0, 0.6);
+    
+}
+.well {
+    background: rgba(0, 0, 0, 0.8);
+    color: #FFFFCC;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 30px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+.btn-default {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+}
+
+    /* On hover, the color of .btn will transition to white with black text */
+    .btn-default:hover, .btn:focus {
+        border: 1px solid #333;
+        background-color: #fff;
+        color: #000;
+    }
+
+body {
+    font: 400 15px/1.8 Lato, sans-serif;
+    color: #777;
+    background-color: #F8F8F8;
+    background: url('../Images/background_4.jpg') no-repeat center center fixed;
+    background-size: cover;
+
+
+}
+
+.mydiv {
+    background: rgba(0, 0, 0, 0.8);
 }

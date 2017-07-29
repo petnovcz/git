@@ -1,9 +1,9 @@
 ﻿@model FloorballTrainingSessions.PlayerModel
 @{
-    ViewBag.Title = "Administrace";
+    ViewBag.Title = "Hráčská sekce";
 }
 <div  id="player" style="display:block; overflow:hidden;">
-<div class="well">
+<div class="jumbotron text-center">
     <div id="test" style="float:right;display:inline-block">
         
         @foreach (var item in Model.CurrentPlayerTeams)
@@ -41,8 +41,8 @@
 
     
 
-<h1>Administrace</h1>
-
+<h1>Hráčská sekce</h1>
+    
 
 
 </div>
@@ -58,10 +58,38 @@
                                   UpdateTargetId = "main-header",
 
                               },
-                              new { @class = "btn btn-default btn-block" })
+                              new { @class = "btn btn-default btn-block main-fade-out" })
         </div>
         <div class="btn-group">
-            @Ajax.ActionLink("Docházka", "Index",
+            @Ajax.ActionLink("Turnaje", "Index",
+                              "Player",
+                              new { SeasonId = Model.ActiveSeason.Id, TeamId = Model.ActiveTeam.Id },
+                              new AjaxOptions
+                              {
+                                  HttpMethod = "GET",
+                                  InsertionMode = InsertionMode.Replace,
+                                  UpdateTargetId = "main",
+
+                              },
+                              new { @class = "btn btn-default btn-block" })
+        </div>
+
+        <div class="btn-group">
+            @Ajax.ActionLink("Statistiky", "Index",
+                              "Player",
+                              new { SeasonId = Model.ActiveSeason.Id, TeamId = Model.ActiveTeam.Id },
+                              new AjaxOptions
+                              {
+                                  HttpMethod = "GET",
+                                  InsertionMode = InsertionMode.Replace,
+                                  UpdateTargetId = "main",
+
+                              },
+                              new { @class = "btn btn-default btn-block" })
+        </div>
+        
+        <div class="btn-group">
+            @Ajax.ActionLink("Účetnictví", "Index",
                               "Player",
                               new { SeasonId = Model.ActiveSeason.Id, TeamId = Model.ActiveTeam.Id },
                               new AjaxOptions
@@ -81,17 +109,17 @@
 
 <div id="main" class="col-md-12 nospacing" >
     <div id="main-header" class="col-md-12 nospacing" >
-        header
+        
        
             
             
         
     </div>
     <div id="main-frame" class="col-md-12 nospacing">
-        <div id="main-main" class="col-md-8" style="overflow:hidden;">
+        <div id="main-main" class="col-md-12 nospacing" style="overflow:hidden;">
             
         </div>
-        <div id="main-right" class="col-md4" >
+        <div id="main-right" class="col-md-12" >
             
         </div>
     </div>
@@ -113,7 +141,7 @@
 
         <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
         <script src="~/Scripts/jquery.masonry.min.js"></script>
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
         <script>
 
 
@@ -140,4 +168,89 @@
 
 
         </script>
+
+<script>
+            function OnSuccess(training, player, team, status) {
+                $("#signingsummary").fadeOut(300, function () {
+                    $("#SigningSummaryRefresh").trigger("click");
+                    $("#signingsummary").fadeIn(300);
+
+
+                })
+                var url = "/PlayerSigningToTrainings/MyList?player=" + player + "&training=" + training + "&team=" + team + "&status=" + status;
+
+                $.ajax({
+                    url: url,
+                    success: function (data) {
+
+                        $('#mylist').html(data);
+                    },
+                    cache: false
+                });
+
+            }
+
+            function OnSuccessMyList(training, player, team, status) {
+                $("#signingsummary").fadeOut(300, function () {
+                    $("#SigningSummaryRefresh").trigger("click");
+                    $("#signingsummary").fadeIn(300);
+
+                    var url = "/PlayerSigningToTrainings/List?player=" + player + "&training=" + training + "&team=" + team + "&status=" + status;
+
+                    $.ajax({
+                        url: url,
+                        success: function (data) {
+
+                            $('#PL_' + player).html(data);
+                        },
+                        cache: false
+                    });
+
+                })
+
+
+            }
+            function Showmainmain(){
+                //alert("fire");
+                $("#main-main").fadeIn("slow", function () {
+                });
+            }
+
+            $(document).ready(function () {
+
+                
+                    
+                $(document).on('click', '.main-fade-out', function (e) {
+                    //alert("fdfd");
+                    $("#main-main").fadeOut("slow", function () {
+                    });
+
+                });
+
+                    
+
+            $(document).on('click', '.DDL', function (e) {
+                    var id = $(this).attr("data-id");
+                    //alert(id);
+                    var value = $('#' + id).val();
+                    var url = "/Excersises/DetailsModal/" + value;
+
+                    $.ajax({
+                        url: url,
+                        success: function (data) {
+
+                            $('#Search').html(data);
+                        },
+                        cache: false
+                    });
+
+                    $('#Search').modal('show');
+
+                });
+
+
+            });
+
+
+</script>
     }

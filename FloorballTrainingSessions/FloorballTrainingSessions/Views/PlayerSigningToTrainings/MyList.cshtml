@@ -1,8 +1,8 @@
 ﻿@model FloorballTrainingSessions.PlayerSigningToTrainings
 
-<div class="col-md-12" style="display:block;overflow:hidden">
+<div class="col-md-12 col-sm-12" style="display:block;overflow:hidden">
     
-    <div class="col-md-12" style="display:inline-block;overflow:hidden;padding-top:10px;padding-bottom:10px;">
+    <div class="col-md-12 col-sm-6" style="display:inline-block;overflow:hidden;padding-top:10px;padding-bottom:10px;">
 
         @{  var jdu = "btn btn-success btn-lg btn-block disabled signingstatus";
             var nejdu = "btn btn-danger btn-lg btn-block signingstatus";
@@ -46,7 +46,7 @@
                      )
 
     </div>
-    <div class="col-md-12" style="display:inline-block;overflow:hidden;padding-top:10px;padding-bottom:10px;">
+    <div class="col-md-12 col-sm-6" style="display:inline-block;overflow:hidden;padding-top:10px;padding-bottom:10px;">
         @Ajax.ActionLink("Nejde", // <-- Text to display
                         "MyList", // <-- Action Method Name
                         "PlayerSigningToTrainings",

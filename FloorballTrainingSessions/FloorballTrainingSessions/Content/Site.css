@@ -91,3 +91,44 @@ body {
 .mydiv {
     background: rgba(0, 0, 0, 0.8);
 }
+
+.signedin {
+    background: rgba(0, 255, 0, 0.2) !important;
+}
+
+.signedout {
+    background: rgba(255, 0, 0, 0.2) !important;
+}
+
+
+/* Extra Small */
+@media(max-width:767px) {
+    .btn {
+        font-size: 11px;
+        padding: 4px 6px;
+    }
+}
+
+/* Small */
+@media(min-width:768px) and (max-width:991px) {
+    .btn {
+        font-size: 10px;
+        padding: 3px 3px;
+    }
+}
+
+/* Medium */
+@media(min-width:992px) and (max-width:1199px) {
+    .btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+/* Large */
+@media(min-width:1200px) {
+    .btn {
+        padding: 10px 16px;
+        font-size: 18px;
+    }
+}

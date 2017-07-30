@@ -5,24 +5,24 @@
 }
 <div class="col-md-12">
 <div class="well well " style="display:block; overflow:hidden;">
-    <div class="col-md-1">@Html.DisplayNameFor(model => model.TrainingDate)</div>
-    <div class="col-md-3">@Html.DisplayFor(model => model.TrainingDate) @Model.DayOfTraining</div>
-    <div class="col-md-2">@Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)</div>
-    <div class="col-md-2">@Html.DisplayFor(model => model.TrainingLocations.TrainingLocationName)</div>
-    <div class="col-md-1">@Html.DisplayFor(model => model.Teams.TeamName)</div>
-    <div class="col-md-1">@Html.DisplayFor(model => model.Seasons.SeasonName)</div>
-    <div class="col-md-2">@Html.DisplayFor(model => model.SeasonParts.SeasonPartName)</div>
-    <div class="col-md-1">@Html.DisplayNameFor(model => model.MeetDate)</div>
-    <div class="col-md-3">@Html.DisplayFor(model => model.MeetDate)</div>
-    <div class="col-md-2">@Html.DisplayNameFor(model => model.SigningLimitDate)</div>
-    <div class="col-md-2">@Html.DisplayFor(model => model.SigningLimitDate)</div>
+    <div class="col-md-1 col-sm-6">@Html.DisplayNameFor(model => model.TrainingDate)</div>
+    <div class="col-md-3 col-sm-6">@Html.DisplayFor(model => model.TrainingDate) @Model.DayOfTraining</div>
+    <div class="col-md-2 col-sm-6">@Html.DisplayNameFor(model => model.TrainingLocations.TrainingLocationName)</div>
+    <div class="col-md-2 col-sm-6">@Html.DisplayFor(model => model.TrainingLocations.TrainingLocationName)</div>
+    <div class="col-md-1 hidden-sm">@Html.DisplayFor(model => model.Teams.TeamName)</div>
+    <div class="col-md-1 hidden-sm">@Html.DisplayFor(model => model.Seasons.SeasonName)</div>
+    <div class="col-md-2 hidden-sm">@Html.DisplayFor(model => model.SeasonParts.SeasonPartName)</div>
+    <div class="col-md-1 col-sm-6">@Html.DisplayNameFor(model => model.MeetDate)</div>
+    <div class="col-md-3 col-sm-6">@Html.DisplayFor(model => model.MeetDate)</div>
+    <div class="col-md-2 col-sm-6">@Html.DisplayNameFor(model => model.SigningLimitDate)</div>
+    <div class="col-md-2 col-sm-6">@Html.DisplayFor(model => model.SigningLimitDate)</div>
     
 </div>
 </div>
-<div class="row nomargin">
-    <div class="col-md-8 ">
-        <div class="well mydiv" style="display:block">
-            <div class="" style="display:inline-block">
+<div class="row nomargin" style="display:block">
+    <div class="col-md-8 col-sm-12" style="display:inline-block">
+        <div class="well mydiv col-md-12 col-sm-12" style="display:inline-block">
+            <div class="col-md-12 col-sm-12" style="display:inline-block">
                 
                 @using (Ajax.BeginForm("Result","SigningSummary",
                  new {training = Model.Id, team = Model.Team },
@@ -36,7 +36,7 @@
                     <input type="submit" value="Refresh" id="SigningSummaryRefresh" hidden>
                 }
                 @* Blok se zobrazením sumáře nahlášených uživatelů*@
-                <div id="signingsummary" data-id="@Model.Id" data-team="@Model.Team">
+                <div id="signingsummary" class="col-md-12 col-sm-12" style="display:inline-block" data-id="@Model.Id" data-team="@Model.Team">
                     @Html.Action("Result", "SigningSummary", new { Training = Model.Id, team = Model.Team })
                 </div>
                 
@@ -44,7 +44,7 @@
         </div>
     </div>
     @* Blok s nahlášením na trénink  *@
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-12">
         <div class="well mydiv" style="display:block">
             <div id="mylist" style="display:block; overflow:hidden">
                 @Html.Action("MyList", "PlayerSigningToTrainings", new { player = ViewBag.CurrentPlayer, training = Model.Id, team = Model.Team })
@@ -63,7 +63,7 @@
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Cvičení</a>
                 </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
+            <div id="collapseOne" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     

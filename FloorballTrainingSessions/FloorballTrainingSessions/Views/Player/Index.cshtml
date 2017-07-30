@@ -46,8 +46,8 @@
 
 
 </div>
-    <div class="btn-group btn-group-justified">
-        <div class="btn-group">
+    <div class="btn-group btn-group-justified" id="responsive">
+        <div class="btn-group" id="responsive">
             @Ajax.ActionLink("Tréninky", "Getnext10Trainings",
                               "Trainings",
                               new { season = Model.ActiveSeason.Id, team = Model.ActiveTeam.Id },
@@ -60,7 +60,7 @@
                               },
                               new { @class = "btn btn-default btn-block main-fade-out" })
         </div>
-        <div class="btn-group">
+        <div class="btn-group" id="responsive">
             @Ajax.ActionLink("Turnaje", "Index",
                               "Player",
                               new { SeasonId = Model.ActiveSeason.Id, TeamId = Model.ActiveTeam.Id },
@@ -74,7 +74,7 @@
                               new { @class = "btn btn-default btn-block" })
         </div>
 
-        <div class="btn-group">
+        <div class="btn-group" id="responsive">
             @Ajax.ActionLink("Statistiky", "Index",
                               "Player",
                               new { SeasonId = Model.ActiveSeason.Id, TeamId = Model.ActiveTeam.Id },
@@ -88,7 +88,7 @@
                               new { @class = "btn btn-default btn-block" })
         </div>
         
-        <div class="btn-group">
+        <div class="btn-group" id="responsive">
             @Ajax.ActionLink("Účetnictví", "Index",
                               "Player",
                               new { SeasonId = Model.ActiveSeason.Id, TeamId = Model.ActiveTeam.Id },
@@ -191,9 +191,9 @@
             }
 
             function OnSuccessMyList(training, player, team, status) {
-                $("#signingsummary").fadeOut(300, function () {
+                $("#signingsummary").fadeOut(500, function () {
                     $("#SigningSummaryRefresh").trigger("click");
-                    $("#signingsummary").fadeIn(300);
+                    
 
                     var url = "/PlayerSigningToTrainings/List?player=" + player + "&training=" + training + "&team=" + team + "&status=" + status;
 
@@ -202,11 +202,13 @@
                         success: function (data) {
 
                             $('#PL_' + player).html(data);
+                            
                         },
                         cache: false
                     });
 
                 })
+                $("#signingsummary").fadeIn(500);
 
 
             }
@@ -250,7 +252,15 @@
 
 
             });
-
+ /*   $(window).resize(function () {
+        if ($(window).width() < 408) {
+            $('#responsive').removeClass('btn-group');
+            $('#responsive').addClass('btn-group-vertical');
+        } else {
+            $('#responsive').addClass('btn-group');
+            $('#responsive').removeClass('btn-group-vertical');
+        }
+    });*/
 
 </script>
     }

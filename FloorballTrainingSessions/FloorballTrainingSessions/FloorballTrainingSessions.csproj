@@ -188,6 +188,7 @@
     <Compile Include="AspNetUsers.cs">
       <DependentUpon>FloorballTrainingSessions.tt</DependentUpon>
     </Compile>
+    <Compile Include="CommonHelper.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -882,6 +883,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="pdf\" />
+    <Folder Include="Views\Player\pdf\" />
     <Folder Include="Views\TinyMCE\" />
   </ItemGroup>
   <PropertyGroup>

@@ -92,6 +92,13 @@ namespace FloorballTrainingSessions
             return PartialView(trainingExcersises);
         }
 
+        public string ListForTrainingPdf(int Training)
+        {
+            string s = "Tak jako něco jsem načetl, ale ....";
+
+            return s;
+        }
+
 
         public PartialViewResult GetTrainingExcersises(int Training, int TrainingSchemePart, int? ExcersiseList)
         {

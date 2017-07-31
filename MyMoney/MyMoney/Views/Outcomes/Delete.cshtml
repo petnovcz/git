@@ -1,0 +1,96 @@
+﻿@model MyMoney.Outcomes
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Outcomes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlannedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlannedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlannedAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlannedAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Closed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Closed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accounts.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accounts.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutcomeCategories.OutcomeCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutcomeCategories.OutcomeCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periods.PeriodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periods.PeriodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Years.YearName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Years.YearName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

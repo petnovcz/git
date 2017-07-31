@@ -1,0 +1,90 @@
+﻿@model MyMoney.Outcomes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Outcomes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlannedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlannedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlannedAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlannedAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Closed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Closed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accounts.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accounts.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutcomeCategories.OutcomeCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutcomeCategories.OutcomeCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periods.PeriodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periods.PeriodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Years.YearName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Years.YearName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

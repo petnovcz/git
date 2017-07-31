@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1223D108-766D-4D98-9E0B-5A5937ECE90E}</ProjectGuid>
+    <ProjectGuid>{BAC7DBB8-1F6E-4AEF-B9F5-2E5310E51D5B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -183,22 +185,81 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="AccountTypes.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BudgetIncomes.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetOutcomes.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountTypesController.cs" />
+    <Compile Include="Controllers\BudgetIncomesController.cs" />
+    <Compile Include="Controllers\BudgetOutcomesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IncomeCategoriesController.cs" />
+    <Compile Include="Controllers\IncomesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OutcomeCategoriesController.cs" />
+    <Compile Include="Controllers\OutcomesController.cs" />
+    <Compile Include="Controllers\PeriodsController.cs" />
+    <Compile Include="Controllers\TransfersController.cs" />
+    <Compile Include="Controllers\YearsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IncomeCategories.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Incomes.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="MyMoney.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyMoney.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyMoney.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyMoney.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyMoney.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OutcomeCategories.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Outcomes.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Periods.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Transfers.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Years.cs">
+      <DependentUpon>MyMoney.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -207,10 +268,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="MyMoney.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyMoney.edmx</DependentUpon>
+      <LastGenOutput>MyMoney.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MyMoney.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyMoney.edmx</DependentUpon>
+      <LastGenOutput>MyMoney.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="MyMoney.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyMoney.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="MyMoney.edmx.diagram">
+      <DependentUpon>MyMoney.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -257,6 +335,61 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Accounts\Create.cshtml" />
+    <Content Include="Views\Accounts\Delete.cshtml" />
+    <Content Include="Views\Accounts\Details.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Accounts\Index.cshtml" />
+    <Content Include="Views\AccountTypes\Create.cshtml" />
+    <Content Include="Views\AccountTypes\Delete.cshtml" />
+    <Content Include="Views\AccountTypes\Details.cshtml" />
+    <Content Include="Views\AccountTypes\Edit.cshtml" />
+    <Content Include="Views\AccountTypes\Index.cshtml" />
+    <Content Include="Views\BudgetIncomes\Create.cshtml" />
+    <Content Include="Views\BudgetIncomes\Delete.cshtml" />
+    <Content Include="Views\BudgetIncomes\Details.cshtml" />
+    <Content Include="Views\BudgetIncomes\Edit.cshtml" />
+    <Content Include="Views\BudgetIncomes\Index.cshtml" />
+    <Content Include="Views\BudgetOutcomes\Create.cshtml" />
+    <Content Include="Views\BudgetOutcomes\Delete.cshtml" />
+    <Content Include="Views\BudgetOutcomes\Details.cshtml" />
+    <Content Include="Views\BudgetOutcomes\Edit.cshtml" />
+    <Content Include="Views\BudgetOutcomes\Index.cshtml" />
+    <Content Include="Views\IncomeCategories\Create.cshtml" />
+    <Content Include="Views\IncomeCategories\Delete.cshtml" />
+    <Content Include="Views\IncomeCategories\Details.cshtml" />
+    <Content Include="Views\IncomeCategories\Edit.cshtml" />
+    <Content Include="Views\IncomeCategories\Index.cshtml" />
+    <Content Include="Views\Incomes\Create.cshtml" />
+    <Content Include="Views\Incomes\Delete.cshtml" />
+    <Content Include="Views\Incomes\Details.cshtml" />
+    <Content Include="Views\Incomes\Edit.cshtml" />
+    <Content Include="Views\Incomes\Index.cshtml" />
+    <Content Include="Views\OutcomeCategories\Create.cshtml" />
+    <Content Include="Views\OutcomeCategories\Delete.cshtml" />
+    <Content Include="Views\OutcomeCategories\Details.cshtml" />
+    <Content Include="Views\OutcomeCategories\Edit.cshtml" />
+    <Content Include="Views\OutcomeCategories\Index.cshtml" />
+    <Content Include="Views\Outcomes\Create.cshtml" />
+    <Content Include="Views\Outcomes\Delete.cshtml" />
+    <Content Include="Views\Outcomes\Details.cshtml" />
+    <Content Include="Views\Outcomes\Edit.cshtml" />
+    <Content Include="Views\Outcomes\Index.cshtml" />
+    <Content Include="Views\Periods\Create.cshtml" />
+    <Content Include="Views\Periods\Delete.cshtml" />
+    <Content Include="Views\Periods\Details.cshtml" />
+    <Content Include="Views\Periods\Edit.cshtml" />
+    <Content Include="Views\Periods\Index.cshtml" />
+    <Content Include="Views\Transfers\Create.cshtml" />
+    <Content Include="Views\Transfers\Delete.cshtml" />
+    <Content Include="Views\Transfers\Details.cshtml" />
+    <Content Include="Views\Transfers\Edit.cshtml" />
+    <Content Include="Views\Transfers\Index.cshtml" />
+    <Content Include="Views\Years\Create.cshtml" />
+    <Content Include="Views\Years\Delete.cshtml" />
+    <Content Include="Views\Years\Details.cshtml" />
+    <Content Include="Views\Years\Edit.cshtml" />
+    <Content Include="Views\Years\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -276,6 +409,9 @@
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -292,9 +428,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4597</DevelopmentServerPort>
+          <DevelopmentServerPort>2297</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4597/</IISUrl>
+          <IISUrl>http://localhost:2297/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,1015 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AccountTypeName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BudgetIncomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="IncomeCategory" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BudgetOutcomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="OutcomeCategory" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IncomeCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IncomeCategoryName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Account" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="IncomeCategory" Type="int" Nullable="false" />
+          <Property Name="PlannedDate" Type="datetime" Nullable="false" />
+          <Property Name="PlannedAmount" Type="float" Nullable="false" />
+          <Property Name="RealDate" Type="datetime" />
+          <Property Name="RealAmount" Type="float" />
+          <Property Name="Closed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OutcomeCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="OutcomeCategoryName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Outcomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Account" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="OutcomeCategory" Type="int" Nullable="false" />
+          <Property Name="PlannedDate" Type="datetime" Nullable="false" />
+          <Property Name="PlannedAmount" Type="float" Nullable="false" />
+          <Property Name="RealDate" Type="datetime" />
+          <Property Name="RealAmount" Type="float" />
+          <Property Name="Closed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Periods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PeriodName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Starts" Type="datetime" Nullable="false" />
+          <Property Name="Ends" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transfers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TransferDate" Type="datetime" Nullable="false" />
+          <Property Name="AccountFrom" Type="int" Nullable="false" />
+          <Property Name="AccountTo" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Years">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="YearName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Starts" Type="datetime" Nullable="false" />
+          <Property Name="Ends" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Accounts_AccountTypes">
+          <End Role="AccountTypes" Type="Self.AccountTypes" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetIncomes_IncomeCategories">
+          <End Role="IncomeCategories" Type="Self.IncomeCategories" Multiplicity="1" />
+          <End Role="BudgetIncomes" Type="Self.BudgetIncomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetIncomes">
+              <PropertyRef Name="IncomeCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetIncomes_Period">
+          <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+          <End Role="BudgetIncomes" Type="Self.BudgetIncomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetIncomes">
+              <PropertyRef Name="Period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetIncomes_Year">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="BudgetIncomes" Type="Self.BudgetIncomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetIncomes">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetOutcomes_IncomeCategories">
+          <End Role="OutcomeCategories" Type="Self.OutcomeCategories" Multiplicity="1" />
+          <End Role="BudgetOutcomes" Type="Self.BudgetOutcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutcomeCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetOutcomes">
+              <PropertyRef Name="OutcomeCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetOutcomes_Period">
+          <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+          <End Role="BudgetOutcomes" Type="Self.BudgetOutcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetOutcomes">
+              <PropertyRef Name="Period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetOutcomes_Year">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="BudgetOutcomes" Type="Self.BudgetOutcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetOutcomes">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ToAccounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ToIncomeCategories">
+          <End Role="IncomeCategories" Type="Self.IncomeCategories" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="IncomeCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ToPeriods">
+          <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ToYears">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Outcomes_ToAccounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Outcomes_ToIncomeCategories">
+          <End Role="OutcomeCategories" Type="Self.OutcomeCategories" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutcomeCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="OutcomeCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Outcomes_ToPeriods">
+          <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="Period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Outcomes_ToYears">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Periods_ToYears">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="Periods" Type="Self.Periods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Periods">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transfers_ToAccountsFrom">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Transfers" Type="Self.Transfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfers">
+              <PropertyRef Name="AccountFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transfers_ToAccountsTo">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Transfers" Type="Self.Transfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfers">
+              <PropertyRef Name="AccountTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountTypes" EntityType="Self.AccountTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BudgetIncomes" EntityType="Self.BudgetIncomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BudgetOutcomes" EntityType="Self.BudgetOutcomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IncomeCategories" EntityType="Self.IncomeCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incomes" EntityType="Self.Incomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OutcomeCategories" EntityType="Self.OutcomeCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Outcomes" EntityType="Self.Outcomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Periods" EntityType="Self.Periods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transfers" EntityType="Self.Transfers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Years" EntityType="Self.Years" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accounts_AccountTypes" Association="Self.FK_Accounts_AccountTypes">
+            <End Role="AccountTypes" EntitySet="AccountTypes" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetIncomes_IncomeCategories" Association="Self.FK_BudgetIncomes_IncomeCategories">
+            <End Role="IncomeCategories" EntitySet="IncomeCategories" />
+            <End Role="BudgetIncomes" EntitySet="BudgetIncomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetIncomes_Period" Association="Self.FK_BudgetIncomes_Period">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="BudgetIncomes" EntitySet="BudgetIncomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetIncomes_Year" Association="Self.FK_BudgetIncomes_Year">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="BudgetIncomes" EntitySet="BudgetIncomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetOutcomes_IncomeCategories" Association="Self.FK_BudgetOutcomes_IncomeCategories">
+            <End Role="OutcomeCategories" EntitySet="OutcomeCategories" />
+            <End Role="BudgetOutcomes" EntitySet="BudgetOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetOutcomes_Period" Association="Self.FK_BudgetOutcomes_Period">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="BudgetOutcomes" EntitySet="BudgetOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetOutcomes_Year" Association="Self.FK_BudgetOutcomes_Year">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="BudgetOutcomes" EntitySet="BudgetOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ToAccounts" Association="Self.FK_Incomes_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ToIncomeCategories" Association="Self.FK_Incomes_ToIncomeCategories">
+            <End Role="IncomeCategories" EntitySet="IncomeCategories" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ToPeriods" Association="Self.FK_Incomes_ToPeriods">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ToYears" Association="Self.FK_Incomes_ToYears">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Outcomes_ToAccounts" Association="Self.FK_Outcomes_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Outcomes_ToIncomeCategories" Association="Self.FK_Outcomes_ToIncomeCategories">
+            <End Role="OutcomeCategories" EntitySet="OutcomeCategories" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Outcomes_ToPeriods" Association="Self.FK_Outcomes_ToPeriods">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Outcomes_ToYears" Association="Self.FK_Outcomes_ToYears">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Periods_ToYears" Association="Self.FK_Periods_ToYears">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Periods" EntitySet="Periods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transfers_ToAccountsFrom" Association="Self.FK_Transfers_ToAccountsFrom">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Transfers" EntitySet="Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transfers_ToAccountsTo" Association="Self.FK_Transfers_ToAccountsTo">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Transfers" EntitySet="Transfers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountTypes" Relationship="Self.FK_Accounts_AccountTypes" FromRole="Accounts" ToRole="AccountTypes" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_ToAccounts" FromRole="Accounts" ToRole="Incomes" />
+          <NavigationProperty Name="Outcomes" Relationship="Self.FK_Outcomes_ToAccounts" FromRole="Accounts" ToRole="Outcomes" />
+          <NavigationProperty Name="Transfers" Relationship="Self.FK_Transfers_ToAccountsFrom" FromRole="Accounts" ToRole="Transfers" />
+          <NavigationProperty Name="Transfers1" Relationship="Self.FK_Transfers_ToAccountsTo" FromRole="Accounts" ToRole="Transfers" />
+        </EntityType>
+        <EntityType Name="AccountTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AccountTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_AccountTypes" FromRole="AccountTypes" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="BudgetIncomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="IncomeCategory" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <NavigationProperty Name="IncomeCategories" Relationship="Self.FK_BudgetIncomes_IncomeCategories" FromRole="BudgetIncomes" ToRole="IncomeCategories" />
+          <NavigationProperty Name="Periods" Relationship="Self.FK_BudgetIncomes_Period" FromRole="BudgetIncomes" ToRole="Periods" />
+          <NavigationProperty Name="Years" Relationship="Self.FK_BudgetIncomes_Year" FromRole="BudgetIncomes" ToRole="Years" />
+        </EntityType>
+        <EntityType Name="BudgetOutcomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="OutcomeCategory" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <NavigationProperty Name="OutcomeCategories" Relationship="Self.FK_BudgetOutcomes_IncomeCategories" FromRole="BudgetOutcomes" ToRole="OutcomeCategories" />
+          <NavigationProperty Name="Periods" Relationship="Self.FK_BudgetOutcomes_Period" FromRole="BudgetOutcomes" ToRole="Periods" />
+          <NavigationProperty Name="Years" Relationship="Self.FK_BudgetOutcomes_Year" FromRole="BudgetOutcomes" ToRole="Years" />
+        </EntityType>
+        <EntityType Name="IncomeCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IncomeCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BudgetIncomes" Relationship="Self.FK_BudgetIncomes_IncomeCategories" FromRole="IncomeCategories" ToRole="BudgetIncomes" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_ToIncomeCategories" FromRole="IncomeCategories" ToRole="Incomes" />
+        </EntityType>
+        <EntityType Name="Incomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="IncomeCategory" Type="Int32" Nullable="false" />
+          <Property Name="PlannedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PlannedAmount" Type="Double" Nullable="false" />
+          <Property Name="RealDate" Type="DateTime" Precision="3" />
+          <Property Name="RealAmount" Type="Double" />
+          <Property Name="Closed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Incomes_ToAccounts" FromRole="Incomes" ToRole="Accounts" />
+          <NavigationProperty Name="IncomeCategories" Relationship="Self.FK_Incomes_ToIncomeCategories" FromRole="Incomes" ToRole="IncomeCategories" />
+          <NavigationProperty Name="Periods" Relationship="Self.FK_Incomes_ToPeriods" FromRole="Incomes" ToRole="Periods" />
+          <NavigationProperty Name="Years" Relationship="Self.FK_Incomes_ToYears" FromRole="Incomes" ToRole="Years" />
+        </EntityType>
+        <EntityType Name="OutcomeCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OutcomeCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BudgetOutcomes" Relationship="Self.FK_BudgetOutcomes_IncomeCategories" FromRole="OutcomeCategories" ToRole="BudgetOutcomes" />
+          <NavigationProperty Name="Outcomes" Relationship="Self.FK_Outcomes_ToIncomeCategories" FromRole="OutcomeCategories" ToRole="Outcomes" />
+        </EntityType>
+        <EntityType Name="Outcomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="OutcomeCategory" Type="Int32" Nullable="false" />
+          <Property Name="PlannedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PlannedAmount" Type="Double" Nullable="false" />
+          <Property Name="RealDate" Type="DateTime" Precision="3" />
+          <Property Name="RealAmount" Type="Double" />
+          <Property Name="Closed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Outcomes_ToAccounts" FromRole="Outcomes" ToRole="Accounts" />
+          <NavigationProperty Name="OutcomeCategories" Relationship="Self.FK_Outcomes_ToIncomeCategories" FromRole="Outcomes" ToRole="OutcomeCategories" />
+          <NavigationProperty Name="Periods" Relationship="Self.FK_Outcomes_ToPeriods" FromRole="Outcomes" ToRole="Periods" />
+          <NavigationProperty Name="Years" Relationship="Self.FK_Outcomes_ToYears" FromRole="Outcomes" ToRole="Years" />
+        </EntityType>
+        <EntityType Name="Periods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PeriodName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Starts" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ends" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BudgetIncomes" Relationship="Self.FK_BudgetIncomes_Period" FromRole="Periods" ToRole="BudgetIncomes" />
+          <NavigationProperty Name="BudgetOutcomes" Relationship="Self.FK_BudgetOutcomes_Period" FromRole="Periods" ToRole="BudgetOutcomes" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_ToPeriods" FromRole="Periods" ToRole="Incomes" />
+          <NavigationProperty Name="Outcomes" Relationship="Self.FK_Outcomes_ToPeriods" FromRole="Periods" ToRole="Outcomes" />
+          <NavigationProperty Name="Years" Relationship="Self.FK_Periods_ToYears" FromRole="Periods" ToRole="Years" />
+        </EntityType>
+        <EntityType Name="Transfers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TransferDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AccountFrom" Type="Int32" Nullable="false" />
+          <Property Name="AccountTo" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Transfers_ToAccountsFrom" FromRole="Transfers" ToRole="Accounts" />
+          <NavigationProperty Name="Accounts1" Relationship="Self.FK_Transfers_ToAccountsTo" FromRole="Transfers" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Years">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="YearName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Starts" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ends" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BudgetIncomes" Relationship="Self.FK_BudgetIncomes_Year" FromRole="Years" ToRole="BudgetIncomes" />
+          <NavigationProperty Name="BudgetOutcomes" Relationship="Self.FK_BudgetOutcomes_Year" FromRole="Years" ToRole="BudgetOutcomes" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_ToYears" FromRole="Years" ToRole="Incomes" />
+          <NavigationProperty Name="Outcomes" Relationship="Self.FK_Outcomes_ToYears" FromRole="Years" ToRole="Outcomes" />
+          <NavigationProperty Name="Periods" Relationship="Self.FK_Periods_ToYears" FromRole="Years" ToRole="Periods" />
+        </EntityType>
+        <Association Name="FK_Accounts_AccountTypes">
+          <End Role="AccountTypes" Type="Self.AccountTypes" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ToAccounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Outcomes_ToAccounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transfers_ToAccountsFrom">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Transfers" Type="Self.Transfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfers">
+              <PropertyRef Name="AccountFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transfers_ToAccountsTo">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Transfers" Type="Self.Transfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfers">
+              <PropertyRef Name="AccountTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetIncomes_IncomeCategories">
+          <End Role="IncomeCategories" Type="Self.IncomeCategories" Multiplicity="1" />
+          <End Role="BudgetIncomes" Type="Self.BudgetIncomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetIncomes">
+              <PropertyRef Name="IncomeCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetIncomes_Period">
+          <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+          <End Role="BudgetIncomes" Type="Self.BudgetIncomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetIncomes">
+              <PropertyRef Name="Period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetIncomes_Year">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="BudgetIncomes" Type="Self.BudgetIncomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetIncomes">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetOutcomes_IncomeCategories">
+          <End Role="OutcomeCategories" Type="Self.OutcomeCategories" Multiplicity="1" />
+          <End Role="BudgetOutcomes" Type="Self.BudgetOutcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutcomeCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetOutcomes">
+              <PropertyRef Name="OutcomeCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetOutcomes_Period">
+          <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+          <End Role="BudgetOutcomes" Type="Self.BudgetOutcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetOutcomes">
+              <PropertyRef Name="Period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetOutcomes_Year">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="BudgetOutcomes" Type="Self.BudgetOutcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetOutcomes">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ToIncomeCategories">
+          <End Role="IncomeCategories" Type="Self.IncomeCategories" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="IncomeCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ToPeriods">
+          <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ToYears">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Outcomes_ToIncomeCategories">
+          <End Role="OutcomeCategories" Type="Self.OutcomeCategories" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutcomeCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="OutcomeCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Outcomes_ToPeriods">
+          <End Role="Periods" Type="Self.Periods" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="Period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Outcomes_ToYears">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Periods_ToYears">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="Periods" Type="Self.Periods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Periods">
+              <PropertyRef Name="Year" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" />
+          <EntitySet Name="AccountTypes" EntityType="Self.AccountTypes" />
+          <EntitySet Name="BudgetIncomes" EntityType="Self.BudgetIncomes" />
+          <EntitySet Name="BudgetOutcomes" EntityType="Self.BudgetOutcomes" />
+          <EntitySet Name="IncomeCategories" EntityType="Self.IncomeCategories" />
+          <EntitySet Name="Incomes" EntityType="Self.Incomes" />
+          <EntitySet Name="OutcomeCategories" EntityType="Self.OutcomeCategories" />
+          <EntitySet Name="Outcomes" EntityType="Self.Outcomes" />
+          <EntitySet Name="Periods" EntityType="Self.Periods" />
+          <EntitySet Name="Transfers" EntityType="Self.Transfers" />
+          <EntitySet Name="Years" EntityType="Self.Years" />
+          <AssociationSet Name="FK_Accounts_AccountTypes" Association="Self.FK_Accounts_AccountTypes">
+            <End Role="AccountTypes" EntitySet="AccountTypes" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ToAccounts" Association="Self.FK_Incomes_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Outcomes_ToAccounts" Association="Self.FK_Outcomes_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transfers_ToAccountsFrom" Association="Self.FK_Transfers_ToAccountsFrom">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Transfers" EntitySet="Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transfers_ToAccountsTo" Association="Self.FK_Transfers_ToAccountsTo">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Transfers" EntitySet="Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetIncomes_IncomeCategories" Association="Self.FK_BudgetIncomes_IncomeCategories">
+            <End Role="IncomeCategories" EntitySet="IncomeCategories" />
+            <End Role="BudgetIncomes" EntitySet="BudgetIncomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetIncomes_Period" Association="Self.FK_BudgetIncomes_Period">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="BudgetIncomes" EntitySet="BudgetIncomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetIncomes_Year" Association="Self.FK_BudgetIncomes_Year">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="BudgetIncomes" EntitySet="BudgetIncomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetOutcomes_IncomeCategories" Association="Self.FK_BudgetOutcomes_IncomeCategories">
+            <End Role="OutcomeCategories" EntitySet="OutcomeCategories" />
+            <End Role="BudgetOutcomes" EntitySet="BudgetOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetOutcomes_Period" Association="Self.FK_BudgetOutcomes_Period">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="BudgetOutcomes" EntitySet="BudgetOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetOutcomes_Year" Association="Self.FK_BudgetOutcomes_Year">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="BudgetOutcomes" EntitySet="BudgetOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ToIncomeCategories" Association="Self.FK_Incomes_ToIncomeCategories">
+            <End Role="IncomeCategories" EntitySet="IncomeCategories" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ToPeriods" Association="Self.FK_Incomes_ToPeriods">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ToYears" Association="Self.FK_Incomes_ToYears">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Outcomes_ToIncomeCategories" Association="Self.FK_Outcomes_ToIncomeCategories">
+            <End Role="OutcomeCategories" EntitySet="OutcomeCategories" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Outcomes_ToPeriods" Association="Self.FK_Outcomes_ToPeriods">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Outcomes_ToYears" Association="Self.FK_Outcomes_ToYears">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Periods_ToYears" Association="Self.FK_Periods_ToYears">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Periods" EntitySet="Periods" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="Model.Accounts">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountTypes">
+            <EntityTypeMapping TypeName="Model.AccountTypes">
+              <MappingFragment StoreEntitySet="AccountTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountTypeName" ColumnName="AccountTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BudgetIncomes">
+            <EntityTypeMapping TypeName="Model.BudgetIncomes">
+              <MappingFragment StoreEntitySet="BudgetIncomes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="IncomeCategory" ColumnName="IncomeCategory" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BudgetOutcomes">
+            <EntityTypeMapping TypeName="Model.BudgetOutcomes">
+              <MappingFragment StoreEntitySet="BudgetOutcomes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="OutcomeCategory" ColumnName="OutcomeCategory" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IncomeCategories">
+            <EntityTypeMapping TypeName="Model.IncomeCategories">
+              <MappingFragment StoreEntitySet="IncomeCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IncomeCategoryName" ColumnName="IncomeCategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incomes">
+            <EntityTypeMapping TypeName="Model.Incomes">
+              <MappingFragment StoreEntitySet="Incomes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="IncomeCategory" ColumnName="IncomeCategory" />
+                <ScalarProperty Name="PlannedDate" ColumnName="PlannedDate" />
+                <ScalarProperty Name="PlannedAmount" ColumnName="PlannedAmount" />
+                <ScalarProperty Name="RealDate" ColumnName="RealDate" />
+                <ScalarProperty Name="RealAmount" ColumnName="RealAmount" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OutcomeCategories">
+            <EntityTypeMapping TypeName="Model.OutcomeCategories">
+              <MappingFragment StoreEntitySet="OutcomeCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OutcomeCategoryName" ColumnName="OutcomeCategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Outcomes">
+            <EntityTypeMapping TypeName="Model.Outcomes">
+              <MappingFragment StoreEntitySet="Outcomes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="OutcomeCategory" ColumnName="OutcomeCategory" />
+                <ScalarProperty Name="PlannedDate" ColumnName="PlannedDate" />
+                <ScalarProperty Name="PlannedAmount" ColumnName="PlannedAmount" />
+                <ScalarProperty Name="RealDate" ColumnName="RealDate" />
+                <ScalarProperty Name="RealAmount" ColumnName="RealAmount" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periods">
+            <EntityTypeMapping TypeName="Model.Periods">
+              <MappingFragment StoreEntitySet="Periods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PeriodName" ColumnName="PeriodName" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Starts" ColumnName="Starts" />
+                <ScalarProperty Name="Ends" ColumnName="Ends" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transfers">
+            <EntityTypeMapping TypeName="Model.Transfers">
+              <MappingFragment StoreEntitySet="Transfers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TransferDate" ColumnName="TransferDate" />
+                <ScalarProperty Name="AccountFrom" ColumnName="AccountFrom" />
+                <ScalarProperty Name="AccountTo" ColumnName="AccountTo" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Years">
+            <EntityTypeMapping TypeName="Model.Years">
+              <MappingFragment StoreEntitySet="Years">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+                <ScalarProperty Name="Starts" ColumnName="Starts" />
+                <ScalarProperty Name="Ends" ColumnName="Ends" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

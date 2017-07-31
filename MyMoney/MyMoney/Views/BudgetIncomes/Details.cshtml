@@ -1,0 +1,50 @@
+﻿@model MyMoney.BudgetIncomes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BudgetIncomes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeCategories.IncomeCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeCategories.IncomeCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periods.PeriodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periods.PeriodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Years.YearName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Years.YearName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Následující GUID je určen pro ID knihovny typelib, pokud je tento projekt zpřístupněn modulu COM.
-[assembly: Guid("03c973da-f677-4069-a112-5ff77498658f")]
+[assembly: Guid("a47039e2-794e-4ca5-93b6-7d31e2089a13")]
 
 // Informace o verzi sestavení jsou tvořeny následujícími čtyřmi hodnotami:
 //

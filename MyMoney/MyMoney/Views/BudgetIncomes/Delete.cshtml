@@ -1,0 +1,56 @@
+﻿@model MyMoney.BudgetIncomes
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BudgetIncomes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeCategories.IncomeCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeCategories.IncomeCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periods.PeriodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periods.PeriodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Years.YearName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Years.YearName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
